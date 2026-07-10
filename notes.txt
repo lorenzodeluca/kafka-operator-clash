@@ -1,0 +1,150 @@
+
+--------------------------------------------
+HW infos - ovh vps:
+lorenzo@deluca:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.8G     0  3.8G   0% /dev
+tmpfs           776M  616K  776M   1% /run
+/dev/sda1        74G   46G   26G  64% /
+tmpfs           3.8G     0  3.8G   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           3.8G   72K  3.8G   1% /tmp
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+/dev/sda15      124M  8.7M  116M   8% /boot/efi
+tmpfs           1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs           1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tmpfs           776M  8.0K  776M   1% /run/user/1001
+
+
+lorenzo@deluca:/home$ screenfetch 
+         _,met$$$$$gg.           lorenzo@deluca.pro
+      ,g$$$$$$$$$$$$$$$P.        OS: Debian 13 trixie
+    ,g$$P""       """Y$$.".      Kernel: x86_64 Linux 6.12.95+deb13-cloud-amd64
+   ,$$P'              `$$$.      Uptime: 1d 19h 26m
+  ',$$P       ,ggs.     `$$b:    Packages: 1016
+  `d$$'     ,$P"'   .    $$$     Shell: bash 5.2.37
+   $$P      d$'     ,    $$P     Disk: 36G / 78G (48%)
+   $$:      $$.   -    ,d$$'     CPU: Intel Core (Haswell, no TSX) @ 4x 3GHz
+   $$\;      Y$b._   _,d$P'      RAM: 1294MiB / 7757MiB
+   Y$$.    `.`"Y$$$$P"'         
+   `$$b      "-.__              
+    `Y$$                        
+     `Y$$.                      
+       `$$b.                    
+         `Y$$b.                 
+            `"Y$b._             
+                `"""" 
+
+--------------------------------------------
+------k3s installation
+
+lorenzo@deluca:/opt/iccbd$ git clone https://github.com/lorenzodeluca/kafka-operator-clash
+Cloning into 'kafka-operator-clash'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (4/4), done.
+lorenzo@deluca:/opt/iccbd$ ls
+kafka-operator-clash
+lorenzo@deluca:/opt/iccbd$ cd kafka-operator-clash/
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ curl -sfL https://get.k3s.io | sh -s - server \
+  --cluster-init \
+  --disable traefik \
+  --disable local-storage
+[INFO]  Finding release for channel stable
+[INFO]  Using v1.36.2+k3s1 as release
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.36.2%2Bk3s1/sha256sum-amd64.txt
+[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.36.2%2Bk3s1/k3s
+[INFO]  Verifying binary download
+[INFO]  Installing k3s to /usr/local/bin/k3s
+[INFO]  Skipping installation of SELinux RPM
+[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
+[INFO]  Creating /usr/local/bin/crictl symlink to k3s
+[INFO]  Creating /usr/local/bin/ctr symlink to k3s
+[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
+[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
+[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
+[INFO]  systemd: Enabling k3s unit
+Created symlink '/etc/systemd/system/multi-user.target.wants/k3s.service' → '/etc/systemd/system/k3s.service'.
+[INFO]  systemd: Starting k3s
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ sudo k3s kubectl get nodes
+NAME         STATUS   ROLES                AGE   VERSION
+deluca.pro   Ready    control-plane,etcd   14s   v1.36.2+k3s1
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ sudo k3s kubectl get pods -n kube-system
+NAME                              READY   STATUS    RESTARTS   AGE
+coredns-5f5694d56b-vdzck          1/1     Running   0          24s
+metrics-server-7c86f97b8d-98qp9   0/1     Running   0          24s
+
+
+------export Kubeconfig
+mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $(whoami):$(whoami) ~/.kube/config
+export KUBECONFIG=~/.kube/config
+echo 'export KUBECONFIG=~/.kube/config' >> ~/.bashrc
+source ~/.bashrc
+--------------------------------------------
+------kafka installation(Bitnami repo Kafka in Kraft mode(w/o zookeeper to save ram and with only just 1 node its mostly useless))
+----- k8s pkg manager installation(helm)
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ helm repo add bitnami https://charts.bitnami.com/bitnami
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ vim kafka-values.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ helm repo update
+
+------kafka deploy in the Kafka namespace
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl create namespace Kafka
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ helm install kafka bitnami/Kafka --namespace Kafka -f kafka-values.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl get pods -n kafka -w
+NAME                 READY   STATUS    RESTARTS   AGE
+kafka-controller-0   0/1     Pending   0          104s
+kafka-controller-1   0/1     Pending   0          104s
+kafka-controller-2   0/1     Pending   0          104s
+
+---- the pods are stuck, needs another repo, bitnami is missing the image
+helm uninstall kafka --namespace kafka
+
+helm install kafka bitnami/kafka \
+  --namespace kafka \
+  --set kraft.enabled=true \
+  --set controller.replicaCount=1 \
+  --set controller.persistence.enabled=false \
+  --set listeners.client.protocol=PLAINTEXT \
+  --set sasl.enabled=false \
+  --set image.registry=docker.io \
+  --set image.repository=bitnamilegacy/kafka \
+  --set controller.resources.requests.cpu=250m \
+  --set controller.resources.requests.memory=512Mi \
+  --set controller.resources.limits.cpu=1 \
+  --set controller.resources.limits.memory=1024Mi
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl get pods -n kafka -w
+NAME                 READY   STATUS    RESTARTS   AGE
+kafka-controller-0   1/1     Running   0          33s
+
+--------------------------------------------
+------kube builder operator
+
+mkdir -p kubebuilder-operatoror
+cd kubebuilder-operator
+go mod init github.com/lorenzodeluca/kafka-operator-clash/kubebuilder-operator
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ curl -L -o kubebuilder "https://go.kubebuilder.io/dl/latest/linux/amd64"
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ chmod +x kubebuilder
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ sudo mv kubebuilder /usr/local/bin/
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ kubebuilder version
+KubeBuilder:          v4.15.0
+Kubernetes:           1.36.0
+Git Commit:           034c380389c00396878da8b388d42b17d55f8dd8
+Build Date:           2026-06-14T19:16:32Z
+Go OS/Arch:           linux/amd64
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ kubebuilder init --domain lorenzodeluca.it
+
+-----generating the resource structures and the Go controller code
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ kubebuilder create api \
+  --group messaging \
+  --version v1alpha1 \
+  --kind DataStream

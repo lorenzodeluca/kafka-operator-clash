@@ -1,0 +1,9 @@
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+kind: DataStream
+metadata:
+  labels:
+    app.kubernetes.io/name: kubebuilder-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: datastream-sample
+spec:
+  # TODO(user): Add fields here

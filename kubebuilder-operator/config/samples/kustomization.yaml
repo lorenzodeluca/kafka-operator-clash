@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- messaging_v1alpha1_datastream.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

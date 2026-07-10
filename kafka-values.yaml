@@ -1,0 +1,27 @@
+# kafka-values.yaml
+kraft:
+  enabled: true
+confluentLicense: ""
+
+# Single broker to save resources
+replicaCount: 1
+
+# Resources optimization for the sandbox
+resources:
+  limits:
+    memory: 1024Mi
+    cpu: "1"
+  requests:
+    memory: 512Mi
+    cpu: "500m"
+
+# Disable heavy persistence if you want a purely volatile sandbox,
+# or leave it enabled but minimal. Here, we use the default empty (volsync/hostPath or emptyDir).
+# For simplicity, on a single-node k3s without complex storage classes, we use emptyDir::
+persistence:
+  enabled: false
+
+# no-auth cluster login enabled for easier developtment
+listeners:
+  client:
+    protocol: PLAINTEXT

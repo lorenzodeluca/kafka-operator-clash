@@ -1,0 +1,9 @@
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+kind: DataStream
+metadata:
+  name: lorenzo-sandbox-stream
+  namespace: default
+spec:
+  topicName: "user-telemetry-data"
+  partitions: 2
+  replicationFactor: 1

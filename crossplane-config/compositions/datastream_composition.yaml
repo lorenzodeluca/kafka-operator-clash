@@ -1,0 +1,142 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: xdatastreams.messaging.lorenzodeluca.it
+  labels:
+    provider: mixed
+spec:
+  compositeTypeRef:
+    apiVersion: messaging.lorenzodeluca.it/v1alpha1
+    kind: XDataStream
+  
+  mode: Pipeline
+  
+  pipeline:
+    - step: patch-and-transform
+      functionRef:
+        name: function-patch-and-transform
+      input:
+        apiVersion: pt.fn.crossplane.io/v1beta1
+        kind: Resources
+        resources:
+          # ----------------------------------------------------
+          # RESOURCE 1: The Kafka Topic
+          # ----------------------------------------------------
+          - name: kafka-topic
+            base:
+              apiVersion: topic.kafka.crossplane.io/v1alpha1
+              kind: Topic
+              spec:
+                providerConfigRef:
+                  name: kafka-default
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.topicName
+                toFieldPath: metadata.name
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.partitions
+                toFieldPath: spec.partitions
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.replicationFactor
+                toFieldPath: spec.replicationFactor
+
+          # ----------------------------------------------------
+          # RESOURCE 2: The Connection ConfigMap
+          # ----------------------------------------------------
+          - name: connection-configmap
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-default
+                forProvider:
+                  manifest:
+                    apiVersion: v1
+                    kind: ConfigMap
+                    metadata:
+                      namespace: default
+                    data:
+                      KAFKA_BROKER: "kafka.kafka.svc.cluster.local:9092"
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.labels[crossplane.io/claim-name]
+                toFieldPath: metadata.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "%s-connection"
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.topicName
+                toFieldPath: spec.forProvider.manifest.data.KAFKA_TOPIC
+
+          # ----------------------------------------------------
+          # RESOURCE 3: The Consumer Deployment
+          # ----------------------------------------------------
+          - name: consumer-deployment
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-default
+                forProvider:
+                  manifest:
+                    apiVersion: apps/v1
+                    kind: Deployment
+                    metadata:
+                      namespace: default
+                    spec:
+                      selector:
+                        matchLabels:
+                          app: consumer
+                      template:
+                        metadata:
+                          labels:
+                            app: consumer
+                        spec:
+                          containers:
+                            - name: consumer
+                              image: alpine
+                              command:
+                                - sh
+                                - -c
+                                - "echo 'Connecting to '$KAFKA_BROKER' tracking topic '$KAFKA_TOPIC; sleep infinity"
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.labels[crossplane.io/claim-name]
+                toFieldPath: metadata.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "%s-consumer"
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.labels[crossplane.io/claim-name]
+                # Crucial Fixes: mapping nested deployment objects under manifest block
+                toFieldPath: spec.forProvider.manifest.spec.selector.matchLabels.app
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "%s-consumer"
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.labels[crossplane.io/claim-name]
+                toFieldPath: spec.forProvider.manifest.spec.template.metadata.labels.app
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "%s-consumer"
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.partitions
+                toFieldPath: spec.forProvider.manifest.spec.replicas
+              - type: FromCompositeFieldPath
+                fromFieldPath: metadata.labels[crossplane.io/claim-name]
+                toFieldPath: spec.forProvider.manifest.spec.template.spec.containers[0].envFrom[0].configMapRef.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "%s-connection"

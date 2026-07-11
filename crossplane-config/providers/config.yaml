@@ -1,0 +1,16 @@
+apiVersion: kafka.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kafka-default
+spec:
+  kafka:
+    brokers:
+      - kafka.kafka.svc.cluster.local:9092
+---
+apiVersion: kubernetes.upbound.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes-default
+spec:
+  credentials:
+    source: InjectedIdentity

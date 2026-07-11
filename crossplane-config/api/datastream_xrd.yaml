@@ -1,0 +1,33 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xdatastreams.messaging.lorenzodeluca.it
+spec:
+  group: messaging.lorenzodeluca.it
+  names:
+    kind: XDataStream
+    plural: xdatastreams
+  claimNames:
+    kind: DataStream
+    plural: datastreams
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                topicName:
+                  type: string
+                partitions:
+                  type: integer
+                  default: 1
+                replicationFactor:
+                  type: integer
+                  default: 1
+              required:
+                - topicName

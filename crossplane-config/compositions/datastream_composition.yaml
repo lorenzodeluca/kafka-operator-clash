@@ -18,25 +18,25 @@ spec:
         kind: Resources
         resources:
           - name: kafka-topic
-          base:
-          apiVersion: topic.kafka.crossplane.io/v1alpha1
-          kind: Topic
-          spec:
-            providerConfigRef:
-              name: kafka-default
-            forProvider:
-              partitions: 1
-              replicationFactor: 1
-          patches:
-          - type: FromCompositeFieldPath
-          fromFieldPath: spec.topicName
-          toFieldPath: metadata.name
-          - type: FromCompositeFieldPath
-          fromFieldPath: spec.partitions
-          toFieldPath: spec.forProvider.partitions
-          - type: FromCompositeFieldPath
-          fromFieldPath: spec.replicationFactor
-          toFieldPath: spec.forProvider.replicationFactor
+            base:
+              apiVersion: topic.kafka.crossplane.io/v1alpha1
+              kind: Topic
+              spec:
+                providerConfigRef:
+                  name: kafka-default
+                forProvider:
+                  partitions: 1
+                  replicationFactor: 1
+            patches:
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.topicName
+                toFieldPath: metadata.name
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.partitions
+                toFieldPath: spec.forProvider.partitions
+              - type: FromCompositeFieldPath
+                fromFieldPath: spec.replicationFactor
+                toFieldPath: spec.forProvider.replicationFactor
 
           - name: connection-configmap
             base:

@@ -3,11 +3,14 @@ kind: ProviderConfig
 metadata:
   name: kafka-default
 spec:
-  kafka:
-    brokers:
-      - kafka.kafka.svc.cluster.local:9092
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: upbound-system
+      name: kafka-credentials
+      key: credentials
 ---
-apiVersion: kubernetes.upbound.io/v1alpha1
+apiVersion: kubernetes.crossplane.io/v1alpha1
 kind: ProviderConfig
 metadata:
   name: kubernetes-default

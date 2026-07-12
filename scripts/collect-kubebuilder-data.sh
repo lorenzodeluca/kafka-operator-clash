@@ -13,6 +13,11 @@ OUT_DIR="${4:-${REPO_ROOT}/results/kubebuilder}"
 # Fully-qualified resource for Kubebuilder API group
 KB_RES="datastreams.messaging.kb.lorenzodeluca.it"
 
+# Enable/disable unique topic per run
+# UNIQUE_TOPIC=true  -> "<base-topic>-<timestamp>-<random>"
+# UNIQUE_TOPIC=false -> use topic exactly as in sample file
+UNIQUE_TOPIC="${UNIQUE_TOPIC:-true}"
+
 mkdir -p "${OUT_DIR}"
 
 if [[ ! -f "${SAMPLE_FILE}" ]]; then
@@ -20,30 +25,54 @@ if [[ ! -f "${SAMPLE_FILE}" ]]; then
   exit 1
 fi
 
-CR_NAME="$(grep '^  name:' "${SAMPLE_FILE}" | head -n1 | awk '{print $2}' || true)"
-TOPIC_NAME="$(grep 'topicName:' "${SAMPLE_FILE}" | head -n1 | awk '{print $2}' || true)"
+CR_NAME="$(awk '/^  name:/{print $2; exit}' "${SAMPLE_FILE}" | tr -d '"')"
+BASE_TOPIC_NAME="$(awk '/topicName:/{print $2; exit}' "${SAMPLE_FILE}" | tr -d '"')"
 
 if [[ -z "${CR_NAME}" ]]; then
   echo "[ERROR] could not parse CR name from ${SAMPLE_FILE}"
   exit 1
 fi
 
-if [[ -z "${TOPIC_NAME}" ]]; then
+if [[ -z "${BASE_TOPIC_NAME}" ]]; then
   echo "[ERROR] could not parse topicName from ${SAMPLE_FILE}"
   exit 1
 fi
 
-# Controller naming convention in your reconciler
+TOPIC_NAME="${BASE_TOPIC_NAME}"
+TMP_SAMPLE="$(mktemp)"
+trap 'rm -f "${TMP_SAMPLE}"; kill "${CTRL_PID:-}" >/dev/null 2>&1 || true' EXIT
+
+if [[ "${UNIQUE_TOPIC}" == "true" ]]; then
+  RUN_ID="$(date +%s)-$RANDOM"
+  TOPIC_NAME="${BASE_TOPIC_NAME}-${RUN_ID}"
+
+  # Rewrite only the first topicName field in a temporary sample file
+  awk -v newtopic="${TOPIC_NAME}" '
+    BEGIN { replaced=0 }
+    {
+      if (!replaced && $1 == "topicName:") {
+        print "  topicName: \"" newtopic "\""
+        replaced=1
+        next
+      }
+      print
+    }
+  ' "${SAMPLE_FILE}" > "${TMP_SAMPLE}"
+else
+  cp "${SAMPLE_FILE}" "${TMP_SAMPLE}"
+fi
+
+# Controller naming convention in your reconciler (based on CR name)
 DEPLOY_NAME="${CR_NAME}-consumer"
 CM_NAME="${CR_NAME}-connection"
 
 echo "[INFO] op_dir=${OP_DIR}"
 echo "[INFO] sample=${SAMPLE_FILE}"
-echo "[INFO] cr=${CR_NAME} topic=${TOPIC_NAME} deploy=${DEPLOY_NAME} ns=${NS}"
+echo "[INFO] temp_sample=${TMP_SAMPLE}"
+echo "[INFO] cr=${CR_NAME} base_topic=${BASE_TOPIC_NAME} run_topic=${TOPIC_NAME} deploy=${DEPLOY_NAME} ns=${NS}"
 
-# Optional broker override (important when running controller from host)
-# Example:
-#   export KAFKA_BROKER=localhost:9092
+# Important when running controller from host:
+# export KAFKA_BROKER=localhost:9092 (with kubectl port-forward)
 export KAFKA_BROKER="${KAFKA_BROKER:-kafka.kafka.svc.cluster.local:9092}"
 echo "[INFO] KAFKA_BROKER=${KAFKA_BROKER}"
 
@@ -61,11 +90,6 @@ fi
 ( cd "${OP_DIR}" && make run ) > "${OUT_DIR}/controller.log" 2>&1 &
 CTRL_PID=$!
 
-cleanup() {
-  kill "${CTRL_PID}" >/dev/null 2>&1 || true
-}
-trap cleanup EXIT
-
 # Give time to start, then verify it's alive
 sleep 8
 if ! kill -0 "${CTRL_PID}" 2>/dev/null; then
@@ -74,14 +98,14 @@ if ! kill -0 "${CTRL_PID}" 2>/dev/null; then
   exit 1
 fi
 
-# Clean previous run (kubebuilder group only)
+# Clean previous run
 kubectl delete "${KB_RES}" "${CR_NAME}" -n "${NS}" --ignore-not-found=true
 kubectl delete deployment "${DEPLOY_NAME}" -n "${NS}" --ignore-not-found=true
 kubectl delete configmap "${CM_NAME}" -n "${NS}" --ignore-not-found=true
 sleep 2
 
 START_TS="$(date +%s)"
-kubectl apply -f "${SAMPLE_FILE}"
+kubectl apply -f "${TMP_SAMPLE}"
 
 # Wait for deployment object creation (up to 120s)
 DEPLOY_CREATED="false"
@@ -117,12 +141,14 @@ READY_REPLICAS="$(kubectl get deploy "${DEPLOY_NAME}" -n "${NS}" -o jsonpath='{.
 DS_READY_COND="$(kubectl get "${KB_RES}" "${CR_NAME}" -n "${NS}" -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}' 2>/dev/null || echo "NA")"
 DS_READY_MSG="$(kubectl get "${KB_RES}" "${CR_NAME}" -n "${NS}" -o jsonpath='{.status.conditions[?(@.type=="Ready")].message}' 2>/dev/null || echo "NA")"
 
-cat > "${OUT_DIR}/summary.txt" <<EOF
+cat > "${OUT_DIR}/summary.txt" <<EOT
 framework=kubebuilder
 resource=${KB_RES}
 cr_name=${CR_NAME}
+base_topic_name=${BASE_TOPIC_NAME}
 topic_name=${TOPIC_NAME}
 namespace=${NS}
+unique_topic=${UNIQUE_TOPIC}
 kafka_broker=${KAFKA_BROKER}
 deployment=${DEPLOY_NAME}
 deployment_created=${DEPLOY_CREATED}
@@ -133,7 +159,7 @@ datastream_ready_condition=${DS_READY_COND}
 datastream_ready_message=${DS_READY_MSG}
 total_seconds=${TOTAL_SEC}
 timestamp=$(date -Iseconds)
-EOF
+EOT
 
 echo "[OK] Kubebuilder data collected in ${OUT_DIR}"
 cat "${OUT_DIR}/summary.txt"

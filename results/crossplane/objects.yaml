@@ -1,0 +1,621 @@
+apiVersion: v1
+items:
+- apiVersion: kubernetes.crossplane.io/v1alpha2
+  kind: Object
+  metadata:
+    annotations:
+      crossplane.io/composition-resource-name: connection-configmap
+      crossplane.io/external-name: datastream-sample-gw4jj-9c232337d53e
+    creationTimestamp: "2026-07-12T02:12:21Z"
+    finalizers:
+    - finalizer.managedresource.crossplane.io
+    generateName: datastream-sample-gw4jj-
+    generation: 2
+    labels:
+      crossplane.io/claim-name: datastream-sample
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: datastream-sample-gw4jj
+    name: datastream-sample-gw4jj-9c232337d53e
+    ownerReferences:
+    - apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XDataStream
+      name: datastream-sample-gw4jj
+      uid: 34ee2e61-3588-4201-b09d-6b3c2690a52d
+    resourceVersion: "401178"
+    uid: d34d9aff-75de-438c-8042-be1fa3034dd8
+  spec:
+    deletionPolicy: Delete
+    forProvider:
+      manifest:
+        apiVersion: v1
+        data:
+          KAFKA_BROKER: kafka.kafka.svc.cluster.local:9092
+          KAFKA_TOPIC: user-telemetry-data
+        kind: ConfigMap
+        metadata:
+          name: user-telemetry-data-connection
+          namespace: default
+    managementPolicies:
+    - '*'
+    providerConfigRef:
+      name: kubernetes-default
+    readiness:
+      policy: SuccessfulCreate
+    watch: false
+  status:
+    atProvider:
+      manifest:
+        apiVersion: v1
+        data:
+          KAFKA_BROKER: kafka.kafka.svc.cluster.local:9092
+          KAFKA_TOPIC: user-telemetry-data
+        kind: ConfigMap
+        metadata:
+          creationTimestamp: "2026-07-12T02:03:30Z"
+          managedFields:
+          - apiVersion: v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:data:
+                f:KAFKA_BROKER: {}
+                f:KAFKA_TOPIC: {}
+            manager: provider-kubernetes/datastream-sample-gw4jj-9c232337d53e
+            operation: Apply
+          - apiVersion: v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:data:
+                f:KAFKA_BROKER: {}
+                f:KAFKA_TOPIC: {}
+            manager: provider-kubernetes/lorenzo-sandbox-stream-wwdnk-b5515f0c4230
+            operation: Apply
+            time: "2026-07-12T02:03:30Z"
+          name: user-telemetry-data-connection
+          namespace: default
+          resourceVersion: "401154"
+          uid: c330feaf-820e-46ad-8d54-bb7f3222589f
+    conditions:
+    - lastTransitionTime: "2026-07-12T02:12:22Z"
+      observedGeneration: 2
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+    - lastTransitionTime: "2026-07-12T02:12:23Z"
+      reason: Available
+      status: "True"
+      type: Ready
+- apiVersion: kubernetes.crossplane.io/v1alpha2
+  kind: Object
+  metadata:
+    annotations:
+      crossplane.io/composition-resource-name: consumer-deployment
+      crossplane.io/external-name: datastream-sample-gw4jj-ef17a351ca02
+    creationTimestamp: "2026-07-12T02:12:21Z"
+    finalizers:
+    - finalizer.managedresource.crossplane.io
+    generateName: datastream-sample-gw4jj-
+    generation: 2
+    labels:
+      crossplane.io/claim-name: datastream-sample
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: datastream-sample-gw4jj
+    name: datastream-sample-gw4jj-ef17a351ca02
+    ownerReferences:
+    - apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XDataStream
+      name: datastream-sample-gw4jj
+      uid: 34ee2e61-3588-4201-b09d-6b3c2690a52d
+    resourceVersion: "401177"
+    uid: f10908ff-24b4-4e22-8ebb-72a38815018f
+  spec:
+    deletionPolicy: Delete
+    forProvider:
+      manifest:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: user-telemetry-data-consumer
+          namespace: default
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: user-telemetry-data-consumer
+          template:
+            metadata:
+              labels:
+                app: user-telemetry-data-consumer
+            spec:
+              containers:
+              - command:
+                - sh
+                - -c
+                - echo "Broker=$KAFKA_BROKER Topic=$KAFKA_TOPIC"; sleep infinity
+                envFrom:
+                - configMapRef:
+                    name: user-telemetry-data-connection
+                image: alpine:3.20
+                name: consumer
+    managementPolicies:
+    - '*'
+    providerConfigRef:
+      name: kubernetes-default
+    readiness:
+      policy: SuccessfulCreate
+    watch: false
+  status:
+    atProvider:
+      manifest:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          annotations:
+            deployment.kubernetes.io/revision: "1"
+          creationTimestamp: "2026-07-12T02:02:58Z"
+          generation: 1
+          managedFields:
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:spec:
+                f:replicas: {}
+                f:selector: {}
+                f:template:
+                  f:metadata:
+                    f:labels:
+                      f:app: {}
+                  f:spec:
+                    f:containers:
+                      k:{"name":"consumer"}:
+                        .: {}
+                        f:command: {}
+                        f:envFrom: {}
+                        f:image: {}
+                        f:name: {}
+            manager: provider-kubernetes/datastream-sample-gw4jj-ef17a351ca02
+            operation: Apply
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:spec:
+                f:replicas: {}
+                f:selector: {}
+                f:template:
+                  f:metadata:
+                    f:labels:
+                      f:app: {}
+                  f:spec:
+                    f:containers:
+                      k:{"name":"consumer"}:
+                        .: {}
+                        f:command: {}
+                        f:envFrom: {}
+                        f:image: {}
+                        f:name: {}
+            manager: provider-kubernetes/lorenzo-sandbox-stream-wwdnk-646a09763fb1
+            operation: Apply
+            time: "2026-07-12T02:02:58Z"
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:metadata:
+                f:annotations:
+                  .: {}
+                  f:deployment.kubernetes.io/revision: {}
+              f:status:
+                f:availableReplicas: {}
+                f:conditions:
+                  .: {}
+                  k:{"type":"Available"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+                  k:{"type":"Progressing"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+                f:observedGeneration: {}
+                f:readyReplicas: {}
+                f:replicas: {}
+                f:terminatingReplicas: {}
+                f:updatedReplicas: {}
+            manager: k3s
+            operation: Update
+            subresource: status
+            time: "2026-07-12T02:02:58Z"
+          name: user-telemetry-data-consumer
+          namespace: default
+          resourceVersion: "401153"
+          uid: 39752477-49cf-46b7-a345-3a66a9e854ac
+        spec:
+          progressDeadlineSeconds: 600
+          replicas: 2
+          revisionHistoryLimit: 10
+          selector:
+            matchLabels:
+              app: user-telemetry-data-consumer
+          strategy:
+            rollingUpdate:
+              maxSurge: 25%
+              maxUnavailable: 25%
+            type: RollingUpdate
+          template:
+            metadata:
+              labels:
+                app: user-telemetry-data-consumer
+            spec:
+              containers:
+              - command:
+                - sh
+                - -c
+                - echo "Broker=$KAFKA_BROKER Topic=$KAFKA_TOPIC"; sleep infinity
+                envFrom:
+                - configMapRef:
+                    name: user-telemetry-data-connection
+                image: alpine:3.20
+                imagePullPolicy: IfNotPresent
+                name: consumer
+                resources: {}
+                terminationMessagePath: /dev/termination-log
+                terminationMessagePolicy: File
+              dnsPolicy: ClusterFirst
+              restartPolicy: Always
+              schedulerName: default-scheduler
+              securityContext: {}
+              terminationGracePeriodSeconds: 30
+        status:
+          availableReplicas: 2
+          conditions:
+          - lastTransitionTime: "2026-07-12T02:02:58Z"
+            lastUpdateTime: "2026-07-12T02:02:58Z"
+            message: Deployment has minimum availability.
+            reason: MinimumReplicasAvailable
+            status: "True"
+            type: Available
+          - lastTransitionTime: "2026-07-12T02:02:58Z"
+            lastUpdateTime: "2026-07-12T02:02:58Z"
+            message: ReplicaSet "user-telemetry-data-consumer-5f74dc486" has successfully
+              progressed.
+            reason: NewReplicaSetAvailable
+            status: "True"
+            type: Progressing
+          observedGeneration: 1
+          readyReplicas: 2
+          replicas: 2
+          terminatingReplicas: 0
+          updatedReplicas: 2
+    conditions:
+    - lastTransitionTime: "2026-07-12T02:12:22Z"
+      observedGeneration: 2
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+    - lastTransitionTime: "2026-07-12T02:12:23Z"
+      reason: Available
+      status: "True"
+      type: Ready
+- apiVersion: kubernetes.crossplane.io/v1alpha2
+  kind: Object
+  metadata:
+    annotations:
+      crossplane.io/composition-resource-name: consumer-deployment
+      crossplane.io/external-create-pending: "2026-07-12T02:02:58Z"
+      crossplane.io/external-create-succeeded: "2026-07-12T02:02:58Z"
+      crossplane.io/external-name: lorenzo-sandbox-stream-wwdnk-646a09763fb1
+    creationTimestamp: "2026-07-12T02:02:58Z"
+    finalizers:
+    - finalizer.managedresource.crossplane.io
+    generateName: lorenzo-sandbox-stream-wwdnk-
+    generation: 2
+    labels:
+      crossplane.io/claim-name: lorenzo-sandbox-stream
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: lorenzo-sandbox-stream-wwdnk
+    name: lorenzo-sandbox-stream-wwdnk-646a09763fb1
+    ownerReferences:
+    - apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XDataStream
+      name: lorenzo-sandbox-stream-wwdnk
+      uid: cecc9a13-1fca-4a4c-ac31-4114177e4a6b
+    resourceVersion: "401490"
+    uid: 6beaecd0-fa8e-40e7-9024-00c1265efe77
+  spec:
+    deletionPolicy: Delete
+    forProvider:
+      manifest:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: user-telemetry-data-consumer
+          namespace: default
+        spec:
+          replicas: 2
+          selector:
+            matchLabels:
+              app: user-telemetry-data-consumer
+          template:
+            metadata:
+              labels:
+                app: user-telemetry-data-consumer
+            spec:
+              containers:
+              - command:
+                - sh
+                - -c
+                - echo "Broker=$KAFKA_BROKER Topic=$KAFKA_TOPIC"; sleep infinity
+                envFrom:
+                - configMapRef:
+                    name: user-telemetry-data-connection
+                image: alpine:3.20
+                name: consumer
+    managementPolicies:
+    - '*'
+    providerConfigRef:
+      name: kubernetes-default
+    readiness:
+      policy: SuccessfulCreate
+    watch: false
+  status:
+    atProvider:
+      manifest:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          annotations:
+            deployment.kubernetes.io/revision: "1"
+          creationTimestamp: "2026-07-12T02:02:58Z"
+          generation: 1
+          managedFields:
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:spec:
+                f:replicas: {}
+                f:selector: {}
+                f:template:
+                  f:metadata:
+                    f:labels:
+                      f:app: {}
+                  f:spec:
+                    f:containers:
+                      k:{"name":"consumer"}:
+                        .: {}
+                        f:command: {}
+                        f:envFrom: {}
+                        f:image: {}
+                        f:name: {}
+            manager: provider-kubernetes/datastream-sample-gw4jj-ef17a351ca02
+            operation: Apply
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:spec:
+                f:replicas: {}
+                f:selector: {}
+                f:template:
+                  f:metadata:
+                    f:labels:
+                      f:app: {}
+                  f:spec:
+                    f:containers:
+                      k:{"name":"consumer"}:
+                        .: {}
+                        f:command: {}
+                        f:envFrom: {}
+                        f:image: {}
+                        f:name: {}
+            manager: provider-kubernetes/lorenzo-sandbox-stream-wwdnk-646a09763fb1
+            operation: Apply
+            time: "2026-07-12T02:02:58Z"
+          - apiVersion: apps/v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:metadata:
+                f:annotations:
+                  .: {}
+                  f:deployment.kubernetes.io/revision: {}
+              f:status:
+                f:availableReplicas: {}
+                f:conditions:
+                  .: {}
+                  k:{"type":"Available"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+                  k:{"type":"Progressing"}:
+                    .: {}
+                    f:lastTransitionTime: {}
+                    f:lastUpdateTime: {}
+                    f:message: {}
+                    f:reason: {}
+                    f:status: {}
+                    f:type: {}
+                f:observedGeneration: {}
+                f:readyReplicas: {}
+                f:replicas: {}
+                f:terminatingReplicas: {}
+                f:updatedReplicas: {}
+            manager: k3s
+            operation: Update
+            subresource: status
+            time: "2026-07-12T02:02:58Z"
+          name: user-telemetry-data-consumer
+          namespace: default
+          resourceVersion: "401153"
+          uid: 39752477-49cf-46b7-a345-3a66a9e854ac
+        spec:
+          progressDeadlineSeconds: 600
+          replicas: 2
+          revisionHistoryLimit: 10
+          selector:
+            matchLabels:
+              app: user-telemetry-data-consumer
+          strategy:
+            rollingUpdate:
+              maxSurge: 25%
+              maxUnavailable: 25%
+            type: RollingUpdate
+          template:
+            metadata:
+              labels:
+                app: user-telemetry-data-consumer
+            spec:
+              containers:
+              - command:
+                - sh
+                - -c
+                - echo "Broker=$KAFKA_BROKER Topic=$KAFKA_TOPIC"; sleep infinity
+                envFrom:
+                - configMapRef:
+                    name: user-telemetry-data-connection
+                image: alpine:3.20
+                imagePullPolicy: IfNotPresent
+                name: consumer
+                resources: {}
+                terminationMessagePath: /dev/termination-log
+                terminationMessagePolicy: File
+              dnsPolicy: ClusterFirst
+              restartPolicy: Always
+              schedulerName: default-scheduler
+              securityContext: {}
+              terminationGracePeriodSeconds: 30
+        status:
+          availableReplicas: 2
+          conditions:
+          - lastTransitionTime: "2026-07-12T02:02:58Z"
+            lastUpdateTime: "2026-07-12T02:02:58Z"
+            message: Deployment has minimum availability.
+            reason: MinimumReplicasAvailable
+            status: "True"
+            type: Available
+          - lastTransitionTime: "2026-07-12T02:02:58Z"
+            lastUpdateTime: "2026-07-12T02:02:58Z"
+            message: ReplicaSet "user-telemetry-data-consumer-5f74dc486" has successfully
+              progressed.
+            reason: NewReplicaSetAvailable
+            status: "True"
+            type: Progressing
+          observedGeneration: 1
+          readyReplicas: 2
+          replicas: 2
+          terminatingReplicas: 0
+          updatedReplicas: 2
+    conditions:
+    - lastTransitionTime: "2026-07-12T02:02:59Z"
+      reason: Available
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-07-12T02:02:58Z"
+      observedGeneration: 2
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+- apiVersion: kubernetes.crossplane.io/v1alpha2
+  kind: Object
+  metadata:
+    annotations:
+      crossplane.io/composition-resource-name: connection-configmap
+      crossplane.io/external-create-pending: "2026-07-12T02:03:30Z"
+      crossplane.io/external-create-succeeded: "2026-07-12T02:03:30Z"
+      crossplane.io/external-name: lorenzo-sandbox-stream-wwdnk-b5515f0c4230
+    creationTimestamp: "2026-07-12T02:02:58Z"
+    finalizers:
+    - finalizer.managedresource.crossplane.io
+    generateName: lorenzo-sandbox-stream-wwdnk-
+    generation: 2
+    labels:
+      crossplane.io/claim-name: lorenzo-sandbox-stream
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: lorenzo-sandbox-stream-wwdnk
+    name: lorenzo-sandbox-stream-wwdnk-b5515f0c4230
+    ownerReferences:
+    - apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XDataStream
+      name: lorenzo-sandbox-stream-wwdnk
+      uid: cecc9a13-1fca-4a4c-ac31-4114177e4a6b
+    resourceVersion: "401418"
+    uid: 1ec248f5-e8e4-4c2c-ba7d-694743f6de07
+  spec:
+    deletionPolicy: Delete
+    forProvider:
+      manifest:
+        apiVersion: v1
+        data:
+          KAFKA_BROKER: kafka.kafka.svc.cluster.local:9092
+          KAFKA_TOPIC: user-telemetry-data
+        kind: ConfigMap
+        metadata:
+          name: user-telemetry-data-connection
+          namespace: default
+    managementPolicies:
+    - '*'
+    providerConfigRef:
+      name: kubernetes-default
+    readiness:
+      policy: SuccessfulCreate
+    watch: false
+  status:
+    atProvider:
+      manifest:
+        apiVersion: v1
+        data:
+          KAFKA_BROKER: kafka.kafka.svc.cluster.local:9092
+          KAFKA_TOPIC: user-telemetry-data
+        kind: ConfigMap
+        metadata:
+          creationTimestamp: "2026-07-12T02:03:30Z"
+          managedFields:
+          - apiVersion: v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:data:
+                f:KAFKA_BROKER: {}
+                f:KAFKA_TOPIC: {}
+            manager: provider-kubernetes/datastream-sample-gw4jj-9c232337d53e
+            operation: Apply
+          - apiVersion: v1
+            fieldsType: FieldsV1
+            fieldsV1:
+              f:data:
+                f:KAFKA_BROKER: {}
+                f:KAFKA_TOPIC: {}
+            manager: provider-kubernetes/lorenzo-sandbox-stream-wwdnk-b5515f0c4230
+            operation: Apply
+            time: "2026-07-12T02:03:30Z"
+          name: user-telemetry-data-connection
+          namespace: default
+          resourceVersion: "401154"
+          uid: c330feaf-820e-46ad-8d54-bb7f3222589f
+    conditions:
+    - lastTransitionTime: "2026-07-12T02:04:02Z"
+      reason: Available
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-07-12T02:02:58Z"
+      observedGeneration: 2
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,62 @@
+apiVersion: v1
+items:
+- apiVersion: messaging.lorenzodeluca.it/v1alpha1
+  kind: XDataStream
+  metadata:
+    creationTimestamp: "2026-07-12T14:28:36Z"
+    finalizers:
+    - composite.apiextensions.crossplane.io
+    generation: 4
+    labels:
+      crossplane.io/claim-name: lorenzo-sandbox-stream
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: lorenzo-sandbox-stream-pcdb8
+    name: lorenzo-sandbox-stream-pcdb8
+    resourceVersion: "652695"
+    uid: aa721a6a-6d25-4559-a8a6-e718719a30c9
+  spec:
+    claimRef:
+      apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      kind: DataStream
+      name: lorenzo-sandbox-stream
+      namespace: default
+    compositionRef:
+      name: xdatastreams.messaging.lorenzodeluca.it
+    compositionRevisionRef:
+      name: xdatastreams.messaging.lorenzodeluca.it-39e0aae
+    compositionUpdatePolicy: Automatic
+    partitions: 2
+    replicationFactor: 1
+    resourceRefs:
+    - apiVersion: kubernetes.crossplane.io/v1alpha2
+      kind: Object
+      name: lorenzo-sandbox-stream-pcdb8-060639b5457c
+    - apiVersion: kubernetes.crossplane.io/v1alpha2
+      kind: Object
+      name: lorenzo-sandbox-stream-pcdb8-2d7c4dbce72e
+    - apiVersion: topic.kafka.crossplane.io/v1alpha1
+      kind: Topic
+      name: user-telemetry-data-1783866514
+    topicName: user-telemetry-data-1783866514
+  status:
+    conditions:
+    - lastTransitionTime: "2026-07-12T14:28:36Z"
+      observedGeneration: 4
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+    - lastTransitionTime: "2026-07-12T14:29:35Z"
+      observedGeneration: 4
+      reason: Available
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-07-12T14:28:38Z"
+      message: Too many watch events from XDataStream/lorenzo-sandbox-stream-pcdb8.
+        Allowing events periodically.
+      observedGeneration: 4
+      reason: WatchCircuitOpen
+      status: "False"
+      type: Responsive
+kind: List
+metadata:
+  resourceVersion: ""

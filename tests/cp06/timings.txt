@@ -1,0 +1,8 @@
+Synced	True	ReconcileSuccess	2026-07-12T14:28:36Z
+Ready	True	Available	2026-07-12T14:29:35Z
+XR=lorenzo-sandbox-stream-pcdb8
+Synced	True	ReconcileSuccess	2026-07-12T14:28:36Z	
+Ready	True	Available	2026-07-12T14:29:35Z	
+Responsive	False	WatchCircuitOpen	2026-07-12T14:28:38Z	Too many watch events from XDataStream/lorenzo-sandbox-stream-pcdb8. Allowing events periodically.
+user-telemetry-data-1783866514	Ready	True	Available	2026-07-12T14:28:43Z
+user-telemetry-data-1783866514	Synced	True	ReconcileSuccess	2026-07-12T14:28:37Z

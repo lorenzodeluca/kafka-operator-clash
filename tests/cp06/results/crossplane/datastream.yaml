@@ -1,0 +1,39 @@
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+kind: DataStream
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"messaging.lorenzodeluca.it/v1alpha1","kind":"DataStream","metadata":{"annotations":{},"name":"lorenzo-sandbox-stream","namespace":"default"},"spec":{"partitions":2,"replicationFactor":1,"topicName":"user-telemetry-data-1783866514"}}
+  creationTimestamp: "2026-07-12T14:28:36Z"
+  finalizers:
+  - finalizer.apiextensions.crossplane.io
+  generation: 3
+  name: lorenzo-sandbox-stream
+  namespace: default
+  resourceVersion: "652693"
+  uid: 5b32cb44-6614-4c55-8cc6-9cb5f0d19fd9
+spec:
+  compositeDeletePolicy: Background
+  compositionRef:
+    name: xdatastreams.messaging.lorenzodeluca.it
+  compositionRevisionRef:
+    name: xdatastreams.messaging.lorenzodeluca.it-39e0aae
+  partitions: 2
+  replicationFactor: 1
+  resourceRef:
+    apiVersion: messaging.lorenzodeluca.it/v1alpha1
+    kind: XDataStream
+    name: lorenzo-sandbox-stream-pcdb8
+  topicName: user-telemetry-data-1783866514
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-12T14:28:36Z"
+    observedGeneration: 3
+    reason: ReconcileSuccess
+    status: "True"
+    type: Synced
+  - lastTransitionTime: "2026-07-12T14:29:35Z"
+    observedGeneration: 3
+    reason: Available
+    status: "True"
+    type: Ready

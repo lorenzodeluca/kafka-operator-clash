@@ -1,0 +1,89 @@
+apiVersion: v1
+items:
+- apiVersion: topic.kafka.crossplane.io/v1alpha1
+  kind: Topic
+  metadata:
+    annotations:
+      crossplane.io/composition-resource-name: kafka-topic
+      crossplane.io/external-create-pending: "2026-07-12T14:28:36Z"
+      crossplane.io/external-create-succeeded: "2026-07-12T14:28:37Z"
+      crossplane.io/external-name: user-telemetry-data-1783866514
+    creationTimestamp: "2026-07-12T14:28:36Z"
+    finalizers:
+    - finalizer.managedresource.crossplane.io
+    generation: 1
+    labels:
+      crossplane.io/claim-name: lorenzo-sandbox-stream
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: lorenzo-sandbox-stream-pcdb8
+    name: user-telemetry-data-1783866514
+    ownerReferences:
+    - apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      blockOwnerDeletion: true
+      controller: true
+      kind: XDataStream
+      name: lorenzo-sandbox-stream-pcdb8
+      uid: aa721a6a-6d25-4559-a8a6-e718719a30c9
+    resourceVersion: "652446"
+    uid: 5b1bff91-0a5f-4f2b-aae5-1ff51e1dce89
+  spec:
+    deletionPolicy: Delete
+    forProvider:
+      partitions: 2
+      replicationFactor: 1
+    managementPolicies:
+    - '*'
+    providerConfigRef:
+      name: kafka-default
+  status:
+    atProvider:
+      config:
+        cleanup.policy: delete
+        compression.gzip.level: "-1"
+        compression.lz4.level: "9"
+        compression.type: producer
+        compression.zstd.level: "3"
+        delete.retention.ms: "86400000"
+        file.delete.delay.ms: "60000"
+        flush.messages: "9223372036854775807"
+        flush.ms: "9223372036854775807"
+        follower.replication.throttled.replicas: ""
+        index.interval.bytes: "4096"
+        leader.replication.throttled.replicas: ""
+        local.retention.bytes: "-2"
+        local.retention.ms: "-2"
+        max.compaction.lag.ms: "9223372036854775807"
+        max.message.bytes: "1048588"
+        message.timestamp.after.max.ms: "3600000"
+        message.timestamp.before.max.ms: "9223372036854775807"
+        message.timestamp.type: CreateTime
+        min.cleanable.dirty.ratio: "0.5"
+        min.compaction.lag.ms: "0"
+        min.insync.replicas: "1"
+        preallocate: "false"
+        remote.log.copy.disable: "false"
+        remote.log.delete.on.disable: "false"
+        remote.storage.enable: "false"
+        retention.bytes: "-1"
+        retention.ms: "604800000"
+        segment.bytes: "1073741824"
+        segment.index.bytes: "10485760"
+        segment.jitter.ms: "0"
+        segment.ms: "604800000"
+        unclean.leader.election.enable: "false"
+      id: DMSTH3yITPuQb4dbwG6hMA==
+      partitions: 2
+      replicationFactor: 1
+    conditions:
+    - lastTransitionTime: "2026-07-12T14:28:43Z"
+      reason: Available
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-07-12T14:28:37Z"
+      observedGeneration: 1
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+kind: List
+metadata:
+  resourceVersion: ""

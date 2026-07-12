@@ -1,0 +1,63 @@
+# This manifest defines a NAMESPACE-SCOPED Role.
+# A Role is just a "permission set" (what is allowed), but it does NOT grant
+# access to anyone until you create a RoleBinding.
+#
+# Scope of this Role:
+# - Namespace: default
+# - Purpose: allow provider-kubernetes to manage app-side resources created by the Composition
+#
+# Why needed:
+# - Crossplane provider-kubernetes needs to create/read/update/delete objects like:
+#   ConfigMap and Deployment in namespace default.
+# - Without these permissions, you get "forbidden" errors and XR stays Not Ready.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  # Name of the permission set. Referenced later by RoleBinding.roleRef.name.
+  name: provider-kubernetes-manager
+
+  # Namespace where permissions apply.
+  # this Role does NOT apply cluster-wide.
+  namespace: default
+
+rules:
+  # ---------------------------------------------------------------------------
+  # Rule group 1: Core API resources
+  # apiGroups: [""] means the "core" Kubernetes API group (v1 resources).
+  #
+  # Resources:
+  # - configmaps: required by your Composition (connection-configmap resource)
+  # - secrets/services: optional but often useful in similar demos/extensions
+  #
+  # Verbs:
+  # - get/list/watch: read/observe resources (required for reconciliation loops)
+  # - create/update/patch/delete: full lifecycle management
+  # ---------------------------------------------------------------------------
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets", "services"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # ---------------------------------------------------------------------------
+  # Rule group 2: Workloads in apps API group
+  #
+  # Resources:
+  # - deployments: REQUIRED by your Composition (consumer-deployment resource)
+  # - replicasets/statefulsets/daemonsets: optional extension for future demos
+  #
+  # ---------------------------------------------------------------------------
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets", "statefulsets", "daemonsets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+  # ---------------------------------------------------------------------------
+  # Rule group 3: Pod read-only access (optional but useful)
+  #
+  # Why useful:
+  # - troubleshooting in controller workflows
+  # - observing readiness/health of created workloads
+  #
+  # Read-only verbs only.
+  # ---------------------------------------------------------------------------
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]

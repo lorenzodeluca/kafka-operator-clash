@@ -1,0 +1,60 @@
+apiVersion: v1
+items:
+- apiVersion: messaging.lorenzodeluca.it/v1alpha1
+  kind: XDataStream
+  metadata:
+    creationTimestamp: "2026-07-12T14:24:50Z"
+    finalizers:
+    - composite.apiextensions.crossplane.io
+    generation: 4
+    labels:
+      crossplane.io/claim-name: lorenzo-sandbox-stream
+      crossplane.io/claim-namespace: default
+      crossplane.io/composite: lorenzo-sandbox-stream-9qx8d
+    name: lorenzo-sandbox-stream-9qx8d
+    resourceVersion: "650379"
+    uid: 1b5ef298-82a4-4234-9ee8-19b2a7b8be32
+  spec:
+    claimRef:
+      apiVersion: messaging.lorenzodeluca.it/v1alpha1
+      kind: DataStream
+      name: lorenzo-sandbox-stream
+      namespace: default
+    compositionRef:
+      name: xdatastreams.messaging.lorenzodeluca.it
+    compositionRevisionRef:
+      name: xdatastreams.messaging.lorenzodeluca.it-39e0aae
+    compositionUpdatePolicy: Automatic
+    partitions: 2
+    replicationFactor: 1
+    resourceRefs:
+    - apiVersion: kubernetes.crossplane.io/v1alpha2
+      kind: Object
+      name: lorenzo-sandbox-stream-9qx8d-bd52703ecdf4
+    - apiVersion: kubernetes.crossplane.io/v1alpha2
+      kind: Object
+      name: lorenzo-sandbox-stream-9qx8d-ee5a153fe49a
+    - apiVersion: topic.kafka.crossplane.io/v1alpha1
+      kind: Topic
+      name: user-telemetry-data-1783866288
+    topicName: user-telemetry-data-1783866288
+  status:
+    conditions:
+    - lastTransitionTime: "2026-07-12T14:24:50Z"
+      observedGeneration: 4
+      reason: ReconcileSuccess
+      status: "True"
+      type: Synced
+    - lastTransitionTime: "2026-07-12T14:24:56Z"
+      observedGeneration: 4
+      reason: Available
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-07-12T14:24:50Z"
+      observedGeneration: 4
+      reason: WatchCircuitClosed
+      status: "True"
+      type: Responsive
+kind: List
+metadata:
+  resourceVersion: ""

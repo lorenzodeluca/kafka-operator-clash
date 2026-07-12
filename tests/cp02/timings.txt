@@ -1,0 +1,8 @@
+Synced	True	ReconcileSuccess	2026-07-12T14:25:30Z
+Ready	True	Available	2026-07-12T14:25:36Z
+XR=lorenzo-sandbox-stream-hkwmv
+Synced	True	ReconcileSuccess	2026-07-12T14:25:30Z	
+Ready	True	Available	2026-07-12T14:25:36Z	
+Responsive	True	WatchCircuitClosed	2026-07-12T14:25:30Z	
+user-telemetry-data-1783866327	Ready	True	Available	2026-07-12T14:25:36Z
+user-telemetry-data-1783866327	Synced	True	ReconcileSuccess	2026-07-12T14:25:30Z

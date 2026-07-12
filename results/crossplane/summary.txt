@@ -1,9 +1,0 @@
-framework=crossplane
-claim_name=lorenzo-sandbox-stream
-topic_name="user-telemetry-data"
-namespace=default
-claim_ready=false
-total_seconds=0
-deployment="user-telemetry-data"-consumer
-deployment_replicas=NA
-timestamp=2026-07-12T13:43:29+00:00

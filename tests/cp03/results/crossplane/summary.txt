@@ -1,0 +1,11 @@
+framework=crossplane
+claim_name=lorenzo-sandbox-stream
+base_topic_name=user-telemetry-data
+topic_name=user-telemetry-data-1783866349
+namespace=default
+unique_topic=true
+claim_ready=true
+total_seconds=6
+deployment=user-telemetry-data-1783866349-consumer
+deployment_replicas=2
+timestamp=2026-07-12T14:25:58+00:00

@@ -1,0 +1,10 @@
+Synced	True	ReconcileSuccess	2026-07-12T14:25:51Z
+Ready	True	Available	2026-07-12T14:25:57Z
+XR=lorenzo-sandbox-stream-75t2f
+Synced	True	ReconcileSuccess	2026-07-12T14:25:51Z	
+Ready	True	Available	2026-07-12T14:25:57Z	
+Responsive	True	WatchCircuitClosed	2026-07-12T14:25:51Z	
+user-telemetry-data-1783866327	Ready	False	Deleting	2026-07-12T14:25:49Z
+user-telemetry-data-1783866327	Synced	False	ReconcileError	2026-07-12T14:25:50Z
+user-telemetry-data-1783866349	Ready	True	Available	2026-07-12T14:25:57Z
+user-telemetry-data-1783866349	Synced	True	ReconcileSuccess	2026-07-12T14:25:51Z

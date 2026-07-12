@@ -4,9 +4,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.21.0
-  name: datastreams.messaging.lorenzodeluca.it
+  name: datastreams.messaging.kb.lorenzodeluca.it
 spec:
-  group: messaging.lorenzodeluca.it
+  group: messaging.kb.lorenzodeluca.it
   names:
     kind: DataStream
     listKind: DataStreamList
@@ -40,16 +40,20 @@ spec:
             description: DataStreamSpec defines the desired state of DataStream
             properties:
               partitions:
-                description: 'Partitions defines the total partition count for the
-                  topic (default: 1)'
+                default: 1
+                description: Partitions defines the total partition count for the
+                  topic.
                 format: int32
+                minimum: 1
                 type: integer
               replicationFactor:
-                description: 'ReplicationFactor defines the replication factor (default:
-                  1)'
+                default: 1
+                description: ReplicationFactor defines the replication factor.
+                minimum: 1
                 type: integer
               topicName:
-                description: TopicName is the name of the Kafka topic to manage
+                description: TopicName is the name of the Kafka topic to manage.
+                minLength: 1
                 type: string
             required:
             - topicName
@@ -58,7 +62,7 @@ spec:
             description: DataStreamStatus defines the observed state of DataStream
             properties:
               conditions:
-                description: Conditions track state transitions and lifecycle status
+                description: Conditions track state transitions and lifecycle status.
                 items:
                   description: Condition contains details for one aspect of the current
                     state of this API Resource.
@@ -116,13 +120,15 @@ spec:
                 type: array
               configMapRef:
                 description: ConfigMapRef holds the name of the generated connection
-                  details ConfigMap
+                  details ConfigMap.
                 type: string
               topicCreated:
                 description: TopicCreated confirms whether the Kafka topic exists
-                  on the broker
+                  on the broker.
                 type: boolean
             type: object
+        required:
+        - spec
         type: object
     served: true
     storage: true

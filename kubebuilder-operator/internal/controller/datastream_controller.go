@@ -2,20 +2,30 @@ package controller
 
 import (
 	"context"
+	"fmt"
+	"net"
+	"os"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/segmentio/kafka-go"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/api/errors"
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
+	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
-	"k8s.io/apimachinery/pkg/types"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	messagingv1alpha1 "github.com/lorenzodeluca/kafka-operator-clash/kubebuilder-operator/api/v1alpha1"
+)
+
+const (
+	defaultKafkaBroker = "kafka.kafka.svc.cluster.local:9092"
 )
 
 // DataStreamReconciler reconciles a DataStream object
@@ -24,152 +34,155 @@ type DataStreamReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-// RBAC Permissions necessary for our operator
-// +kubebuilder:rbac:groups=messaging.lorenzodeluca.it,resources=datastreams,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=messaging.lorenzodeluca.it,resources=datastreams/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=messaging.kb.lorenzodeluca.it,resources=datastreams,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=messaging.kb.lorenzodeluca.it,resources=datastreams/status,verbs=get;update;patch
 // +kubebuilder:rbac:groups="",resources=configmaps,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
 
 func (r *DataStreamReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	logger := log.FromContext(ctx)
 
-	// 1. Fetch the DataStream instance
-	var datastream messagingv1alpha1.DataStream
-	if err := r.Get(ctx, req.NamespacedName, &datastream); err != nil {
-		if errors.IsNotFound(err) {
+	var ds messagingv1alpha1.DataStream
+	if err := r.Get(ctx, req.NamespacedName, &ds); err != nil {
+		if apierrors.IsNotFound(err) {
 			return ctrl.Result{}, nil
 		}
 		return ctrl.Result{}, err
 	}
 
-	kafkaBroker := "kafka.kafka.svc.cluster.local:9092"
+	if ds.Spec.TopicName == "" {
+		r.setReadyCondition(ctx, &ds, metav1.ConditionFalse, "InvalidSpec", "spec.topicName must not be empty")
+		return ctrl.Result{}, nil
+	}
 
-	// 2. Provision the Kafka Topic
-	logger.Info("Ensuring Kafka topic exists", "topic", datastream.Spec.TopicName)
-	err := createKafkaTopic(kafkaBroker, datastream.Spec.TopicName, datastream.Spec.Partitions, datastream.Spec.ReplicationFactor)
-	if err != nil {
-		logger.Error(err, "Failed to create Kafka topic")
+	partitions := ds.Spec.Partitions
+	if partitions <= 0 {
+		partitions = 1
+	}
+	replication := ds.Spec.ReplicationFactor
+	if replication <= 0 {
+		replication = 1
+	}
+
+	kafkaBroker := os.Getenv("KAFKA_BROKER")
+	if kafkaBroker == "" {
+		kafkaBroker = defaultKafkaBroker
+	}
+
+	logger.Info("Ensuring Kafka topic exists", "topic", ds.Spec.TopicName, "broker", kafkaBroker)
+	if err := createKafkaTopic(kafkaBroker, ds.Spec.TopicName, partitions, replication); err != nil {
+		r.setReadyCondition(ctx, &ds, metav1.ConditionFalse, "KafkaError", err.Error())
 		return ctrl.Result{RequeueAfter: 10 * time.Second}, err
 	}
 
-	// 3. Ensure ConfigMap exists
-	configMapName := datastream.Name + "-connection"
+	configMapName := ds.Name + "-connection"
 	cm := &corev1.ConfigMap{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      configMapName,
-			Namespace: datastream.Namespace,
-		},
-		Data: map[string]string{
-			"KAFKA_BROKER": kafkaBroker,
-			"KAFKA_TOPIC":  datastream.Spec.TopicName,
+			Namespace: ds.Namespace,
 		},
 	}
-	// Bind ownership to automate cleanup when DataStream is deleted
-	if err := ctrl.SetControllerReference(&datastream, cm, r.Scheme); err != nil {
+	_, err := controllerutil.CreateOrUpdate(ctx, r.Client, cm, func() error {
+		cm.Data = map[string]string{
+			"KAFKA_BROKER": kafkaBroker,
+			"KAFKA_TOPIC":  ds.Spec.TopicName,
+		}
+		return ctrl.SetControllerReference(&ds, cm, r.Scheme)
+	})
+	if err != nil {
+		r.setReadyCondition(ctx, &ds, metav1.ConditionFalse, "ConfigMapError", err.Error())
 		return ctrl.Result{}, err
 	}
 
-	var existingCM corev1.ConfigMap
-	err = r.Get(ctx, types.NamespacedName{Name: configMapName, Namespace: datastream.Namespace}, &existingCM)
-	if err != nil && errors.IsNotFound(err) {
-		logger.Info("Creating connection ConfigMap", "name", configMapName)
-		if err := r.Create(ctx, cm); err != nil {
-			return ctrl.Result{}, err
-		}
-	}
-
-	// 4. Ensure Consumer Deployment exists
-	deployName := datastream.Name + "-consumer"
-	var partitions int32 = 1
-	if datastream.Spec.Partitions > 0 {
-		partitions = datastream.Spec.Partitions
-	}
-
-	deployment := &appsv1.Deployment{
+	deployName := ds.Name + "-consumer"
+	deploy := &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      deployName,
-			Namespace: datastream.Namespace,
+			Namespace: ds.Namespace,
 		},
-		Spec: appsv1.DeploymentSpec{
-			Replicas: &partitions, // One consumer pod per partition
-			Selector: &metav1.LabelSelector{
-				MatchLabels: map[string]string{"app": deployName},
-			},
-			Template: corev1.PodTemplateSpec{
-				ObjectMeta: metav1.ObjectMeta{
-					Labels: map[string]string{"app": deployName},
-				},
-				Spec: corev1.PodSpec{
-					Containers: []corev1.Container{
-						{
-							Name:  "consumer",
-							Image: "alpine", // Lightweight mock app for testing env
-							Command: []string{
-								"sh", "-c",
-								"echo 'Connecting to '$KAFKA_BROKER' tracking topic '$KAFKA_TOPIC; sleep infinity",
-							},
-							EnvFrom: []corev1.EnvFromSource{
-								{
-									ConfigMapRef: &corev1.ConfigMapEnvSource{
-										LocalObjectReference: corev1.LocalObjectReference{Name: configMapName},
-									},
-								},
-							},
+	}
+	_, err = controllerutil.CreateOrUpdate(ctx, r.Client, deploy, func() error {
+		deploy.Spec.Replicas = &partitions
+		deploy.Spec.Selector = &metav1.LabelSelector{
+			MatchLabels: map[string]string{"app": deployName},
+		}
+		deploy.Spec.Template.ObjectMeta.Labels = map[string]string{"app": deployName}
+		deploy.Spec.Template.Spec.Containers = []corev1.Container{
+			{
+				Name:    "consumer",
+				Image:   "alpine:3.20",
+				Command: []string{"sh", "-c", `echo "Broker=$KAFKA_BROKER Topic=$KAFKA_TOPIC"; sleep infinity`},
+				EnvFrom: []corev1.EnvFromSource{
+					{
+						ConfigMapRef: &corev1.ConfigMapEnvSource{
+							LocalObjectReference: corev1.LocalObjectReference{Name: configMapName},
 						},
 					},
 				},
 			},
-		},
-	}
-	if err := ctrl.SetControllerReference(&datastream, deployment, r.Scheme); err != nil {
+		}
+		return ctrl.SetControllerReference(&ds, deploy, r.Scheme)
+	})
+	if err != nil {
+		r.setReadyCondition(ctx, &ds, metav1.ConditionFalse, "DeploymentError", err.Error())
 		return ctrl.Result{}, err
 	}
 
-	var existingDeploy appsv1.Deployment
-	err = r.Get(ctx, types.NamespacedName{Name: deployName, Namespace: datastream.Namespace}, &existingDeploy)
-	if err != nil && errors.IsNotFound(err) {
-		logger.Info("Creating Consumer Deployment", "name", deployName)
-		if err := r.Create(ctx, deployment); err != nil {
-			return ctrl.Result{}, err
-		}
-	}
+	ds.Status.TopicCreated = true
+	ds.Status.ConfigMapRef = configMapName
+	r.setReadyCondition(ctx, &ds, metav1.ConditionTrue, "Ready", "Topic, ConfigMap and Deployment are reconciled")
 
-	// 5. Update Status
-	if !datastream.Status.TopicCreated || datastream.Status.ConfigMapRef != configMapName {
-		datastream.Status.TopicCreated = true
-		datastream.Status.ConfigMapRef = configMapName
-		if err := r.Status().Update(ctx, &datastream); err != nil {
-			return ctrl.Result{}, err
-		}
+	if err := r.Status().Update(ctx, &ds); err != nil {
+		return ctrl.Result{}, err
 	}
 
 	return ctrl.Result{}, nil
 }
 
-func createKafkaTopic(broker, topic string, partitions int32, reps int16) error {
-	if partitions <= 0 {
-		partitions = 1
-	}
-	if reps <= 0 {
-		reps = 1
-	}
+func (r *DataStreamReconciler) setReadyCondition(ctx context.Context, ds *messagingv1alpha1.DataStream, status metav1.ConditionStatus, reason, msg string) {
+	meta.SetStatusCondition(&ds.Status.Conditions, metav1.Condition{
+		Type:               "Ready",
+		Status:             status,
+		Reason:             reason,
+		Message:            msg,
+		LastTransitionTime: metav1.Now(),
+	})
+	_ = r.Status().Update(ctx, ds)
+}
 
+func createKafkaTopic(broker, topic string, partitions int32, reps int16) error {
 	conn, err := kafka.Dial("tcp", broker)
 	if err != nil {
-		return err
+		return fmt.Errorf("dial broker failed: %w", err)
 	}
 	defer conn.Close()
 
-	topicConfig := kafka.TopicConfig{
+	controller, err := conn.Controller()
+	if err != nil {
+		return fmt.Errorf("cannot get kafka controller: %w", err)
+	}
+
+	controllerConn, err := kafka.Dial("tcp", net.JoinHostPort(controller.Host, strconv.Itoa(controller.Port)))
+	if err != nil {
+		return fmt.Errorf("cannot dial kafka controller: %w", err)
+	}
+	defer controllerConn.Close()
+
+	err = controllerConn.CreateTopics(kafka.TopicConfig{
 		Topic:             topic,
 		NumPartitions:     int(partitions),
 		ReplicationFactor: int(reps),
-	}
+	})
 
-	err = conn.CreateTopics(topicConfig)
 	if err != nil {
+		// Make reconcile idempotent if topic already exists.
+		l := strings.ToLower(err.Error())
+		if strings.Contains(l, "already exists") || strings.Contains(l, "topic already exists") {
+			return nil
+		}
 		return err
 	}
+
 	return nil
 }
 

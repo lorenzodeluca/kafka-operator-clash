@@ -7,27 +7,30 @@ import (
 
 // DataStreamSpec defines the desired state of DataStream
 type DataStreamSpec struct {
-	// TopicName is the name of the Kafka topic to manage
+	// TopicName is the name of the Kafka topic to manage.
+	// +kubebuilder:validation:MinLength=1
 	TopicName string `json:"topicName"`
 
-	// Partitions defines the total partition count for the topic (default: 1)
-	// +optional
+	// Partitions defines the total partition count for the topic.
+	// +kubebuilder:default:=1
+	// +kubebuilder:validation:Minimum=1
 	Partitions int32 `json:"partitions,omitempty"`
 
-	// ReplicationFactor defines the replication factor (default: 1)
-	// +optional
+	// ReplicationFactor defines the replication factor.
+	// +kubebuilder:default:=1
+	// +kubebuilder:validation:Minimum=1
 	ReplicationFactor int16 `json:"replicationFactor,omitempty"`
 }
 
 // DataStreamStatus defines the observed state of DataStream
 type DataStreamStatus struct {
-	// Conditions track state transitions and lifecycle status
+	// Conditions track state transitions and lifecycle status.
 	Conditions []metav1.Condition `json:"conditions,omitempty"`
 
-	// TopicCreated confirms whether the Kafka topic exists on the broker
+	// TopicCreated confirms whether the Kafka topic exists on the broker.
 	TopicCreated bool `json:"topicCreated,omitempty"`
 
-	// ConfigMapRef holds the name of the generated connection details ConfigMap
+	// ConfigMapRef holds the name of the generated connection details ConfigMap.
 	ConfigMapRef string `json:"configMapRef,omitempty"`
 }
 
@@ -39,7 +42,7 @@ type DataStream struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   DataStreamSpec   `json:"spec,omitempty"`
+	Spec   DataStreamSpec   `json:"spec"`
 	Status DataStreamStatus `json:"status,omitempty"`
 }
 

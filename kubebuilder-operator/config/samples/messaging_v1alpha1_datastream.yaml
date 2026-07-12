@@ -1,9 +1,9 @@
-apiVersion: messaging.lorenzodeluca.it/v1alpha1
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
 kind: DataStream
 metadata:
-  labels:
-    app.kubernetes.io/name: kubebuilder-operator
-    app.kubernetes.io/managed-by: kustomize
   name: datastream-sample
+  namespace: default
 spec:
-  # TODO(user): Add fields here
+  topicName: kb-user-telemetry-data
+  partitions: 2
+  replicationFactor: 1

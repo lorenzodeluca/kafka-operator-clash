@@ -4,45 +4,45 @@ cr_name=datastream-sample
 namespace=default
 
 --- DataStream condition timestamps ---
-Ready	True	Ready	2026-07-12T15:33:03Z	Topic, ConfigMap and Deployment are reconciled
+Ready	True	Ready	2026-07-12T15:41:57Z	Topic, ConfigMap and Deployment are reconciled
 
 --- DataStream creation timestamp ---
-2026-07-12T15:33:03Z
+2026-07-12T15:41:57Z
 
 --- Deployment timestamps ---
-deployment.creationTimestamp: 2026-07-12T15:33:03Z
+deployment.creationTimestamp: 2026-07-12T15:41:57Z
 --- Deployment conditions ---
-Available	True	MinimumReplicasAvailable	2026-07-12T15:33:04Z	2026-07-12T15:33:04Z	Deployment has minimum availability.
-Progressing	True	NewReplicaSetAvailable	2026-07-12T15:33:04Z	2026-07-12T15:33:03Z	ReplicaSet "datastream-sample-consumer-75788b87b6" has successfully progressed.
+Available	True	MinimumReplicasAvailable	2026-07-12T15:41:58Z	2026-07-12T15:41:58Z	Deployment has minimum availability.
+Progressing	True	NewReplicaSetAvailable	2026-07-12T15:41:58Z	2026-07-12T15:41:57Z	ReplicaSet "datastream-sample-consumer-75788b87b6" has successfully progressed.
 
 --- Recent namespace events (last 30) ---
-88s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
-88s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container started
-88s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
-88s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container created
-88s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container started
-88s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container created
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-569cff5              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-39e0aae              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-dc94679              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-d5f30dd              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-96609a6              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-95ac576              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-8a19dfc              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-7e52c28              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-6a773fe              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-47f2a27              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-3c84b45              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-1f814e4              All functions have required composition capability
-67s         Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-2ddc950              All functions have required composition capability
-54s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Stopping container consumer
-54s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Stopping container consumer
-52s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
-52s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-k5jxk
-52s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-5pwsr
-51s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
-51s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container created
-51s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container started
-51s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
-51s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container created
-51s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container started
+94s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-cgwq5                                  Container created
+94s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-2nlfm
+94s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-2nlfm                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+94s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-2nlfm                                  Container created
+94s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+94s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-cgwq5                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+93s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-2nlfm                                  Container started
+93s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-cgwq5                                  Container started
+52s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-cgwq5                                  Stopping container consumer
+52s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-2nlfm                                  Stopping container consumer
+50s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-ckj65
+50s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+50s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-rg64h
+49s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-rg64h                                  Container started
+49s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-ckj65                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+49s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-ckj65                                  Container started
+49s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-rg64h                                  Container created
+49s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-rg64h                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+49s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-ckj65                                  Container created
+13s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-rg64h                                  Stopping container consumer
+13s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-ckj65                                  Stopping container consumer
+11s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-rg955
+11s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-hq88g
+11s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+10s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-hq88g                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+10s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-hq88g                                  Container created
+10s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-hq88g                                  Container started
+10s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-rg955                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+10s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-rg955                                  Container created
+10s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-rg955                                  Container started

@@ -3,20 +3,20 @@ kind: DataStream
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"messaging.kb.lorenzodeluca.it/v1alpha1","kind":"DataStream","metadata":{"annotations":{},"name":"datastream-sample","namespace":"default"},"spec":{"partitions":2,"replicationFactor":1,"topicName":"kb-user-telemetry-data"}}
-  creationTimestamp: "2026-07-12T15:34:21Z"
+      {"apiVersion":"messaging.kb.lorenzodeluca.it/v1alpha1","kind":"DataStream","metadata":{"annotations":{},"name":"datastream-sample","namespace":"default"},"spec":{"partitions":2,"replicationFactor":1,"topicName":"kb-user-telemetry-data-1783870938-18521"}}
+  creationTimestamp: "2026-07-12T15:42:30Z"
   generation: 1
   name: datastream-sample
   namespace: default
-  resourceVersion: "668339"
-  uid: 97ba3e00-0d05-4e32-9558-b01214fd228b
+  resourceVersion: "670517"
+  uid: fda025da-68ef-4e5c-8a43-389cc9e3c23c
 spec:
   partitions: 2
   replicationFactor: 1
-  topicName: kb-user-telemetry-data
+  topicName: kb-user-telemetry-data-1783870938-18521
 status:
   conditions:
-  - lastTransitionTime: "2026-07-12T15:34:21Z"
+  - lastTransitionTime: "2026-07-12T15:42:30Z"
     message: Topic, ConfigMap and Deployment are reconciled
     reason: Ready
     status: "True"

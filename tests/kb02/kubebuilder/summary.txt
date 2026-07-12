@@ -1,0 +1,15 @@
+framework=kubebuilder
+resource=datastreams.messaging.kb.lorenzodeluca.it
+cr_name=datastream-sample
+topic_name=kb-user-telemetry-data
+namespace=default
+kafka_broker=localhost:9092
+deployment=datastream-sample-consumer
+deployment_created=true
+deployment_ready=true
+deployment_replicas=2
+deployment_ready_replicas=2
+datastream_ready_condition=True
+datastream_ready_message=Topic, ConfigMap and Deployment are reconciled
+total_seconds=1
+timestamp=2026-07-12T15:32:28+00:00

@@ -1,0 +1,25 @@
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+kind: DataStream
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"messaging.kb.lorenzodeluca.it/v1alpha1","kind":"DataStream","metadata":{"annotations":{},"name":"datastream-sample","namespace":"default"},"spec":{"partitions":2,"replicationFactor":1,"topicName":"kb-user-telemetry-data"}}
+  creationTimestamp: "2026-07-12T15:35:07Z"
+  generation: 1
+  name: datastream-sample
+  namespace: default
+  resourceVersion: "668602"
+  uid: bc150e86-a239-407b-b6fd-a37acce31638
+spec:
+  partitions: 2
+  replicationFactor: 1
+  topicName: kb-user-telemetry-data
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-12T15:35:07Z"
+    message: Topic, ConfigMap and Deployment are reconciled
+    reason: Ready
+    status: "True"
+    type: Ready
+  configMapRef: datastream-sample-connection
+  topicCreated: true

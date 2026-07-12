@@ -1,0 +1,48 @@
+=== Kubebuilder Timing Info ===
+resource=datastreams.messaging.kb.lorenzodeluca.it
+cr_name=datastream-sample
+namespace=default
+
+--- DataStream condition timestamps ---
+Ready	True	Ready	2026-07-12T15:34:21Z	Topic, ConfigMap and Deployment are reconciled
+
+--- DataStream creation timestamp ---
+2026-07-12T15:34:21Z
+
+--- Deployment timestamps ---
+deployment.creationTimestamp: 2026-07-12T15:34:21Z
+--- Deployment conditions ---
+Available	True	MinimumReplicasAvailable	2026-07-12T15:34:22Z	2026-07-12T15:34:22Z	Deployment has minimum availability.
+Progressing	True	NewReplicaSetAvailable	2026-07-12T15:34:22Z	2026-07-12T15:34:21Z	ReplicaSet "datastream-sample-consumer-75788b87b6" has successfully progressed.
+
+--- Recent namespace events (last 30) ---
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-2ddc950              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-1f814e4              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-dc94679              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-d5f30dd              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-96609a6              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-95ac576              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-7e52c28              All functions have required composition capability
+109s        Normal    CheckCapabilities               compositionrevision/xdatastreams.messaging.lorenzodeluca.it-8a19dfc              All functions have required composition capability
+96s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Stopping container consumer
+96s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Stopping container consumer
+94s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+94s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-5pwsr
+94s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-k5jxk
+93s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container created
+93s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+93s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+93s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container created
+93s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Container started
+93s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Container started
+18s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-k5jxk                                  Stopping container consumer
+18s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-5pwsr                                  Stopping container consumer
+16s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-2zq28
+16s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-6kktg
+16s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+15s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-2zq28                                  Container started
+15s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-6kktg                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+15s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-6kktg                                  Container created
+15s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-6kktg                                  Container started
+15s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-2zq28                                  Container created
+15s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-2zq28                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod

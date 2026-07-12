@@ -1,0 +1,19 @@
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" object:headerFile="hack/boilerplate.go.txt",year=2026 paths="./..."
+go fmt ./...
+go vet ./...
+go run ./cmd/main.go
+2026-07-12T15:30:56Z	INFO	setup	Starting manager
+2026-07-12T15:30:56Z	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
+2026-07-12T15:30:56Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.Deployment"}
+2026-07-12T15:30:56Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1alpha1.DataStream"}
+2026-07-12T15:30:56Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.ConfigMap"}
+2026-07-12T15:30:56Z	INFO	Starting Controller	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
+2026-07-12T15:30:56Z	INFO	Starting workers	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "worker count": 1}
+2026-07-12T15:30:56Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "cdb521ff-aa31-4e00-90b9-a7ea56497496", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+2026-07-12T15:31:02Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "f2493f91-775e-4dd9-ba9c-a95564ec59a2", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+2026-07-12T15:31:02Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "2eb34232-5a25-4e2d-abbe-6d5945a249c1", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+2026-07-12T15:31:02Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "bd412624-fc19-4645-8e84-824d1fbba074", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+2026-07-12T15:31:03Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "7bfbee8f-e90c-4a03-9115-4d2a3efc2c84", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+2026-07-12T15:31:03Z	INFO	Ensuring Kafka topic exists	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "DataStream": {"name":"datastream-sample","namespace":"default"}, "namespace": "default", "name": "datastream-sample", "reconcileID": "8f22cf46-d161-4ba1-8faa-3a2f5c008daa", "topic": "kb-user-telemetry-data", "broker": "localhost:9092"}
+make: *** [Makefile:117: run] Terminated

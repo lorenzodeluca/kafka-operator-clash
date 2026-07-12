@@ -1,0 +1,48 @@
+=== Kubebuilder Timing Info ===
+resource=datastreams.messaging.kb.lorenzodeluca.it
+cr_name=datastream-sample
+namespace=default
+
+--- DataStream condition timestamps ---
+Ready	True	Ready	2026-07-12T15:32:26Z	Topic, ConfigMap and Deployment are reconciled
+
+--- DataStream creation timestamp ---
+2026-07-12T15:32:26Z
+
+--- Deployment timestamps ---
+deployment.creationTimestamp: 2026-07-12T15:32:26Z
+--- Deployment conditions ---
+Available	True	MinimumReplicasAvailable	2026-07-12T15:32:27Z	2026-07-12T15:32:27Z	Deployment has minimum availability.
+Progressing	True	NewReplicaSetAvailable	2026-07-12T15:32:27Z	2026-07-12T15:32:26Z	ReplicaSet "datastream-sample-consumer-75788b87b6" has successfully progressed.
+
+--- Recent namespace events (last 30) ---
+2m33s       Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-6sz66
+2m33s       Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+2m32s       Normal    Created                         pod/datastream-sample-consumer-75788b87b6-6sz66                                  Container created
+2m32s       Normal    Started                         pod/datastream-sample-consumer-75788b87b6-6sz66                                  Container started
+2m32s       Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-kwwpt                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+2m32s       Normal    Created                         pod/datastream-sample-consumer-75788b87b6-kwwpt                                  Container created
+2m32s       Normal    Started                         pod/datastream-sample-consumer-75788b87b6-kwwpt                                  Container started
+2m32s       Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-6sz66                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+99s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-6sz66                                  Stopping container consumer
+99s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-kwwpt                                  Stopping container consumer
+97s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+97s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-fglcz
+97s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-6fxkm
+96s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-fglcz                                  Container started
+96s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-fglcz                                  Container created
+96s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-6fxkm                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+96s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-6fxkm                                  Container created
+96s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-6fxkm                                  Container started
+96s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-fglcz                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+15s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-6fxkm                                  Stopping container consumer
+15s         Normal    Killing                         pod/datastream-sample-consumer-75788b87b6-fglcz                                  Stopping container consumer
+13s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-qg6rd
+13s         Normal    ScalingReplicaSet               deployment/datastream-sample-consumer                                            Scaled up replica set datastream-sample-consumer-75788b87b6 from 0 to 2
+13s         Normal    SuccessfulCreate                replicaset/datastream-sample-consumer-75788b87b6                                 Created pod: datastream-sample-consumer-75788b87b6-vrgfk
+12s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container started
+12s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod
+12s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-qg6rd                                  Container created
+12s         Normal    Started                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container started
+12s         Normal    Created                         pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container created
+12s         Normal    Pulled                          pod/datastream-sample-consumer-75788b87b6-vrgfk                                  Container image "alpine:3.20" already present on machine and can be accessed by the pod

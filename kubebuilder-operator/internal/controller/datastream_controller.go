@@ -162,9 +162,14 @@ func createKafkaTopic(broker, topic string, partitions int32, reps int16) error 
 		return fmt.Errorf("cannot get kafka controller: %w", err)
 	}
 
-	controllerConn, err := kafka.Dial("tcp", net.JoinHostPort(controller.Host, strconv.Itoa(controller.Port)))
+	controllerAddr := net.JoinHostPort(controller.Host, strconv.Itoa(controller.Port))
+	controllerConn, err := kafka.Dial("tcp", controllerAddr)
 	if err != nil {
-		return fmt.Errorf("cannot dial kafka controller: %w", err)
+		// Fallback for local-host testing (port-forward / no cluster DNS on host).
+		controllerConn, err = kafka.Dial("tcp", broker)
+		if err != nil {
+			return fmt.Errorf("cannot dial kafka controller (%s) nor broker fallback (%s): %w", controllerAddr, broker, err)
+		}
 	}
 	defer controllerConn.Close()
 
@@ -173,16 +178,13 @@ func createKafkaTopic(broker, topic string, partitions int32, reps int16) error 
 		NumPartitions:     int(partitions),
 		ReplicationFactor: int(reps),
 	})
-
 	if err != nil {
-		// Make reconcile idempotent if topic already exists.
 		l := strings.ToLower(err.Error())
 		if strings.Contains(l, "already exists") || strings.Contains(l, "topic already exists") {
 			return nil
 		}
 		return err
 	}
-
 	return nil
 }
 

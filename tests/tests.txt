@@ -1,0 +1,218 @@
+==> ./cp05/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp05/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp05/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp05/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp05/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp05/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp05/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:26:37Z
+
+==> ./cp04/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp04/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp04/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp04/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp04/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp04/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp04/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:26:14Z
+
+==> ./kb02/timings.txt <==
+=== Kubebuilder Timing Info ===
+
+==> ./kb02/kubebuilder/controller.log <==
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+==> ./kb02/kubebuilder/summary.txt <==
+framework=kubebuilder
+
+==> ./kb02/kubebuilder/workloads.yaml <==
+apiVersion: v1
+
+==> ./kb02/kubebuilder/datastream.yaml <==
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+
+==> ./kb02/kubebuilder/events.txt <==
+LAST SEEN   TYPE      REASON                          OBJECT                                                                           MESSAGE
+
+==> ./cp06/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp06/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp06/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp06/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp06/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp06/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp06/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:28:36Z
+
+==> ./cp01/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp01/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp01/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp01/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp01/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp01/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp01/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:24:50Z
+
+==> ./kb04/timings.txt <==
+=== Kubebuilder Timing Info ===
+
+==> ./kb04/kubebuilder/controller.log <==
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+==> ./kb04/kubebuilder/summary.txt <==
+framework=kubebuilder
+
+==> ./kb04/kubebuilder/workloads.yaml <==
+apiVersion: v1
+
+==> ./kb04/kubebuilder/datastream.yaml <==
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+
+==> ./kb04/kubebuilder/events.txt <==
+LAST SEEN   TYPE      REASON                          OBJECT                                                                           MESSAGE
+
+==> ./kb05/timings.txt <==
+=== Kubebuilder Timing Info ===
+
+==> ./kb05/kubebuilder/controller.log <==
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+==> ./kb05/kubebuilder/summary.txt <==
+framework=kubebuilder
+
+==> ./kb05/kubebuilder/workloads.yaml <==
+apiVersion: v1
+
+==> ./kb05/kubebuilder/datastream.yaml <==
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+
+==> ./kb05/kubebuilder/events.txt <==
+LAST SEEN   TYPE      REASON                          OBJECT                                                                           MESSAGE
+
+==> ./cp03/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp03/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp03/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp03/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp03/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp03/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp03/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:25:51Z
+
+==> ./cp02/results/crossplane/xdatastreams.yaml <==
+apiVersion: v1
+
+==> ./cp02/results/crossplane/summary.txt <==
+framework=crossplane
+
+==> ./cp02/results/crossplane/workloads.yaml <==
+apiVersion: v1
+
+==> ./cp02/results/crossplane/datastream.yaml <==
+apiVersion: messaging.lorenzodeluca.it/v1alpha1
+
+==> ./cp02/results/crossplane/objects.yaml <==
+apiVersion: v1
+
+==> ./cp02/results/crossplane/topics.yaml <==
+apiVersion: v1
+
+==> ./cp02/timings.txt <==
+Synced	True	ReconcileSuccess	2026-07-12T14:25:30Z
+
+==> ./kb03/timings.txt <==
+=== Kubebuilder Timing Info ===
+
+==> ./kb03/kubebuilder/controller.log <==
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+==> ./kb03/kubebuilder/summary.txt <==
+framework=kubebuilder
+
+==> ./kb03/kubebuilder/workloads.yaml <==
+apiVersion: v1
+
+==> ./kb03/kubebuilder/datastream.yaml <==
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+
+==> ./kb03/kubebuilder/events.txt <==
+LAST SEEN   TYPE      REASON                          OBJECT                                                                           MESSAGE
+
+==> ./kb01/timings.txt <==
+=== Kubebuilder Timing Info ===
+
+==> ./kb01/kubebuilder/controller.log <==
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+==> ./kb01/kubebuilder/summary.txt <==
+framework=kubebuilder
+
+==> ./kb01/kubebuilder/workloads.yaml <==
+apiVersion: v1
+
+==> ./kb01/kubebuilder/datastream.yaml <==
+apiVersion: messaging.kb.lorenzodeluca.it/v1alpha1
+
+==> ./kb01/kubebuilder/events.txt <==
+LAST SEEN   TYPE      REASON                          OBJECT                                                                           MESSAGE
+
+==> ./tests.txt <==
+==> ./cp05/results/crossplane/xdatastreams.yaml <==

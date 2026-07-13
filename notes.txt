@@ -1,4 +1,10 @@
+Kubebuilder is a framework used to write a specific, custom operator from scratch in Go.
 
+Crossplane is an engine that allows you to build a Custom Control Plane purely using declarative configuration (YAML Compositions), without writing a single line of Go.
+
+
+kubebuilder-operator -> Custom code-first compiled binary.
+crossplane-config -> Configuration-first engine composition layout
 --------------------------------------------
 HW infos - ovh vps:
 lorenzo@deluca:~$ df -h
@@ -148,3 +154,163 @@ lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ kubebuilder
   --group messaging \
   --version v1alpha1 \
   --kind DataStream
+
+//schema definition
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator/api/v1alpha1$ vim datastream_types.go 
+
+// Mmnifests compiation & fetch dépendance
+//This tells Kubebuilder to parse the Go markers (like // +kubebuilder:subresource:status) and compile them into raw Kubernetes YAML CustomResourceDefinitions
+//download of the segment Kafka-Go client library so the controller can directly talk to Kafka over TCP to provision topics.
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ go get github.com/segmentio/kafka-go
+ //Kafka Go client driver dependency
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ make manifests
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" rbac:roleName=manager-role crd webhook paths="./..." output:crd:artifacts:config=config/crd/bases
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator$ make generate
+"/opt/iccbd/kafka-operator-clash/kubebuilder-operator/bin/controller-gen" object:headerFile="hack/boilerplate.go.txt",year=2026 paths="./..."
+
+--------------------------------------------
+-----controller logic
+
+The operator needs to:
+1)Fetch the incoming DataStream event.
+2)Connect to our internal Kafka cluster (kafka.kafka.svc.cluster.local:9092).
+3)Create the topic if it doesn't exist.
+4) Write out a ConfigMap containing connection coordinates.
+5)Spin up a basic Deployment acting as our automated consumer app.
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/kubebuilder-operator/internal/controller$ vim datastream_controller.go
+
+-------testing
+make install //install the CustomResourceDefinition inside the cluster
+
+//spin up the operator logic process locally to test it live
+make generate
+make manifests
+make run
+
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+CROSSPLANE SETUP
+//adding the repo
+
+//Upbound is the commercial company founded by the creators of Crossplane. They are the primary maintainers and driving force behind the open-source project (similar to how Docker Inc. maintains Docker, or Red Hat maintains certain open-source tools).
+
+//Crossplane groups all of its core controllers, webhook configurations, and package managers into this dedicated upbound-system namespace to keep them completely isolated from your application workloads (like your kafka namespace).
+
+helm repo add crossplane-stable https://charts.crossplane.io/stable
+helm repo update
+helm install crossplane crossplane-stable/crossplane --namespace upbound-system --create-namespace
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-operator$ kubectl get pods -n upbound-system
+NAME                                       READY   STATUS    RESTARTS   AGE
+crossplane-67c7c46bfc-hdlv6                1/1     Running   0          38s
+crossplane-rbac-manager-58d8596898-fffx4   1/1     Running   0          38s
+
+Crossplane Providers/engine loops:
+1)Provider-Kafka: To create the topic natively on our broker. (https://marketplace.upbound.io/providers/crossplane-contrib/provider-kafka/v1.3.2)
+2)Provider-Kubernetes: To generate the connection ConfigMap and deploy the Consumer app.(https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v1.2.6)
+
+vim crossplane-operator/providers/providers.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-crash$ kubectl apply -f crossplane-config/providers/providers.yaml
+kubectl get provider
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config/providers$ nano functions.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl apply -f crossplane-config/providers/providers.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl apply -f crossplane-config/providers/functions.yaml 
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl get functions
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ vim crossplane-config/providers/config.yaml
+
+----creating the crossplane composition, the composition is the exact equivalent of the Go kubebuilder Reconcile
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ mkdir crossplane-config/compositions
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ vim crossplane-config/compositions/datastream_composition.yaml
+
+----applying both the architectural interface (XRD) and the provisioning logic (Composition): "When a user creates a DataStream, provision a Topic using provider-kafka, and provision a ConfigMap + Deployment using provider-kubernetes."
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl apply -f crossplane-config/compositions/datastream_composition.yaml
+
+The CompositeResourceDefinition (XRD) defines the user-facing interface, equivalent to the Go struct we designed in Kubebuilder. It exposes custom parameters (topicName, partitions, replicationFactor) and accepts a Claim (the tenant-facing resource instance).
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config/api$ vim datastream_xrd.yaml
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config$ kubectl apply -f api/datastream_xrd.yaml
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config$ kubectl get compositeResourceDefinition
+NAME                                      ESTABLISHED   OFFERED   AGE
+xdatastreams.messaging.lorenzodeluca.it   True          True      6m39s
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config$ kubectl get composition
+NAME                                      XR-KIND       XR-APIVERSION                         AGE
+xdatastreams.messaging.lorenzodeluca.it   XDataStream   messaging.lorenzodeluca.it/v1alpha1   3h2m
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash/crossplane-config$
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ nano datastream-claim.yaml
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl apply -f datastream-claim.yaml
+datastream.messaging.lorenzodeluca.it/lorenzo-sandbox-stream created
+
+//test
+kubectl get datastreams
+
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl get datastreams
+NAME                     SYNCED   READY   CONNECTION-SECRET   AGE
+lorenzo-sandbox-stream   True     False                       102s
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ kubectl describe datastream lorenzo-sandbox-stream
+Name:         lorenzo-sandbox-stream
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+API Version:  messaging.lorenzodeluca.it/v1alpha1
+Kind:         DataStream
+Metadata:
+  Creation Timestamp:  2026-07-11T19:49:00Z
+  Finalizers:
+    finalizer.apiextensions.crossplane.io
+  Generation:        4
+  Resource Version:  307629
+  UID:               845fce40-3990-4025-ba70-ad2fa1725ce0
+Spec:
+  Composite Delete Policy:  Background
+  Composition Ref:
+    Name:  xdatastreams.messaging.lorenzodeluca.it
+  Composition Revision Ref:
+    Name:              xdatastreams.messaging.lorenzodeluca.it-8a19dfc
+  Partitions:          2
+  Replication Factor:  1
+  Resource Ref:
+    API Version:  messaging.lorenzodeluca.it/v1alpha1
+    Kind:         XDataStream
+    Name:         lorenzo-sandbox-stream-2slrv
+  Topic Name:     user-telemetry-data
+Status:
+  Conditions:
+    Last Transition Time:  2026-07-11T19:49:01Z
+    Observed Generation:   4
+    Reason:                ReconcileSuccess
+    Status:                True
+    Type:                  Synced
+    Last Transition Time:  2026-07-11T19:49:01Z
+    Message:               Claim is waiting for composite resource to become Ready
+    Observed Generation:   4
+    Reason:                Waiting
+    Status:                False
+    Type:                  Ready
+Events:
+  Type    Reason                 Age                  From                                                             Message
+  ----    ------                 ----                 ----                                                             -------
+  Normal  BindCompositeResource  106s                 offered/compositeresourcedefinition.apiextensions.crossplane.io  Successfully bound composite resource
+  Normal  BindCompositeResource  106s (x6 over 106s)  offered/compositeresourcedefinition.apiextensions.crossplane.io  Composite resource is not yet ready
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ 
+
+# 1. Inspect the high-level Composite Resource (XR) to see any error events
+kubectl describe datastream lorenzo-sandbox-stream
+
+# 2. List the sub-resources created by the composition to see their individual status
+kubectl get managed
+
+problem, the crossplane pipeline isnt rendering any actual infrastructure objects
+
+-------------------RBAC
+The project requires mixed orchestration (Kafka Topic + ConfigMap + Deployment). In Crossplane, Topic is reconciled by provider-kafka, while ConfigMap/Deployment are reconciled by provider-kubernetes. Therefore provider-kubernetes must have namespace permissions through Role/RoleBinding. Without RBAC, the DataStream pipeline cannot reach Ready, so the self-service abstraction is incomplete.
+

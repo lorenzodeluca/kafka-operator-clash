@@ -22,7 +22,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     # ServiceAccount of provider-kubernetes controller pod.
-    name: <PROVIDER_K8S_SA_NAME>
+    name: provider-kubernetes-4c9c004f2f1e
     # Namespace where provider-kubernetes runs.
     namespace: upbound-system
 

@@ -1,15 +1,4 @@
 # This RoleBinding "attaches" the Role permissions to a specific ServiceAccount.
-#
-# the subject must be the ServiceAccount used by provider-kubernetes
-# (running in upbound-system namespace, not default).
-#
-# IMPORTANT:
-# Replace <PROVIDER_K8S_SA_NAME> with real value, for example:
-# provider-kubernetes-4c9c004f2f1e
-#
-# How to discover it:
-# kubectl -n upbound-system get deploy | grep provider-kubernetes
-# kubectl -n upbound-system get deploy <DEPLOY_NAME> -o jsonpath='{.spec.template.spec.serviceAccountName}'
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:

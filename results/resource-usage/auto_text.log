@@ -1,0 +1,1866 @@
+[WARN] found pre-existing DataStream resources outside the 'bench-' prefix
+       (crossplane: 0, kubebuilder: 1) - these can skew baselines/scale timings.
+       Consider deleting them manually before running tests.
+[INFO] cleaning any leftover bench-* resources before baseline
+[INFO] installing CRD/RBAC and starting kubebuilder controller
+[INFO] KAFKA_BROKER=localhost:9092
+[INFO] kubebuilder controller running, wrapper_pid=1916455 sampled_pid=1916786 rss=52736KB
+[INFO] letting controller settle for 10s before sampling
+[INFO] sampling mode=at-rest framework=all n=0 for 60s (every 5s)
+[INFO] kubebuilder controller stopped
+[OK] at-rest sampling complete, appended to results/resource-usage/samples.csv
+[INFO] === scaling test: framework=crossplane n=1 ===
+[DEBUG] created crossplane resources for n=1
+bench-crossplane-1784142786-1   True     False                       1s
+[INFO] waiting Ready 0/1 for datastreams.messaging.lorenzodeluca.it (created=1, waited=0s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.lorenzodeluca.it (created=1, waited=5s/300s)
+[INFO] Ready 1/1 for datastreams.messaging.lorenzodeluca.it (total created=1)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=1 for 60s (every 5s)
+[INFO] cleaning up n=1 resources before next count
+[INFO] === scaling test: framework=crossplane n=10 ===
+[DEBUG] created crossplane resources for n=10
+bench-crossplane-1784142786-1    True     False                       4s
+bench-crossplane-1784142786-10                                        1s
+bench-crossplane-1784142786-2    True     False                       4s
+bench-crossplane-1784142786-3    True     False                       3s
+bench-crossplane-1784142786-4    True     False                       3s
+bench-crossplane-1784142786-5    True     False                       2s
+bench-crossplane-1784142786-6    True     False                       2s
+bench-crossplane-1784142786-7    True     False                       2s
+bench-crossplane-1784142786-8    True     False                       1s
+bench-crossplane-1784142786-9    True     False                       1s
+[INFO] waiting Ready 0/10 for datastreams.messaging.lorenzodeluca.it (created=10, waited=0s/300s)
+[INFO] waiting Ready 8/10 for datastreams.messaging.lorenzodeluca.it (created=10, waited=5s/300s)
+[INFO] Ready 10/10 for datastreams.messaging.lorenzodeluca.it (total created=10)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=10 for 60s (every 5s)
+[INFO] cleaning up n=10 resources before next count
+[INFO] === scaling test: framework=crossplane n=50 ===
+[DEBUG] created crossplane resources for n=50
+bench-crossplane-1784142786-1    True     True                        23s
+bench-crossplane-1784142786-10   True     True                        20s
+bench-crossplane-1784142786-11   True     True                        19s
+bench-crossplane-1784142786-12   True     True                        19s
+bench-crossplane-1784142786-13   True     True                        18s
+bench-crossplane-1784142786-14   True     True                        18s
+bench-crossplane-1784142786-15   True     False                       18s
+bench-crossplane-1784142786-16   True     True                        17s
+bench-crossplane-1784142786-17   True     True                        17s
+bench-crossplane-1784142786-18   True     True                        17s
+bench-crossplane-1784142786-19   True     True                        16s
+bench-crossplane-1784142786-2    True     True                        23s
+bench-crossplane-1784142786-20   True     True                        16s
+bench-crossplane-1784142786-21   True     False                       15s
+bench-crossplane-1784142786-22   True     True                        15s
+bench-crossplane-1784142786-23   True     True                        14s
+bench-crossplane-1784142786-24   True     False                       14s
+bench-crossplane-1784142786-25   True     False                       13s
+bench-crossplane-1784142786-26   True     False                       12s
+bench-crossplane-1784142786-27   True     False                       12s
+bench-crossplane-1784142786-28   True     False                       11s
+bench-crossplane-1784142786-29   True     False                       11s
+bench-crossplane-1784142786-3    True     True                        23s
+bench-crossplane-1784142786-30   True     False                       10s
+bench-crossplane-1784142786-31   True     False                       10s
+bench-crossplane-1784142786-32   True     False                       9s
+bench-crossplane-1784142786-33   True     False                       9s
+bench-crossplane-1784142786-34   True     False                       9s
+bench-crossplane-1784142786-35   True     False                       8s
+bench-crossplane-1784142786-36   True     False                       8s
+bench-crossplane-1784142786-37   True     False                       7s
+bench-crossplane-1784142786-38   True     False                       7s
+bench-crossplane-1784142786-39   True     False                       6s
+bench-crossplane-1784142786-4    True     True                        22s
+bench-crossplane-1784142786-40   True     False                       6s
+bench-crossplane-1784142786-41   True     False                       5s
+bench-crossplane-1784142786-42   True     False                       5s
+bench-crossplane-1784142786-43   True     False                       4s
+bench-crossplane-1784142786-44   True     False                       4s
+bench-crossplane-1784142786-45   True     False                       3s
+bench-crossplane-1784142786-46   True     False                       3s
+bench-crossplane-1784142786-47   True     False                       2s
+bench-crossplane-1784142786-48   True     False                       1s
+bench-crossplane-1784142786-49                                        1s
+bench-crossplane-1784142786-5    True     True                        22s
+bench-crossplane-1784142786-50                                        0s
+bench-crossplane-1784142786-6    True     True                        21s
+bench-crossplane-1784142786-7    True     True                        21s
+bench-crossplane-1784142786-8    True     True                        20s
+bench-crossplane-1784142786-9    True     True                        20s
+[INFO] waiting Ready 24/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=0s/300s)
+[INFO] waiting Ready 29/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=5s/300s)
+[INFO] Ready 50/50 for datastreams.messaging.lorenzodeluca.it (total created=50)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=50 for 60s (every 5s)
+[INFO] cleaning up n=50 resources before next count
+[INFO] === scaling test: framework=crossplane n=100 ===
+[DEBUG] created crossplane resources for n=100
+bench-crossplane-1784142786-1     True     True                        52s
+bench-crossplane-1784142786-10    True     True                        48s
+bench-crossplane-1784142786-100                                        1s
+bench-crossplane-1784142786-11    True     True                        47s
+bench-crossplane-1784142786-12    True     True                        47s
+bench-crossplane-1784142786-13    True     True                        46s
+bench-crossplane-1784142786-14    True     True                        46s
+bench-crossplane-1784142786-15    True     True                        46s
+bench-crossplane-1784142786-16    True     True                        45s
+bench-crossplane-1784142786-17    True     True                        45s
+bench-crossplane-1784142786-18    True     True                        44s
+bench-crossplane-1784142786-19    True     True                        44s
+bench-crossplane-1784142786-2     True     True                        51s
+bench-crossplane-1784142786-20    True     True                        43s
+bench-crossplane-1784142786-21    True     True                        43s
+bench-crossplane-1784142786-22    True     True                        42s
+bench-crossplane-1784142786-23    True     True                        42s
+bench-crossplane-1784142786-24    True     True                        41s
+bench-crossplane-1784142786-25    True     True                        40s
+bench-crossplane-1784142786-26    True     True                        40s
+bench-crossplane-1784142786-27    True     True                        39s
+bench-crossplane-1784142786-28    True     True                        39s
+bench-crossplane-1784142786-29    True     True                        38s
+bench-crossplane-1784142786-3     True     True                        51s
+bench-crossplane-1784142786-30    True     True                        38s
+bench-crossplane-1784142786-31    True     True                        37s
+bench-crossplane-1784142786-32    True     True                        37s
+bench-crossplane-1784142786-33    True     True                        36s
+bench-crossplane-1784142786-34    True     True                        36s
+bench-crossplane-1784142786-35    True     True                        35s
+bench-crossplane-1784142786-36    True     True                        34s
+bench-crossplane-1784142786-37    True     True                        33s
+bench-crossplane-1784142786-38    True     True                        33s
+bench-crossplane-1784142786-39    True     True                        32s
+bench-crossplane-1784142786-4     True     True                        51s
+bench-crossplane-1784142786-40    True     True                        32s
+bench-crossplane-1784142786-41    True     True                        31s
+bench-crossplane-1784142786-42    True     True                        30s
+bench-crossplane-1784142786-43    True     True                        30s
+bench-crossplane-1784142786-44    True     True                        29s
+bench-crossplane-1784142786-45    True     True                        29s
+bench-crossplane-1784142786-46    True     True                        28s
+bench-crossplane-1784142786-47    True     True                        27s
+bench-crossplane-1784142786-48    True     True                        27s
+bench-crossplane-1784142786-49    True     True                        26s
+bench-crossplane-1784142786-5     True     True                        50s
+bench-crossplane-1784142786-50    True     True                        26s
+bench-crossplane-1784142786-51    True     True                        24s
+bench-crossplane-1784142786-52    True     True                        23s
+bench-crossplane-1784142786-53    True     False                       23s
+bench-crossplane-1784142786-54    True     False                       22s
+bench-crossplane-1784142786-55    True     True                        22s
+bench-crossplane-1784142786-56    True     True                        21s
+bench-crossplane-1784142786-57    True     False                       21s
+bench-crossplane-1784142786-58    True     False                       20s
+bench-crossplane-1784142786-59    True     False                       20s
+bench-crossplane-1784142786-6     True     True                        50s
+bench-crossplane-1784142786-60    True     False                       19s
+bench-crossplane-1784142786-61    True     False                       19s
+bench-crossplane-1784142786-62    True     False                       18s
+bench-crossplane-1784142786-63    True     False                       18s
+bench-crossplane-1784142786-64    True     False                       17s
+bench-crossplane-1784142786-65    True     False                       17s
+bench-crossplane-1784142786-66    True     False                       16s
+bench-crossplane-1784142786-67    True     False                       16s
+bench-crossplane-1784142786-68    True     False                       15s
+bench-crossplane-1784142786-69    True     False                       15s
+bench-crossplane-1784142786-7     True     True                        49s
+bench-crossplane-1784142786-70    True     False                       14s
+bench-crossplane-1784142786-71    True     False                       14s
+bench-crossplane-1784142786-72    True     False                       13s
+bench-crossplane-1784142786-73    True     False                       13s
+bench-crossplane-1784142786-74    True     False                       12s
+bench-crossplane-1784142786-75    True     False                       12s
+bench-crossplane-1784142786-76    True     False                       12s
+bench-crossplane-1784142786-77    True     False                       11s
+bench-crossplane-1784142786-78    True     False                       11s
+bench-crossplane-1784142786-79    True     False                       11s
+bench-crossplane-1784142786-8     True     True                        49s
+bench-crossplane-1784142786-80    True     False                       10s
+bench-crossplane-1784142786-81    True     False                       9s
+bench-crossplane-1784142786-82    True     False                       9s
+bench-crossplane-1784142786-83    True     False                       9s
+bench-crossplane-1784142786-84    True     False                       8s
+bench-crossplane-1784142786-85    True     False                       8s
+bench-crossplane-1784142786-86    True     False                       7s
+bench-crossplane-1784142786-87    True     False                       7s
+bench-crossplane-1784142786-88    True     False                       6s
+bench-crossplane-1784142786-89    True     False                       6s
+bench-crossplane-1784142786-9     True     True                        48s
+bench-crossplane-1784142786-90    True     False                       6s
+bench-crossplane-1784142786-91    True     False                       5s
+bench-crossplane-1784142786-92    True     False                       5s
+bench-crossplane-1784142786-93    True     False                       4s
+bench-crossplane-1784142786-94    True     False                       3s
+bench-crossplane-1784142786-95    True     False                       3s
+bench-crossplane-1784142786-96    True     False                       3s
+bench-crossplane-1784142786-97                                         2s
+bench-crossplane-1784142786-98                                         2s
+bench-crossplane-1784142786-99                                         1s
+[INFO] waiting Ready 53/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=0s/300s)
+[INFO] waiting Ready 58/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=5s/300s)
+[INFO] waiting Ready 63/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=10s/300s)
+[INFO] waiting Ready 62/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=15s/300s)
+[INFO] waiting Ready 86/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=20s/300s)
+[INFO] waiting Ready 99/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=25s/300s)
+[INFO] Ready 100/100 for datastreams.messaging.lorenzodeluca.it (total created=100)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=100 for 60s (every 5s)
+[INFO] cleaning up n=100 resources before next count
+[INFO] === scaling test: framework=crossplane n=500 ===
+[DEBUG] created crossplane resources for n=500
+bench-crossplane-1784142786-1     True     True                        3m49s
+bench-crossplane-1784142786-10    True     True                        3m45s
+bench-crossplane-1784142786-100   True     True                        2m50s
+bench-crossplane-1784142786-101   True     True                        2m50s
+bench-crossplane-1784142786-102   True     True                        2m49s
+bench-crossplane-1784142786-103   True     True                        2m49s
+bench-crossplane-1784142786-104   True     True                        2m49s
+bench-crossplane-1784142786-105   True     True                        2m48s
+bench-crossplane-1784142786-106   True     True                        2m48s
+bench-crossplane-1784142786-107   True     True                        2m47s
+bench-crossplane-1784142786-108   True     True                        2m47s
+bench-crossplane-1784142786-109   True     True                        2m47s
+bench-crossplane-1784142786-11    True     True                        3m45s
+bench-crossplane-1784142786-110   True     True                        2m46s
+bench-crossplane-1784142786-111   True     True                        2m46s
+bench-crossplane-1784142786-112   True     True                        2m45s
+bench-crossplane-1784142786-113   True     True                        2m45s
+bench-crossplane-1784142786-114   True     True                        2m44s
+bench-crossplane-1784142786-115   True     True                        2m44s
+bench-crossplane-1784142786-116   True     True                        2m43s
+bench-crossplane-1784142786-117   True     True                        2m43s
+bench-crossplane-1784142786-118   True     True                        2m42s
+bench-crossplane-1784142786-119   True     True                        2m42s
+bench-crossplane-1784142786-12    True     True                        3m44s
+bench-crossplane-1784142786-120   True     True                        2m41s
+bench-crossplane-1784142786-121   True     True                        2m41s
+bench-crossplane-1784142786-122   True     True                        2m41s
+bench-crossplane-1784142786-123   True     True                        2m40s
+bench-crossplane-1784142786-124   True     True                        2m40s
+bench-crossplane-1784142786-125   True     True                        2m39s
+bench-crossplane-1784142786-126   True     True                        2m39s
+bench-crossplane-1784142786-127   True     True                        2m39s
+bench-crossplane-1784142786-128   True     True                        2m39s
+bench-crossplane-1784142786-129   True     True                        2m38s
+bench-crossplane-1784142786-13    True     True                        3m44s
+bench-crossplane-1784142786-130   True     True                        2m38s
+bench-crossplane-1784142786-131   True     True                        2m38s
+bench-crossplane-1784142786-132   True     True                        2m37s
+bench-crossplane-1784142786-133   True     True                        2m37s
+bench-crossplane-1784142786-134   True     True                        2m37s
+bench-crossplane-1784142786-135   True     True                        2m36s
+bench-crossplane-1784142786-136   True     True                        2m36s
+bench-crossplane-1784142786-137   True     True                        2m35s
+bench-crossplane-1784142786-138   True     True                        2m35s
+bench-crossplane-1784142786-139   True     True                        2m34s
+bench-crossplane-1784142786-14    True     True                        3m43s
+bench-crossplane-1784142786-140   True     True                        2m34s
+bench-crossplane-1784142786-141   True     True                        2m33s
+bench-crossplane-1784142786-142   True     True                        2m32s
+bench-crossplane-1784142786-143   True     True                        2m32s
+bench-crossplane-1784142786-144   True     True                        2m31s
+bench-crossplane-1784142786-145   True     True                        2m30s
+bench-crossplane-1784142786-146   True     True                        2m29s
+bench-crossplane-1784142786-147   True     True                        2m28s
+bench-crossplane-1784142786-148   True     True                        2m27s
+bench-crossplane-1784142786-149   True     True                        2m26s
+bench-crossplane-1784142786-15    True     True                        3m43s
+bench-crossplane-1784142786-150   True     True                        2m25s
+bench-crossplane-1784142786-151   True     True                        2m24s
+bench-crossplane-1784142786-152   True     False                       2m24s
+bench-crossplane-1784142786-153   True     True                        2m23s
+bench-crossplane-1784142786-154   True     True                        2m23s
+bench-crossplane-1784142786-155   True     True                        2m22s
+bench-crossplane-1784142786-156   True     True                        2m22s
+bench-crossplane-1784142786-157   True     True                        2m21s
+bench-crossplane-1784142786-158   True     True                        2m21s
+bench-crossplane-1784142786-159   True     True                        2m20s
+bench-crossplane-1784142786-16    True     True                        3m42s
+bench-crossplane-1784142786-160   True     True                        2m20s
+bench-crossplane-1784142786-161   True     True                        2m19s
+bench-crossplane-1784142786-162   True     True                        2m19s
+bench-crossplane-1784142786-163   True     True                        2m18s
+bench-crossplane-1784142786-164   True     True                        2m18s
+bench-crossplane-1784142786-165   True     True                        2m17s
+bench-crossplane-1784142786-166   True     True                        2m17s
+bench-crossplane-1784142786-167   True     True                        2m16s
+bench-crossplane-1784142786-168   True     True                        2m16s
+bench-crossplane-1784142786-169   True     True                        2m16s
+bench-crossplane-1784142786-17    True     True                        3m42s
+bench-crossplane-1784142786-170   True     True                        2m15s
+bench-crossplane-1784142786-171   True     True                        2m15s
+bench-crossplane-1784142786-172   True     True                        2m14s
+bench-crossplane-1784142786-173   True     True                        2m14s
+bench-crossplane-1784142786-174   True     True                        2m14s
+bench-crossplane-1784142786-175   True     True                        2m14s
+bench-crossplane-1784142786-176   True     True                        2m13s
+bench-crossplane-1784142786-177   True     True                        2m13s
+bench-crossplane-1784142786-178   True     True                        2m12s
+bench-crossplane-1784142786-179   True     True                        2m12s
+bench-crossplane-1784142786-18    True     True                        3m41s
+bench-crossplane-1784142786-180   True     True                        2m12s
+bench-crossplane-1784142786-181   True     True                        2m11s
+bench-crossplane-1784142786-182   True     True                        2m11s
+bench-crossplane-1784142786-183   True     True                        2m11s
+bench-crossplane-1784142786-184   True     True                        2m10s
+bench-crossplane-1784142786-185   True     True                        2m10s
+bench-crossplane-1784142786-186   True     True                        2m9s
+bench-crossplane-1784142786-187   True     True                        2m9s
+bench-crossplane-1784142786-188   True     True                        2m8s
+bench-crossplane-1784142786-189   True     True                        2m8s
+bench-crossplane-1784142786-19    True     True                        3m40s
+bench-crossplane-1784142786-190   True     True                        2m7s
+bench-crossplane-1784142786-191   True     True                        2m7s
+bench-crossplane-1784142786-192   True     True                        2m6s
+bench-crossplane-1784142786-193   True     True                        2m6s
+bench-crossplane-1784142786-194   True     True                        2m6s
+bench-crossplane-1784142786-195   True     True                        2m5s
+bench-crossplane-1784142786-196   True     True                        2m4s
+bench-crossplane-1784142786-197   True     True                        2m4s
+bench-crossplane-1784142786-198   True     True                        2m3s
+bench-crossplane-1784142786-199   True     True                        2m3s
+bench-crossplane-1784142786-2     True     True                        3m49s
+bench-crossplane-1784142786-20    True     True                        3m40s
+bench-crossplane-1784142786-200   True     True                        2m3s
+bench-crossplane-1784142786-201   True     True                        2m2s
+bench-crossplane-1784142786-202   True     True                        2m2s
+bench-crossplane-1784142786-203   True     True                        2m2s
+bench-crossplane-1784142786-204   True     True                        2m1s
+bench-crossplane-1784142786-205   True     True                        2m1s
+bench-crossplane-1784142786-206   True     True                        2m
+bench-crossplane-1784142786-207   True     True                        2m
+bench-crossplane-1784142786-208   True     True                        2m
+bench-crossplane-1784142786-209   True     True                        119s
+bench-crossplane-1784142786-21    True     True                        3m39s
+bench-crossplane-1784142786-210   True     True                        119s
+bench-crossplane-1784142786-211   True     True                        118s
+bench-crossplane-1784142786-212   True     True                        118s
+bench-crossplane-1784142786-213   True     True                        118s
+bench-crossplane-1784142786-214   True     True                        118s
+bench-crossplane-1784142786-215   True     False                       117s
+bench-crossplane-1784142786-216   True     True                        117s
+bench-crossplane-1784142786-217   True     True                        117s
+bench-crossplane-1784142786-218   True     False                       116s
+bench-crossplane-1784142786-219   True     False                       116s
+bench-crossplane-1784142786-22    True     True                        3m38s
+bench-crossplane-1784142786-220   True     False                       116s
+bench-crossplane-1784142786-221   True     False                       115s
+bench-crossplane-1784142786-222   True     True                        115s
+bench-crossplane-1784142786-223   True     True                        115s
+bench-crossplane-1784142786-224   True     False                       114s
+bench-crossplane-1784142786-225   True     False                       114s
+bench-crossplane-1784142786-226   True     True                        114s
+bench-crossplane-1784142786-227   True     False                       114s
+bench-crossplane-1784142786-228   True     False                       113s
+bench-crossplane-1784142786-229   True     False                       113s
+bench-crossplane-1784142786-23    True     True                        3m38s
+bench-crossplane-1784142786-230   True     False                       112s
+bench-crossplane-1784142786-231   True     False                       112s
+bench-crossplane-1784142786-232   True     False                       111s
+bench-crossplane-1784142786-233   True     False                       111s
+bench-crossplane-1784142786-234   True     False                       110s
+bench-crossplane-1784142786-235   True     False                       110s
+bench-crossplane-1784142786-236   True     False                       110s
+bench-crossplane-1784142786-237   True     False                       110s
+bench-crossplane-1784142786-238   True     False                       109s
+bench-crossplane-1784142786-239   True     False                       109s
+bench-crossplane-1784142786-24    True     True                        3m37s
+bench-crossplane-1784142786-240   True     False                       109s
+bench-crossplane-1784142786-241   True     True                        108s
+bench-crossplane-1784142786-242   True     True                        108s
+bench-crossplane-1784142786-243   True     True                        108s
+bench-crossplane-1784142786-244   True     True                        108s
+bench-crossplane-1784142786-245   True     True                        107s
+bench-crossplane-1784142786-246   True     True                        107s
+bench-crossplane-1784142786-247   True     True                        107s
+bench-crossplane-1784142786-248   True     True                        106s
+bench-crossplane-1784142786-249   True     True                        106s
+bench-crossplane-1784142786-25    True     True                        3m37s
+bench-crossplane-1784142786-250   True     True                        105s
+bench-crossplane-1784142786-251   True     True                        105s
+bench-crossplane-1784142786-252   True     True                        104s
+bench-crossplane-1784142786-253   True     True                        104s
+bench-crossplane-1784142786-254   True     True                        103s
+bench-crossplane-1784142786-255   True     True                        103s
+bench-crossplane-1784142786-256   True     True                        102s
+bench-crossplane-1784142786-257   True     True                        102s
+bench-crossplane-1784142786-258   True     True                        101s
+bench-crossplane-1784142786-259   True     True                        101s
+bench-crossplane-1784142786-26    True     True                        3m36s
+bench-crossplane-1784142786-260   True     True                        100s
+bench-crossplane-1784142786-261   True     True                        100s
+bench-crossplane-1784142786-262   True     True                        99s
+bench-crossplane-1784142786-263   True     True                        99s
+bench-crossplane-1784142786-264   True     True                        98s
+bench-crossplane-1784142786-265   True     True                        98s
+bench-crossplane-1784142786-266   True     True                        98s
+bench-crossplane-1784142786-267   True     True                        97s
+bench-crossplane-1784142786-268   True     True                        97s
+bench-crossplane-1784142786-269   True     True                        97s
+bench-crossplane-1784142786-27    True     True                        3m36s
+bench-crossplane-1784142786-270   True     True                        96s
+bench-crossplane-1784142786-271   True     True                        96s
+bench-crossplane-1784142786-272   True     True                        95s
+bench-crossplane-1784142786-273   True     True                        94s
+bench-crossplane-1784142786-274   True     True                        94s
+bench-crossplane-1784142786-275   True     True                        93s
+bench-crossplane-1784142786-276   True     True                        93s
+bench-crossplane-1784142786-277   True     True                        92s
+bench-crossplane-1784142786-278   True     True                        92s
+bench-crossplane-1784142786-279   True     True                        92s
+bench-crossplane-1784142786-28    True     True                        3m35s
+bench-crossplane-1784142786-280   True     True                        91s
+bench-crossplane-1784142786-281   True     True                        91s
+bench-crossplane-1784142786-282   True     True                        91s
+bench-crossplane-1784142786-283   True     True                        90s
+bench-crossplane-1784142786-284   True     True                        90s
+bench-crossplane-1784142786-285   True     True                        90s
+bench-crossplane-1784142786-286   True     True                        89s
+bench-crossplane-1784142786-287   True     True                        89s
+bench-crossplane-1784142786-288   True     True                        88s
+bench-crossplane-1784142786-289   True     True                        88s
+bench-crossplane-1784142786-29    True     True                        3m35s
+bench-crossplane-1784142786-290   True     True                        88s
+bench-crossplane-1784142786-291   True     True                        87s
+bench-crossplane-1784142786-292   True     True                        87s
+bench-crossplane-1784142786-293   True     True                        86s
+bench-crossplane-1784142786-294   True     True                        86s
+bench-crossplane-1784142786-295   True     True                        86s
+bench-crossplane-1784142786-296   True     True                        85s
+bench-crossplane-1784142786-297   True     True                        85s
+bench-crossplane-1784142786-298   True     False                       85s
+bench-crossplane-1784142786-299   True     False                       84s
+bench-crossplane-1784142786-3     True     True                        3m48s
+bench-crossplane-1784142786-30    True     True                        3m34s
+bench-crossplane-1784142786-300   True     False                       84s
+bench-crossplane-1784142786-301   True     False                       83s
+bench-crossplane-1784142786-302   True     False                       83s
+bench-crossplane-1784142786-303   True     False                       83s
+bench-crossplane-1784142786-304   True     False                       82s
+bench-crossplane-1784142786-305   True     False                       82s
+bench-crossplane-1784142786-306   True     False                       81s
+bench-crossplane-1784142786-307   True     False                       81s
+bench-crossplane-1784142786-308   True     False                       81s
+bench-crossplane-1784142786-309   True     False                       80s
+bench-crossplane-1784142786-31    True     True                        3m34s
+bench-crossplane-1784142786-310   True     False                       80s
+bench-crossplane-1784142786-311   True     False                       80s
+bench-crossplane-1784142786-312   True     False                       79s
+bench-crossplane-1784142786-313   True     False                       79s
+bench-crossplane-1784142786-314   True     False                       78s
+bench-crossplane-1784142786-315   True     False                       78s
+bench-crossplane-1784142786-316   True     False                       77s
+bench-crossplane-1784142786-317   True     False                       77s
+bench-crossplane-1784142786-318   True     False                       76s
+bench-crossplane-1784142786-319   True     False                       76s
+bench-crossplane-1784142786-32    True     True                        3m33s
+bench-crossplane-1784142786-320   True     False                       75s
+bench-crossplane-1784142786-321   True     False                       75s
+bench-crossplane-1784142786-322   True     False                       75s
+bench-crossplane-1784142786-323   True     False                       74s
+bench-crossplane-1784142786-324   True     False                       74s
+bench-crossplane-1784142786-325   True     False                       73s
+bench-crossplane-1784142786-326   True     False                       73s
+bench-crossplane-1784142786-327   True     False                       72s
+bench-crossplane-1784142786-328   True     False                       72s
+bench-crossplane-1784142786-329   True     False                       71s
+bench-crossplane-1784142786-33    True     True                        3m32s
+bench-crossplane-1784142786-330   True     False                       71s
+bench-crossplane-1784142786-331   True     False                       70s
+bench-crossplane-1784142786-332   True     False                       70s
+bench-crossplane-1784142786-333   True     False                       69s
+bench-crossplane-1784142786-334   True     False                       69s
+bench-crossplane-1784142786-335   True     False                       68s
+bench-crossplane-1784142786-336   True     False                       67s
+bench-crossplane-1784142786-337   True     False                       67s
+bench-crossplane-1784142786-338   True     False                       67s
+bench-crossplane-1784142786-339   True     False                       66s
+bench-crossplane-1784142786-34    True     True                        3m31s
+bench-crossplane-1784142786-340   True     False                       66s
+bench-crossplane-1784142786-341   True     False                       65s
+bench-crossplane-1784142786-342   True     False                       65s
+bench-crossplane-1784142786-343   True     False                       65s
+bench-crossplane-1784142786-344   True     False                       64s
+bench-crossplane-1784142786-345   True     False                       64s
+bench-crossplane-1784142786-346   True     False                       64s
+bench-crossplane-1784142786-347   True     False                       63s
+bench-crossplane-1784142786-348   True     False                       63s
+bench-crossplane-1784142786-349   True     False                       63s
+bench-crossplane-1784142786-35    True     True                        3m31s
+bench-crossplane-1784142786-350   True     False                       62s
+bench-crossplane-1784142786-351   True     False                       62s
+bench-crossplane-1784142786-352   True     False                       62s
+bench-crossplane-1784142786-353   True     False                       61s
+bench-crossplane-1784142786-354   True     False                       61s
+bench-crossplane-1784142786-355   True     False                       61s
+bench-crossplane-1784142786-356   True     False                       60s
+bench-crossplane-1784142786-357   True     False                       60s
+bench-crossplane-1784142786-358   True     False                       59s
+bench-crossplane-1784142786-359   True     False                       59s
+bench-crossplane-1784142786-36    True     True                        3m30s
+bench-crossplane-1784142786-360   True     False                       58s
+bench-crossplane-1784142786-361   True     False                       58s
+bench-crossplane-1784142786-362   True     False                       57s
+bench-crossplane-1784142786-363   True     False                       57s
+bench-crossplane-1784142786-364   True     False                       57s
+bench-crossplane-1784142786-365   True     False                       56s
+bench-crossplane-1784142786-366   True     False                       56s
+bench-crossplane-1784142786-367   True     False                       56s
+bench-crossplane-1784142786-368   True     False                       56s
+bench-crossplane-1784142786-369   True     False                       55s
+bench-crossplane-1784142786-37    True     True                        3m29s
+bench-crossplane-1784142786-370   True     False                       55s
+bench-crossplane-1784142786-371   True     False                       55s
+bench-crossplane-1784142786-372   True     False                       55s
+bench-crossplane-1784142786-373   True     False                       54s
+bench-crossplane-1784142786-374   True     False                       54s
+bench-crossplane-1784142786-375   True     False                       53s
+bench-crossplane-1784142786-376   True     False                       53s
+bench-crossplane-1784142786-377   True     False                       53s
+bench-crossplane-1784142786-378   True     False                       52s
+bench-crossplane-1784142786-379   True     False                       52s
+bench-crossplane-1784142786-38    True     True                        3m29s
+bench-crossplane-1784142786-380   True     False                       51s
+bench-crossplane-1784142786-381   True     False                       51s
+bench-crossplane-1784142786-382   True     False                       50s
+bench-crossplane-1784142786-383   True     False                       50s
+bench-crossplane-1784142786-384   True     False                       50s
+bench-crossplane-1784142786-385   True     False                       49s
+bench-crossplane-1784142786-386   True     False                       49s
+bench-crossplane-1784142786-387   True     False                       49s
+bench-crossplane-1784142786-388   True     False                       48s
+bench-crossplane-1784142786-389   True     False                       48s
+bench-crossplane-1784142786-39    True     True                        3m28s
+bench-crossplane-1784142786-390   True     False                       48s
+bench-crossplane-1784142786-391   True     False                       47s
+bench-crossplane-1784142786-392   True     False                       47s
+bench-crossplane-1784142786-393   True     False                       47s
+bench-crossplane-1784142786-394   True     False                       47s
+bench-crossplane-1784142786-395   True     False                       46s
+bench-crossplane-1784142786-396   True     False                       46s
+bench-crossplane-1784142786-397   True     False                       45s
+bench-crossplane-1784142786-398   True     False                       45s
+bench-crossplane-1784142786-399   True     False                       44s
+bench-crossplane-1784142786-4     True     True                        3m48s
+bench-crossplane-1784142786-40    True     True                        3m27s
+bench-crossplane-1784142786-400   True     False                       44s
+bench-crossplane-1784142786-401   True     False                       43s
+bench-crossplane-1784142786-402   True     False                       43s
+bench-crossplane-1784142786-403   True     False                       42s
+bench-crossplane-1784142786-404   True     False                       41s
+bench-crossplane-1784142786-405   True     False                       41s
+bench-crossplane-1784142786-406   True     False                       40s
+bench-crossplane-1784142786-407   True     False                       40s
+bench-crossplane-1784142786-408   True     False                       40s
+bench-crossplane-1784142786-409   True     False                       39s
+bench-crossplane-1784142786-41    True     True                        3m26s
+bench-crossplane-1784142786-410   True     False                       39s
+bench-crossplane-1784142786-411   True     False                       38s
+bench-crossplane-1784142786-412   True     False                       38s
+bench-crossplane-1784142786-413   True     False                       37s
+bench-crossplane-1784142786-414   True     False                       37s
+bench-crossplane-1784142786-415   True     False                       37s
+bench-crossplane-1784142786-416   True     False                       36s
+bench-crossplane-1784142786-417   True     False                       36s
+bench-crossplane-1784142786-418   True     False                       35s
+bench-crossplane-1784142786-419   True     False                       35s
+bench-crossplane-1784142786-42    True     True                        3m26s
+bench-crossplane-1784142786-420   True     False                       34s
+bench-crossplane-1784142786-421   True     False                       34s
+bench-crossplane-1784142786-422   True     False                       34s
+bench-crossplane-1784142786-423   True     False                       33s
+bench-crossplane-1784142786-424   True     False                       33s
+bench-crossplane-1784142786-425   True     False                       33s
+bench-crossplane-1784142786-426   True     False                       32s
+bench-crossplane-1784142786-427   True     False                       32s
+bench-crossplane-1784142786-428   True     False                       32s
+bench-crossplane-1784142786-429   True     False                       31s
+bench-crossplane-1784142786-43    True     True                        3m25s
+bench-crossplane-1784142786-430   True     False                       31s
+bench-crossplane-1784142786-431   True     False                       31s
+bench-crossplane-1784142786-432   True     False                       31s
+bench-crossplane-1784142786-433   True     False                       30s
+bench-crossplane-1784142786-434   True     False                       30s
+bench-crossplane-1784142786-435   True     False                       30s
+bench-crossplane-1784142786-436   True     False                       29s
+bench-crossplane-1784142786-437   True     False                       29s
+bench-crossplane-1784142786-438   True     False                       29s
+bench-crossplane-1784142786-439   True     False                       28s
+bench-crossplane-1784142786-44    True     True                        3m24s
+bench-crossplane-1784142786-440   True     False                       28s
+bench-crossplane-1784142786-441   True     False                       27s
+bench-crossplane-1784142786-442   True     False                       27s
+bench-crossplane-1784142786-443   True     False                       27s
+bench-crossplane-1784142786-444   True     False                       26s
+bench-crossplane-1784142786-445   True     False                       26s
+bench-crossplane-1784142786-446   True     False                       25s
+bench-crossplane-1784142786-447   True     False                       25s
+bench-crossplane-1784142786-448   True     False                       24s
+bench-crossplane-1784142786-449   True     False                       24s
+bench-crossplane-1784142786-45    True     True                        3m23s
+bench-crossplane-1784142786-450   True     False                       24s
+bench-crossplane-1784142786-451   True     False                       24s
+bench-crossplane-1784142786-452   True     False                       23s
+bench-crossplane-1784142786-453   True     False                       23s
+bench-crossplane-1784142786-454   True     False                       23s
+bench-crossplane-1784142786-455   True     False                       22s
+bench-crossplane-1784142786-456   True     False                       22s
+bench-crossplane-1784142786-457   True     False                       22s
+bench-crossplane-1784142786-458   True     False                       22s
+bench-crossplane-1784142786-459   True     False                       21s
+bench-crossplane-1784142786-46    True     True                        3m22s
+bench-crossplane-1784142786-460   True     False                       21s
+bench-crossplane-1784142786-461   True     False                       21s
+bench-crossplane-1784142786-462   True     False                       20s
+bench-crossplane-1784142786-463   True     False                       20s
+bench-crossplane-1784142786-464   True     False                       20s
+bench-crossplane-1784142786-465   True     False                       19s
+bench-crossplane-1784142786-466   True     False                       19s
+bench-crossplane-1784142786-467   True     False                       19s
+bench-crossplane-1784142786-468   True     False                       18s
+bench-crossplane-1784142786-469   True     False                       18s
+bench-crossplane-1784142786-47    True     True                        3m21s
+bench-crossplane-1784142786-470   True     False                       17s
+bench-crossplane-1784142786-471   True     False                       17s
+bench-crossplane-1784142786-472   True     False                       17s
+bench-crossplane-1784142786-473   True     False                       16s
+bench-crossplane-1784142786-474   True     False                       16s
+bench-crossplane-1784142786-475   True     False                       16s
+bench-crossplane-1784142786-476   True     False                       16s
+bench-crossplane-1784142786-477   True     False                       15s
+bench-crossplane-1784142786-478   True     False                       15s
+bench-crossplane-1784142786-479   True     False                       14s
+bench-crossplane-1784142786-48    True     True                        3m20s
+bench-crossplane-1784142786-480   True     False                       14s
+bench-crossplane-1784142786-481   True     False                       13s
+bench-crossplane-1784142786-482   True     False                       13s
+bench-crossplane-1784142786-483   True     False                       13s
+bench-crossplane-1784142786-484   True     False                       12s
+bench-crossplane-1784142786-485   True     False                       11s
+bench-crossplane-1784142786-486   True     False                       11s
+bench-crossplane-1784142786-487   True     False                       10s
+bench-crossplane-1784142786-488   True     False                       9s
+bench-crossplane-1784142786-489   True     False                       9s
+bench-crossplane-1784142786-49    True     True                        3m19s
+bench-crossplane-1784142786-490   True     False                       8s
+bench-crossplane-1784142786-491   True     False                       7s
+bench-crossplane-1784142786-492                                        6s
+bench-crossplane-1784142786-493                                        6s
+bench-crossplane-1784142786-494                                        5s
+bench-crossplane-1784142786-495                                        4s
+bench-crossplane-1784142786-496                                        4s
+bench-crossplane-1784142786-497                                        3s
+bench-crossplane-1784142786-498                                        3s
+bench-crossplane-1784142786-499                                        2s
+bench-crossplane-1784142786-5     True     True                        3m48s
+bench-crossplane-1784142786-50    True     True                        3m19s
+bench-crossplane-1784142786-500                                        1s
+bench-crossplane-1784142786-51    True     True                        3m18s
+bench-crossplane-1784142786-52    True     True                        3m17s
+bench-crossplane-1784142786-53    True     True                        3m17s
+bench-crossplane-1784142786-54    True     True                        3m16s
+bench-crossplane-1784142786-55    True     True                        3m16s
+bench-crossplane-1784142786-56    True     True                        3m15s
+bench-crossplane-1784142786-57    True     True                        3m14s
+bench-crossplane-1784142786-58    True     True                        3m14s
+bench-crossplane-1784142786-59    True     True                        3m14s
+bench-crossplane-1784142786-6     True     True                        3m47s
+bench-crossplane-1784142786-60    True     True                        3m13s
+bench-crossplane-1784142786-61    True     True                        3m13s
+bench-crossplane-1784142786-62    True     True                        3m12s
+bench-crossplane-1784142786-63    True     True                        3m12s
+bench-crossplane-1784142786-64    True     True                        3m11s
+bench-crossplane-1784142786-65    True     True                        3m10s
+bench-crossplane-1784142786-66    True     True                        3m10s
+bench-crossplane-1784142786-67    True     True                        3m9s
+bench-crossplane-1784142786-68    True     True                        3m9s
+bench-crossplane-1784142786-69    True     True                        3m8s
+bench-crossplane-1784142786-7     True     True                        3m47s
+bench-crossplane-1784142786-70    True     True                        3m8s
+bench-crossplane-1784142786-71    True     True                        3m7s
+bench-crossplane-1784142786-72    True     True                        3m7s
+bench-crossplane-1784142786-73    True     True                        3m6s
+bench-crossplane-1784142786-74    True     True                        3m6s
+bench-crossplane-1784142786-75    True     True                        3m5s
+bench-crossplane-1784142786-76    True     True                        3m5s
+bench-crossplane-1784142786-77    True     True                        3m4s
+bench-crossplane-1784142786-78    True     True                        3m4s
+bench-crossplane-1784142786-79    True     True                        3m3s
+bench-crossplane-1784142786-8     True     True                        3m46s
+bench-crossplane-1784142786-80    True     True                        3m2s
+bench-crossplane-1784142786-81    True     True                        3m2s
+bench-crossplane-1784142786-82    True     True                        3m1s
+bench-crossplane-1784142786-83    True     True                        3m1s
+bench-crossplane-1784142786-84    True     True                        3m
+bench-crossplane-1784142786-85    True     True                        3m
+bench-crossplane-1784142786-86    True     True                        2m59s
+bench-crossplane-1784142786-87    True     True                        2m58s
+bench-crossplane-1784142786-88    True     True                        2m58s
+bench-crossplane-1784142786-89    True     True                        2m57s
+bench-crossplane-1784142786-9     True     True                        3m46s
+bench-crossplane-1784142786-90    True     True                        2m57s
+bench-crossplane-1784142786-91    True     True                        2m56s
+bench-crossplane-1784142786-92    True     True                        2m56s
+bench-crossplane-1784142786-93    True     True                        2m55s
+bench-crossplane-1784142786-94    True     True                        2m55s
+bench-crossplane-1784142786-95    True     True                        2m54s
+bench-crossplane-1784142786-96    True     True                        2m54s
+bench-crossplane-1784142786-97    True     True                        2m53s
+bench-crossplane-1784142786-98    True     True                        2m52s
+bench-crossplane-1784142786-99    True     True                        2m51s
+[INFO] waiting Ready 275/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=0s/300s)
+[INFO] waiting Ready 290/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=5s/300s)
+[INFO] waiting Ready 298/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=10s/300s)
+[INFO] waiting Ready 315/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=15s/300s)
+[INFO] waiting Ready 340/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=20s/300s)
+[INFO] waiting Ready 374/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=25s/300s)
+[INFO] waiting Ready 390/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=30s/300s)
+[INFO] waiting Ready 416/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=35s/300s)
+[INFO] waiting Ready 449/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=40s/300s)
+[INFO] waiting Ready 487/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=45s/300s)
+[INFO] waiting Ready 499/500 for datastreams.messaging.lorenzodeluca.it (created=500, waited=50s/300s)
+[INFO] Ready 500/500 for datastreams.messaging.lorenzodeluca.it (total created=500)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=500 for 60s (every 5s)
+[INFO] cleaning up n=500 resources before next count
+[INFO] === scaling test: framework=crossplane n=1000 ===
+[DEBUG] created crossplane resources for n=1000
+bench-crossplane-1784142786-1      True     True                        8m
+bench-crossplane-1784142786-10     True     True                        7m56s
+bench-crossplane-1784142786-100    True     True                        7m9s
+bench-crossplane-1784142786-1000                                        1s
+bench-crossplane-1784142786-101    True     True                        7m8s
+bench-crossplane-1784142786-102    True     True                        7m8s
+bench-crossplane-1784142786-103    True     True                        7m7s
+bench-crossplane-1784142786-104    True     True                        7m7s
+bench-crossplane-1784142786-105    True     True                        7m6s
+bench-crossplane-1784142786-106    True     True                        7m6s
+bench-crossplane-1784142786-107    True     True                        7m5s
+bench-crossplane-1784142786-108    True     True                        7m5s
+bench-crossplane-1784142786-109    True     True                        7m4s
+bench-crossplane-1784142786-11     True     True                        7m55s
+bench-crossplane-1784142786-110    True     True                        7m4s
+bench-crossplane-1784142786-111    True     True                        7m3s
+bench-crossplane-1784142786-112    True     True                        7m2s
+bench-crossplane-1784142786-113    True     True                        7m2s
+bench-crossplane-1784142786-114    True     True                        7m2s
+bench-crossplane-1784142786-115    True     True                        7m1s
+bench-crossplane-1784142786-116    True     True                        7m1s
+bench-crossplane-1784142786-117    True     True                        7m
+bench-crossplane-1784142786-118    True     True                        7m
+bench-crossplane-1784142786-119    True     True                        6m59s
+bench-crossplane-1784142786-12     True     True                        7m55s
+bench-crossplane-1784142786-120    True     True                        6m59s
+bench-crossplane-1784142786-121    True     True                        6m58s
+bench-crossplane-1784142786-122    True     True                        6m58s
+bench-crossplane-1784142786-123    True     True                        6m57s
+bench-crossplane-1784142786-124    True     True                        6m56s
+bench-crossplane-1784142786-125    True     True                        6m56s
+bench-crossplane-1784142786-126    True     True                        6m55s
+bench-crossplane-1784142786-127    True     True                        6m54s
+bench-crossplane-1784142786-128    True     True                        6m54s
+bench-crossplane-1784142786-129    True     True                        6m53s
+bench-crossplane-1784142786-13     True     True                        7m54s
+bench-crossplane-1784142786-130    True     True                        6m53s
+bench-crossplane-1784142786-131    True     True                        6m53s
+bench-crossplane-1784142786-132    True     True                        6m52s
+bench-crossplane-1784142786-133    True     True                        6m52s
+bench-crossplane-1784142786-134    True     True                        6m51s
+bench-crossplane-1784142786-135    True     True                        6m50s
+bench-crossplane-1784142786-136    True     True                        6m50s
+bench-crossplane-1784142786-137    True     True                        6m49s
+bench-crossplane-1784142786-138    True     True                        6m48s
+bench-crossplane-1784142786-139    True     True                        6m47s
+bench-crossplane-1784142786-14     True     True                        7m54s
+bench-crossplane-1784142786-140    True     True                        6m47s
+bench-crossplane-1784142786-141    True     True                        6m46s
+bench-crossplane-1784142786-142    True     True                        6m45s
+bench-crossplane-1784142786-143    True     True                        6m44s
+bench-crossplane-1784142786-144    True     True                        6m43s
+bench-crossplane-1784142786-145    True     True                        6m42s
+bench-crossplane-1784142786-146    True     True                        6m41s
+bench-crossplane-1784142786-147    True     True                        6m41s
+bench-crossplane-1784142786-148    True     True                        6m41s
+bench-crossplane-1784142786-149    True     True                        6m40s
+bench-crossplane-1784142786-15     True     True                        7m54s
+bench-crossplane-1784142786-150    True     True                        6m40s
+bench-crossplane-1784142786-151    True     True                        6m39s
+bench-crossplane-1784142786-152    True     True                        6m39s
+bench-crossplane-1784142786-153    True     True                        6m39s
+bench-crossplane-1784142786-154    True     True                        6m38s
+bench-crossplane-1784142786-155    True     True                        6m38s
+bench-crossplane-1784142786-156    True     True                        6m37s
+bench-crossplane-1784142786-157    True     True                        6m37s
+bench-crossplane-1784142786-158    True     True                        6m36s
+bench-crossplane-1784142786-159    True     True                        6m36s
+bench-crossplane-1784142786-16     True     True                        7m53s
+bench-crossplane-1784142786-160    True     True                        6m35s
+bench-crossplane-1784142786-161    True     True                        6m35s
+bench-crossplane-1784142786-162    True     True                        6m35s
+bench-crossplane-1784142786-163    True     True                        6m34s
+bench-crossplane-1784142786-164    True     True                        6m34s
+bench-crossplane-1784142786-165    True     True                        6m33s
+bench-crossplane-1784142786-166    True     True                        6m32s
+bench-crossplane-1784142786-167    True     True                        6m32s
+bench-crossplane-1784142786-168    True     True                        6m31s
+bench-crossplane-1784142786-169    True     True                        6m30s
+bench-crossplane-1784142786-17     True     True                        7m52s
+bench-crossplane-1784142786-170    True     True                        6m29s
+bench-crossplane-1784142786-171    True     True                        6m27s
+bench-crossplane-1784142786-172    True     True                        6m26s
+bench-crossplane-1784142786-173    True     True                        6m25s
+bench-crossplane-1784142786-174    True     True                        6m24s
+bench-crossplane-1784142786-175    True     True                        6m24s
+bench-crossplane-1784142786-176    True     True                        6m23s
+bench-crossplane-1784142786-177    True     True                        6m23s
+bench-crossplane-1784142786-178    True     True                        6m22s
+bench-crossplane-1784142786-179    True     True                        6m22s
+bench-crossplane-1784142786-18     True     True                        7m52s
+bench-crossplane-1784142786-180    True     True                        6m21s
+bench-crossplane-1784142786-181    True     True                        6m21s
+bench-crossplane-1784142786-182    True     True                        6m20s
+bench-crossplane-1784142786-183    True     True                        6m18s
+bench-crossplane-1784142786-184    True     True                        6m16s
+bench-crossplane-1784142786-185    True     True                        6m15s
+bench-crossplane-1784142786-186    True     True                        6m15s
+bench-crossplane-1784142786-187    True     True                        6m14s
+bench-crossplane-1784142786-188    True     True                        6m13s
+bench-crossplane-1784142786-189    True     True                        6m13s
+bench-crossplane-1784142786-19     True     True                        7m51s
+bench-crossplane-1784142786-190    True     True                        6m12s
+bench-crossplane-1784142786-191    True     True                        6m11s
+bench-crossplane-1784142786-192    True     True                        6m11s
+bench-crossplane-1784142786-193    True     True                        6m10s
+bench-crossplane-1784142786-194    True     True                        6m9s
+bench-crossplane-1784142786-195    True     True                        6m8s
+bench-crossplane-1784142786-196    True     True                        6m8s
+bench-crossplane-1784142786-197    True     True                        6m7s
+bench-crossplane-1784142786-198    True     True                        6m6s
+bench-crossplane-1784142786-199    True     True                        6m5s
+bench-crossplane-1784142786-2      True     True                        8m
+bench-crossplane-1784142786-20     True     True                        7m51s
+bench-crossplane-1784142786-200    True     True                        6m5s
+bench-crossplane-1784142786-201    True     True                        6m4s
+bench-crossplane-1784142786-202    True     True                        6m3s
+bench-crossplane-1784142786-203    True     True                        6m2s
+bench-crossplane-1784142786-204    True     True                        6m2s
+bench-crossplane-1784142786-205    True     True                        6m1s
+bench-crossplane-1784142786-206    True     True                        6m1s
+bench-crossplane-1784142786-207    True     True                        6m
+bench-crossplane-1784142786-208    True     True                        6m
+bench-crossplane-1784142786-209    True     True                        5m59s
+bench-crossplane-1784142786-21     True     True                        7m50s
+bench-crossplane-1784142786-210    True     True                        5m59s
+bench-crossplane-1784142786-211    True     True                        5m58s
+bench-crossplane-1784142786-212    True     True                        5m58s
+bench-crossplane-1784142786-213    True     True                        5m57s
+bench-crossplane-1784142786-214    True     True                        5m56s
+bench-crossplane-1784142786-215    True     True                        5m56s
+bench-crossplane-1784142786-216    True     True                        5m55s
+bench-crossplane-1784142786-217    True     True                        5m54s
+bench-crossplane-1784142786-218    True     True                        5m53s
+bench-crossplane-1784142786-219    True     True                        5m53s
+bench-crossplane-1784142786-22     True     True                        7m50s
+bench-crossplane-1784142786-220    True     True                        5m52s
+bench-crossplane-1784142786-221    True     True                        5m52s
+bench-crossplane-1784142786-222    True     True                        5m51s
+bench-crossplane-1784142786-223    True     True                        5m50s
+bench-crossplane-1784142786-224    True     True                        5m50s
+bench-crossplane-1784142786-225    True     True                        5m49s
+bench-crossplane-1784142786-226    True     True                        5m49s
+bench-crossplane-1784142786-227    True     True                        5m48s
+bench-crossplane-1784142786-228    True     True                        5m47s
+bench-crossplane-1784142786-229    True     True                        5m46s
+bench-crossplane-1784142786-23     True     True                        7m49s
+bench-crossplane-1784142786-230    True     True                        5m45s
+bench-crossplane-1784142786-231    True     True                        5m44s
+bench-crossplane-1784142786-232    True     True                        5m44s
+bench-crossplane-1784142786-233    True     True                        5m43s
+bench-crossplane-1784142786-234    True     True                        5m43s
+bench-crossplane-1784142786-235    True     True                        5m42s
+bench-crossplane-1784142786-236    True     True                        5m41s
+bench-crossplane-1784142786-237    True     True                        5m41s
+bench-crossplane-1784142786-238    True     True                        5m41s
+bench-crossplane-1784142786-239    True     True                        5m40s
+bench-crossplane-1784142786-24     True     True                        7m49s
+bench-crossplane-1784142786-240    True     True                        5m40s
+bench-crossplane-1784142786-241    True     True                        5m40s
+bench-crossplane-1784142786-242    True     True                        5m39s
+bench-crossplane-1784142786-243    True     True                        5m39s
+bench-crossplane-1784142786-244    True     True                        5m38s
+bench-crossplane-1784142786-245    True     True                        5m38s
+bench-crossplane-1784142786-246    True     True                        5m37s
+bench-crossplane-1784142786-247    True     True                        5m37s
+bench-crossplane-1784142786-248    True     True                        5m36s
+bench-crossplane-1784142786-249    True     True                        5m36s
+bench-crossplane-1784142786-25     True     True                        7m48s
+bench-crossplane-1784142786-250    True     True                        5m35s
+bench-crossplane-1784142786-251    True     True                        5m35s
+bench-crossplane-1784142786-252    True     True                        5m35s
+bench-crossplane-1784142786-253    True     True                        5m34s
+bench-crossplane-1784142786-254    True     True                        5m34s
+bench-crossplane-1784142786-255    True     True                        5m34s
+bench-crossplane-1784142786-256    True     True                        5m33s
+bench-crossplane-1784142786-257    True     True                        5m33s
+bench-crossplane-1784142786-258    True     True                        5m32s
+bench-crossplane-1784142786-259    True     True                        5m32s
+bench-crossplane-1784142786-26     True     True                        7m48s
+bench-crossplane-1784142786-260    True     True                        5m32s
+bench-crossplane-1784142786-261    True     True                        5m31s
+bench-crossplane-1784142786-262    True     True                        5m31s
+bench-crossplane-1784142786-263    True     True                        5m31s
+bench-crossplane-1784142786-264    True     True                        5m30s
+bench-crossplane-1784142786-265    True     True                        5m30s
+bench-crossplane-1784142786-266    True     True                        5m29s
+bench-crossplane-1784142786-267    True     True                        5m29s
+bench-crossplane-1784142786-268    True     True                        5m28s
+bench-crossplane-1784142786-269    True     True                        5m28s
+bench-crossplane-1784142786-27     True     True                        7m47s
+bench-crossplane-1784142786-270    True     True                        5m27s
+bench-crossplane-1784142786-271    True     True                        5m27s
+bench-crossplane-1784142786-272    True     True                        5m26s
+bench-crossplane-1784142786-273    True     True                        5m26s
+bench-crossplane-1784142786-274    True     True                        5m25s
+bench-crossplane-1784142786-275    True     True                        5m25s
+bench-crossplane-1784142786-276    True     True                        5m25s
+bench-crossplane-1784142786-277    True     True                        5m24s
+bench-crossplane-1784142786-278    True     True                        5m24s
+bench-crossplane-1784142786-279    True     True                        5m24s
+bench-crossplane-1784142786-28     True     True                        7m47s
+bench-crossplane-1784142786-280    True     True                        5m23s
+bench-crossplane-1784142786-281    True     True                        5m23s
+bench-crossplane-1784142786-282    True     True                        5m22s
+bench-crossplane-1784142786-283    True     True                        5m22s
+bench-crossplane-1784142786-284    True     True                        5m21s
+bench-crossplane-1784142786-285    True     True                        5m21s
+bench-crossplane-1784142786-286    True     True                        5m20s
+bench-crossplane-1784142786-287    True     True                        5m20s
+bench-crossplane-1784142786-288    True     True                        5m19s
+bench-crossplane-1784142786-289    True     True                        5m19s
+bench-crossplane-1784142786-29     True     True                        7m46s
+bench-crossplane-1784142786-290    True     True                        5m18s
+bench-crossplane-1784142786-291    True     True                        5m18s
+bench-crossplane-1784142786-292    True     True                        5m18s
+bench-crossplane-1784142786-293    True     True                        5m17s
+bench-crossplane-1784142786-294    True     True                        5m17s
+bench-crossplane-1784142786-295    True     True                        5m17s
+bench-crossplane-1784142786-296    True     True                        5m16s
+bench-crossplane-1784142786-297    True     True                        5m16s
+bench-crossplane-1784142786-298    True     True                        5m16s
+bench-crossplane-1784142786-299    True     True                        5m15s
+bench-crossplane-1784142786-3      True     True                        7m59s
+bench-crossplane-1784142786-30     True     True                        7m46s
+bench-crossplane-1784142786-300    True     True                        5m15s
+bench-crossplane-1784142786-301    True     True                        5m15s
+bench-crossplane-1784142786-302    True     True                        5m15s
+bench-crossplane-1784142786-303    True     True                        5m14s
+bench-crossplane-1784142786-304    True     True                        5m14s
+bench-crossplane-1784142786-305    True     True                        5m14s
+bench-crossplane-1784142786-306    True     True                        5m13s
+bench-crossplane-1784142786-307    True     True                        5m13s
+bench-crossplane-1784142786-308    True     True                        5m12s
+bench-crossplane-1784142786-309    True     True                        5m12s
+bench-crossplane-1784142786-31     True     True                        7m45s
+bench-crossplane-1784142786-310    True     True                        5m12s
+bench-crossplane-1784142786-311    True     True                        5m11s
+bench-crossplane-1784142786-312    True     True                        5m11s
+bench-crossplane-1784142786-313    True     True                        5m11s
+bench-crossplane-1784142786-314    True     True                        5m10s
+bench-crossplane-1784142786-315    True     True                        5m10s
+bench-crossplane-1784142786-316    True     True                        5m9s
+bench-crossplane-1784142786-317    True     True                        5m9s
+bench-crossplane-1784142786-318    True     True                        5m9s
+bench-crossplane-1784142786-319    True     True                        5m8s
+bench-crossplane-1784142786-32     True     True                        7m44s
+bench-crossplane-1784142786-320    True     True                        5m8s
+bench-crossplane-1784142786-321    True     True                        5m7s
+bench-crossplane-1784142786-322    True     True                        5m7s
+bench-crossplane-1784142786-323    True     True                        5m7s
+bench-crossplane-1784142786-324    True     True                        5m6s
+bench-crossplane-1784142786-325    True     True                        5m6s
+bench-crossplane-1784142786-326    True     True                        5m5s
+bench-crossplane-1784142786-327    True     True                        5m5s
+bench-crossplane-1784142786-328    True     True                        5m4s
+bench-crossplane-1784142786-329    True     True                        5m4s
+bench-crossplane-1784142786-33     True     True                        7m44s
+bench-crossplane-1784142786-330    True     True                        5m4s
+bench-crossplane-1784142786-331    True     True                        5m3s
+bench-crossplane-1784142786-332    True     True                        5m3s
+bench-crossplane-1784142786-333    True     True                        5m2s
+bench-crossplane-1784142786-334    True     True                        5m2s
+bench-crossplane-1784142786-335    True     True                        5m1s
+bench-crossplane-1784142786-336    True     True                        5m1s
+bench-crossplane-1784142786-337    True     True                        5m1s
+bench-crossplane-1784142786-338    True     True                        5m
+bench-crossplane-1784142786-339    True     True                        5m
+bench-crossplane-1784142786-34     True     True                        7m43s
+bench-crossplane-1784142786-340    True     True                        5m
+bench-crossplane-1784142786-341    True     True                        4m59s
+bench-crossplane-1784142786-342    True     True                        4m59s
+bench-crossplane-1784142786-343    True     True                        4m58s
+bench-crossplane-1784142786-344    True     True                        4m58s
+bench-crossplane-1784142786-345    True     True                        4m57s
+bench-crossplane-1784142786-346    True     True                        4m57s
+bench-crossplane-1784142786-347    True     True                        4m57s
+bench-crossplane-1784142786-348    True     True                        4m57s
+bench-crossplane-1784142786-349    True     True                        4m56s
+bench-crossplane-1784142786-35     True     True                        7m42s
+bench-crossplane-1784142786-350    True     True                        4m56s
+bench-crossplane-1784142786-351    True     True                        4m55s
+bench-crossplane-1784142786-352    True     True                        4m55s
+bench-crossplane-1784142786-353    True     True                        4m55s
+bench-crossplane-1784142786-354    True     True                        4m54s
+bench-crossplane-1784142786-355    True     True                        4m54s
+bench-crossplane-1784142786-356    True     True                        4m53s
+bench-crossplane-1784142786-357    True     True                        4m53s
+bench-crossplane-1784142786-358    True     True                        4m52s
+bench-crossplane-1784142786-359    True     True                        4m52s
+bench-crossplane-1784142786-36     True     True                        7m42s
+bench-crossplane-1784142786-360    True     True                        4m52s
+bench-crossplane-1784142786-361    True     True                        4m51s
+bench-crossplane-1784142786-362    True     True                        4m50s
+bench-crossplane-1784142786-363    True     True                        4m50s
+bench-crossplane-1784142786-364    True     True                        4m49s
+bench-crossplane-1784142786-365    True     True                        4m49s
+bench-crossplane-1784142786-366    True     True                        4m49s
+bench-crossplane-1784142786-367    True     True                        4m48s
+bench-crossplane-1784142786-368    True     True                        4m48s
+bench-crossplane-1784142786-369    True     True                        4m48s
+bench-crossplane-1784142786-37     True     True                        7m41s
+bench-crossplane-1784142786-370    True     True                        4m47s
+bench-crossplane-1784142786-371    True     True                        4m47s
+bench-crossplane-1784142786-372    True     True                        4m46s
+bench-crossplane-1784142786-373    True     True                        4m46s
+bench-crossplane-1784142786-374    True     True                        4m46s
+bench-crossplane-1784142786-375    True     True                        4m45s
+bench-crossplane-1784142786-376    True     True                        4m45s
+bench-crossplane-1784142786-377    True     True                        4m45s
+bench-crossplane-1784142786-378    True     True                        4m44s
+bench-crossplane-1784142786-379    True     True                        4m44s
+bench-crossplane-1784142786-38     True     True                        7m40s
+bench-crossplane-1784142786-380    True     True                        4m44s
+bench-crossplane-1784142786-381    True     True                        4m43s
+bench-crossplane-1784142786-382    True     True                        4m43s
+bench-crossplane-1784142786-383    True     True                        4m42s
+bench-crossplane-1784142786-384    True     True                        4m41s
+bench-crossplane-1784142786-385    True     True                        4m41s
+bench-crossplane-1784142786-386    True     True                        4m40s
+bench-crossplane-1784142786-387    True     True                        4m40s
+bench-crossplane-1784142786-388    True     True                        4m39s
+bench-crossplane-1784142786-389    True     True                        4m38s
+bench-crossplane-1784142786-39     True     True                        7m40s
+bench-crossplane-1784142786-390    True     True                        4m38s
+bench-crossplane-1784142786-391    True     True                        4m38s
+bench-crossplane-1784142786-392    True     True                        4m37s
+bench-crossplane-1784142786-393    True     True                        4m36s
+bench-crossplane-1784142786-394    True     True                        4m36s
+bench-crossplane-1784142786-395    True     True                        4m36s
+bench-crossplane-1784142786-396    True     True                        4m35s
+bench-crossplane-1784142786-397    True     True                        4m34s
+bench-crossplane-1784142786-398    True     True                        4m34s
+bench-crossplane-1784142786-399    True     True                        4m34s
+bench-crossplane-1784142786-4      True     True                        7m59s
+bench-crossplane-1784142786-40     True     True                        7m39s
+bench-crossplane-1784142786-400    True     True                        4m33s
+bench-crossplane-1784142786-401    True     True                        4m33s
+bench-crossplane-1784142786-402    True     True                        4m33s
+bench-crossplane-1784142786-403    True     True                        4m32s
+bench-crossplane-1784142786-404    True     True                        4m32s
+bench-crossplane-1784142786-405    True     True                        4m32s
+bench-crossplane-1784142786-406    True     True                        4m31s
+bench-crossplane-1784142786-407    True     True                        4m31s
+bench-crossplane-1784142786-408    True     True                        4m30s
+bench-crossplane-1784142786-409    True     True                        4m30s
+bench-crossplane-1784142786-41     True     True                        7m38s
+bench-crossplane-1784142786-410    True     True                        4m29s
+bench-crossplane-1784142786-411    True     True                        4m29s
+bench-crossplane-1784142786-412    True     True                        4m28s
+bench-crossplane-1784142786-413    True     True                        4m28s
+bench-crossplane-1784142786-414    True     True                        4m27s
+bench-crossplane-1784142786-415    True     True                        4m27s
+bench-crossplane-1784142786-416    True     True                        4m26s
+bench-crossplane-1784142786-417    True     True                        4m26s
+bench-crossplane-1784142786-418    True     True                        4m26s
+bench-crossplane-1784142786-419    True     True                        4m25s
+bench-crossplane-1784142786-42     True     True                        7m38s
+bench-crossplane-1784142786-420    True     True                        4m25s
+bench-crossplane-1784142786-421    True     True                        4m25s
+bench-crossplane-1784142786-422    True     True                        4m24s
+bench-crossplane-1784142786-423    True     True                        4m24s
+bench-crossplane-1784142786-424    True     True                        4m24s
+bench-crossplane-1784142786-425    True     True                        4m24s
+bench-crossplane-1784142786-426    True     True                        4m23s
+bench-crossplane-1784142786-427    True     True                        4m22s
+bench-crossplane-1784142786-428    True     True                        4m22s
+bench-crossplane-1784142786-429    True     True                        4m21s
+bench-crossplane-1784142786-43     True     True                        7m37s
+bench-crossplane-1784142786-430    True     True                        4m20s
+bench-crossplane-1784142786-431    True     True                        4m19s
+bench-crossplane-1784142786-432    True     True                        4m19s
+bench-crossplane-1784142786-433    True     True                        4m18s
+bench-crossplane-1784142786-434    True     True                        4m17s
+bench-crossplane-1784142786-435    True     True                        4m17s
+bench-crossplane-1784142786-436    True     True                        4m17s
+bench-crossplane-1784142786-437    True     True                        4m16s
+bench-crossplane-1784142786-438    True     True                        4m16s
+bench-crossplane-1784142786-439    True     True                        4m16s
+bench-crossplane-1784142786-44     True     True                        7m37s
+bench-crossplane-1784142786-440    True     True                        4m15s
+bench-crossplane-1784142786-441    True     True                        4m15s
+bench-crossplane-1784142786-442    True     True                        4m15s
+bench-crossplane-1784142786-443    True     True                        4m14s
+bench-crossplane-1784142786-444    True     True                        4m14s
+bench-crossplane-1784142786-445    True     True                        4m14s
+bench-crossplane-1784142786-446    True     True                        4m13s
+bench-crossplane-1784142786-447    True     True                        4m13s
+bench-crossplane-1784142786-448    True     True                        4m13s
+bench-crossplane-1784142786-449    True     True                        4m12s
+bench-crossplane-1784142786-45     True     True                        7m36s
+bench-crossplane-1784142786-450    True     True                        4m12s
+bench-crossplane-1784142786-451    True     True                        4m11s
+bench-crossplane-1784142786-452    True     True                        4m11s
+bench-crossplane-1784142786-453    True     True                        4m10s
+bench-crossplane-1784142786-454    True     True                        4m10s
+bench-crossplane-1784142786-455    True     True                        4m10s
+bench-crossplane-1784142786-456    True     True                        4m9s
+bench-crossplane-1784142786-457    True     True                        4m9s
+bench-crossplane-1784142786-458    True     True                        4m8s
+bench-crossplane-1784142786-459    True     True                        4m8s
+bench-crossplane-1784142786-46     True     True                        7m36s
+bench-crossplane-1784142786-460    True     True                        4m8s
+bench-crossplane-1784142786-461    True     True                        4m7s
+bench-crossplane-1784142786-462    True     True                        4m7s
+bench-crossplane-1784142786-463    True     True                        4m6s
+bench-crossplane-1784142786-464    True     False                       4m6s
+bench-crossplane-1784142786-465    True     True                        4m5s
+bench-crossplane-1784142786-466    True     True                        4m5s
+bench-crossplane-1784142786-467    True     True                        4m5s
+bench-crossplane-1784142786-468    True     True                        4m4s
+bench-crossplane-1784142786-469    True     True                        4m4s
+bench-crossplane-1784142786-47     True     True                        7m35s
+bench-crossplane-1784142786-470    True     True                        4m3s
+bench-crossplane-1784142786-471    True     True                        4m3s
+bench-crossplane-1784142786-472    True     True                        4m3s
+bench-crossplane-1784142786-473    True     True                        4m2s
+bench-crossplane-1784142786-474    True     True                        4m1s
+bench-crossplane-1784142786-475    True     True                        4m
+bench-crossplane-1784142786-476    True     True                        4m
+bench-crossplane-1784142786-477    True     True                        4m
+bench-crossplane-1784142786-478    True     True                        3m59s
+bench-crossplane-1784142786-479    True     False                       3m59s
+bench-crossplane-1784142786-48     True     True                        7m35s
+bench-crossplane-1784142786-480    True     False                       3m59s
+bench-crossplane-1784142786-481    True     True                        3m59s
+bench-crossplane-1784142786-482    True     True                        3m58s
+bench-crossplane-1784142786-483    True     True                        3m58s
+bench-crossplane-1784142786-484    True     True                        3m58s
+bench-crossplane-1784142786-485    True     True                        3m57s
+bench-crossplane-1784142786-486    True     True                        3m57s
+bench-crossplane-1784142786-487    True     True                        3m57s
+bench-crossplane-1784142786-488    True     True                        3m57s
+bench-crossplane-1784142786-489    True     True                        3m56s
+bench-crossplane-1784142786-49     True     True                        7m34s
+bench-crossplane-1784142786-490    True     False                       3m56s
+bench-crossplane-1784142786-491    True     True                        3m55s
+bench-crossplane-1784142786-492    True     True                        3m55s
+bench-crossplane-1784142786-493    True     True                        3m54s
+bench-crossplane-1784142786-494    True     True                        3m54s
+bench-crossplane-1784142786-495    True     True                        3m53s
+bench-crossplane-1784142786-496    True     True                        3m53s
+bench-crossplane-1784142786-497    True     False                       3m52s
+bench-crossplane-1784142786-498    True     True                        3m52s
+bench-crossplane-1784142786-499    True     True                        3m51s
+bench-crossplane-1784142786-5      True     True                        7m58s
+bench-crossplane-1784142786-50     True     True                        7m34s
+bench-crossplane-1784142786-500    True     True                        3m51s
+bench-crossplane-1784142786-501    True     True                        3m50s
+bench-crossplane-1784142786-502    True     True                        3m50s
+bench-crossplane-1784142786-503    True     True                        3m50s
+bench-crossplane-1784142786-504    True     True                        3m49s
+bench-crossplane-1784142786-505    True     True                        3m49s
+bench-crossplane-1784142786-506    True     True                        3m49s
+bench-crossplane-1784142786-507    True     True                        3m48s
+bench-crossplane-1784142786-508    True     True                        3m48s
+bench-crossplane-1784142786-509    True     True                        3m48s
+bench-crossplane-1784142786-51     True     True                        7m34s
+bench-crossplane-1784142786-510    True     True                        3m47s
+bench-crossplane-1784142786-511    True     True                        3m47s
+bench-crossplane-1784142786-512    True     True                        3m46s
+bench-crossplane-1784142786-513    True     True                        3m46s
+bench-crossplane-1784142786-514    True     True                        3m45s
+bench-crossplane-1784142786-515    True     True                        3m45s
+bench-crossplane-1784142786-516    True     True                        3m44s
+bench-crossplane-1784142786-517    True     True                        3m44s
+bench-crossplane-1784142786-518    True     True                        3m43s
+bench-crossplane-1784142786-519    True     True                        3m43s
+bench-crossplane-1784142786-52     True     True                        7m33s
+bench-crossplane-1784142786-520    True     True                        3m43s
+bench-crossplane-1784142786-521    True     True                        3m42s
+bench-crossplane-1784142786-522    True     True                        3m42s
+bench-crossplane-1784142786-523    True     True                        3m42s
+bench-crossplane-1784142786-524    True     True                        3m41s
+bench-crossplane-1784142786-525    True     True                        3m41s
+bench-crossplane-1784142786-526    True     True                        3m40s
+bench-crossplane-1784142786-527    True     True                        3m40s
+bench-crossplane-1784142786-528    True     True                        3m40s
+bench-crossplane-1784142786-529    True     True                        3m40s
+bench-crossplane-1784142786-53     True     True                        7m32s
+bench-crossplane-1784142786-530    True     True                        3m39s
+bench-crossplane-1784142786-531    True     True                        3m39s
+bench-crossplane-1784142786-532    True     True                        3m38s
+bench-crossplane-1784142786-533    True     True                        3m38s
+bench-crossplane-1784142786-534    True     True                        3m38s
+bench-crossplane-1784142786-535    True     True                        3m37s
+bench-crossplane-1784142786-536    True     True                        3m37s
+bench-crossplane-1784142786-537    True     True                        3m36s
+bench-crossplane-1784142786-538    True     True                        3m36s
+bench-crossplane-1784142786-539    True     True                        3m36s
+bench-crossplane-1784142786-54     True     True                        7m32s
+bench-crossplane-1784142786-540    True     True                        3m35s
+bench-crossplane-1784142786-541    True     True                        3m35s
+bench-crossplane-1784142786-542    True     True                        3m35s
+bench-crossplane-1784142786-543    True     True                        3m34s
+bench-crossplane-1784142786-544    True     True                        3m34s
+bench-crossplane-1784142786-545    True     True                        3m34s
+bench-crossplane-1784142786-546    True     True                        3m33s
+bench-crossplane-1784142786-547    True     False                       3m33s
+bench-crossplane-1784142786-548    True     True                        3m33s
+bench-crossplane-1784142786-549    True     True                        3m32s
+bench-crossplane-1784142786-55     True     True                        7m31s
+bench-crossplane-1784142786-550    True     True                        3m32s
+bench-crossplane-1784142786-551    True     True                        3m32s
+bench-crossplane-1784142786-552    True     False                       3m32s
+bench-crossplane-1784142786-553    True     False                       3m31s
+bench-crossplane-1784142786-554    True     True                        3m31s
+bench-crossplane-1784142786-555    True     False                       3m30s
+bench-crossplane-1784142786-556    True     True                        3m30s
+bench-crossplane-1784142786-557    True     True                        3m30s
+bench-crossplane-1784142786-558    True     True                        3m29s
+bench-crossplane-1784142786-559    True     True                        3m29s
+bench-crossplane-1784142786-56     True     True                        7m31s
+bench-crossplane-1784142786-560    True     True                        3m29s
+bench-crossplane-1784142786-561    True     True                        3m28s
+bench-crossplane-1784142786-562    True     True                        3m28s
+bench-crossplane-1784142786-563    True     True                        3m27s
+bench-crossplane-1784142786-564    True     True                        3m27s
+bench-crossplane-1784142786-565    True     True                        3m26s
+bench-crossplane-1784142786-566    True     True                        3m25s
+bench-crossplane-1784142786-567    True     True                        3m25s
+bench-crossplane-1784142786-568    True     True                        3m24s
+bench-crossplane-1784142786-569    True     True                        3m24s
+bench-crossplane-1784142786-57     True     True                        7m30s
+bench-crossplane-1784142786-570    True     True                        3m23s
+bench-crossplane-1784142786-571    True     True                        3m22s
+bench-crossplane-1784142786-572    True     True                        3m22s
+bench-crossplane-1784142786-573    True     False                       3m21s
+bench-crossplane-1784142786-574    True     False                       3m20s
+bench-crossplane-1784142786-575    True     False                       3m20s
+bench-crossplane-1784142786-576    True     False                       3m19s
+bench-crossplane-1784142786-577    True     False                       3m18s
+bench-crossplane-1784142786-578    True     False                       3m17s
+bench-crossplane-1784142786-579    True     False                       3m17s
+bench-crossplane-1784142786-58     True     True                        7m30s
+bench-crossplane-1784142786-580    True     False                       3m16s
+bench-crossplane-1784142786-581    True     False                       3m15s
+bench-crossplane-1784142786-582    True     False                       3m14s
+bench-crossplane-1784142786-583    True     False                       3m14s
+bench-crossplane-1784142786-584    True     False                       3m13s
+bench-crossplane-1784142786-585    True     False                       3m13s
+bench-crossplane-1784142786-586    True     False                       3m12s
+bench-crossplane-1784142786-587    True     False                       3m11s
+bench-crossplane-1784142786-588    True     False                       3m11s
+bench-crossplane-1784142786-589    True     False                       3m10s
+bench-crossplane-1784142786-59     True     True                        7m29s
+bench-crossplane-1784142786-590    True     False                       3m9s
+bench-crossplane-1784142786-591    True     False                       3m9s
+bench-crossplane-1784142786-592    True     False                       3m8s
+bench-crossplane-1784142786-593    True     False                       3m8s
+bench-crossplane-1784142786-594    True     False                       3m8s
+bench-crossplane-1784142786-595    True     False                       3m8s
+bench-crossplane-1784142786-596    True     True                        3m7s
+bench-crossplane-1784142786-597    True     False                       3m7s
+bench-crossplane-1784142786-598    True     False                       3m6s
+bench-crossplane-1784142786-599    True     False                       3m6s
+bench-crossplane-1784142786-6      True     True                        7m58s
+bench-crossplane-1784142786-60     True     True                        7m29s
+bench-crossplane-1784142786-600    True     False                       3m6s
+bench-crossplane-1784142786-601    True     False                       3m5s
+bench-crossplane-1784142786-602    True     False                       3m5s
+bench-crossplane-1784142786-603    True     False                       3m4s
+bench-crossplane-1784142786-604    True     False                       3m4s
+bench-crossplane-1784142786-605    True     False                       3m3s
+bench-crossplane-1784142786-606    True     False                       3m3s
+bench-crossplane-1784142786-607    True     False                       3m2s
+bench-crossplane-1784142786-608    True     False                       3m2s
+bench-crossplane-1784142786-609    True     False                       3m1s
+bench-crossplane-1784142786-61     True     True                        7m28s
+bench-crossplane-1784142786-610    True     True                        3m1s
+bench-crossplane-1784142786-611    True     False                       3m1s
+bench-crossplane-1784142786-612    True     False                       3m
+bench-crossplane-1784142786-613    True     False                       3m
+bench-crossplane-1784142786-614    True     False                       3m
+bench-crossplane-1784142786-615    True     False                       2m59s
+bench-crossplane-1784142786-616    True     False                       2m59s
+bench-crossplane-1784142786-617    True     False                       2m59s
+bench-crossplane-1784142786-618    True     True                        2m58s
+bench-crossplane-1784142786-619    True     False                       2m58s
+bench-crossplane-1784142786-62     True     True                        7m28s
+bench-crossplane-1784142786-620    True     False                       2m58s
+bench-crossplane-1784142786-621    True     False                       2m57s
+bench-crossplane-1784142786-622    True     False                       2m57s
+bench-crossplane-1784142786-623    True     False                       2m57s
+bench-crossplane-1784142786-624    True     False                       2m57s
+bench-crossplane-1784142786-625    True     False                       2m56s
+bench-crossplane-1784142786-626    True     False                       2m56s
+bench-crossplane-1784142786-627    True     False                       2m55s
+bench-crossplane-1784142786-628    True     False                       2m55s
+bench-crossplane-1784142786-629    True     False                       2m54s
+bench-crossplane-1784142786-63     True     True                        7m27s
+bench-crossplane-1784142786-630    True     False                       2m54s
+bench-crossplane-1784142786-631    True     False                       2m53s
+bench-crossplane-1784142786-632    True     False                       2m53s
+bench-crossplane-1784142786-633    True     False                       2m52s
+bench-crossplane-1784142786-634    True     True                        2m52s
+bench-crossplane-1784142786-635    True     False                       2m52s
+bench-crossplane-1784142786-636    True     False                       2m52s
+bench-crossplane-1784142786-637    True     False                       2m51s
+bench-crossplane-1784142786-638    True     False                       2m51s
+bench-crossplane-1784142786-639    True     False                       2m51s
+bench-crossplane-1784142786-64     True     True                        7m27s
+bench-crossplane-1784142786-640    True     False                       2m50s
+bench-crossplane-1784142786-641    True     False                       2m50s
+bench-crossplane-1784142786-642    True     False                       2m50s
+bench-crossplane-1784142786-643    True     True                        2m49s
+bench-crossplane-1784142786-644    True     False                       2m49s
+bench-crossplane-1784142786-645    True     False                       2m49s
+bench-crossplane-1784142786-646    True     False                       2m48s
+bench-crossplane-1784142786-647    True     False                       2m48s
+bench-crossplane-1784142786-648    True     False                       2m48s
+bench-crossplane-1784142786-649    True     False                       2m47s
+bench-crossplane-1784142786-65     True     True                        7m26s
+bench-crossplane-1784142786-650    True     False                       2m47s
+bench-crossplane-1784142786-651    True     False                       2m46s
+bench-crossplane-1784142786-652    True     False                       2m46s
+bench-crossplane-1784142786-653    True     False                       2m46s
+bench-crossplane-1784142786-654    True     False                       2m45s
+bench-crossplane-1784142786-655    True     False                       2m45s
+bench-crossplane-1784142786-656    True     False                       2m45s
+bench-crossplane-1784142786-657    True     True                        2m44s
+bench-crossplane-1784142786-658    True     False                       2m44s
+bench-crossplane-1784142786-659    True     True                        2m44s
+bench-crossplane-1784142786-66     True     True                        7m26s
+bench-crossplane-1784142786-660    True     False                       2m43s
+bench-crossplane-1784142786-661    True     False                       2m43s
+bench-crossplane-1784142786-662    True     False                       2m42s
+bench-crossplane-1784142786-663    True     True                        2m42s
+bench-crossplane-1784142786-664    True     False                       2m42s
+bench-crossplane-1784142786-665    True     False                       2m41s
+bench-crossplane-1784142786-666    True     False                       2m41s
+bench-crossplane-1784142786-667    True     True                        2m40s
+bench-crossplane-1784142786-668    True     False                       2m40s
+bench-crossplane-1784142786-669    True     False                       2m40s
+bench-crossplane-1784142786-67     True     True                        7m26s
+bench-crossplane-1784142786-670    True     False                       2m39s
+bench-crossplane-1784142786-671    True     False                       2m38s
+bench-crossplane-1784142786-672    True     False                       2m38s
+bench-crossplane-1784142786-673    True     False                       2m37s
+bench-crossplane-1784142786-674    True     False                       2m37s
+bench-crossplane-1784142786-675    True     False                       2m37s
+bench-crossplane-1784142786-676    True     False                       2m36s
+bench-crossplane-1784142786-677    True     False                       2m36s
+bench-crossplane-1784142786-678    True     False                       2m35s
+bench-crossplane-1784142786-679    True     False                       2m35s
+bench-crossplane-1784142786-68     True     True                        7m25s
+bench-crossplane-1784142786-680    True     False                       2m35s
+bench-crossplane-1784142786-681    True     False                       2m34s
+bench-crossplane-1784142786-682    True     False                       2m34s
+bench-crossplane-1784142786-683    True     False                       2m34s
+bench-crossplane-1784142786-684    True     False                       2m33s
+bench-crossplane-1784142786-685    True     False                       2m33s
+bench-crossplane-1784142786-686    True     False                       2m33s
+bench-crossplane-1784142786-687    True     False                       2m32s
+bench-crossplane-1784142786-688    True     False                       2m32s
+bench-crossplane-1784142786-689    True     False                       2m32s
+bench-crossplane-1784142786-69     True     True                        7m25s
+bench-crossplane-1784142786-690    True     False                       2m31s
+bench-crossplane-1784142786-691    True     False                       2m31s
+bench-crossplane-1784142786-692    True     False                       2m30s
+bench-crossplane-1784142786-693    True     False                       2m30s
+bench-crossplane-1784142786-694    True     False                       2m30s
+bench-crossplane-1784142786-695    True     False                       2m29s
+bench-crossplane-1784142786-696    True     False                       2m29s
+bench-crossplane-1784142786-697    True     False                       2m28s
+bench-crossplane-1784142786-698    True     True                        2m28s
+bench-crossplane-1784142786-699    True     False                       2m27s
+bench-crossplane-1784142786-7      True     True                        7m57s
+bench-crossplane-1784142786-70     True     True                        7m24s
+bench-crossplane-1784142786-700    True     False                       2m27s
+bench-crossplane-1784142786-701    True     False                       2m26s
+bench-crossplane-1784142786-702    True     False                       2m26s
+bench-crossplane-1784142786-703    True     False                       2m26s
+bench-crossplane-1784142786-704    True     False                       2m25s
+bench-crossplane-1784142786-705    True     False                       2m25s
+bench-crossplane-1784142786-706    True     False                       2m25s
+bench-crossplane-1784142786-707    True     False                       2m24s
+bench-crossplane-1784142786-708    True     False                       2m24s
+bench-crossplane-1784142786-709    True     False                       2m23s
+bench-crossplane-1784142786-71     True     True                        7m24s
+bench-crossplane-1784142786-710    True     False                       2m23s
+bench-crossplane-1784142786-711    True     False                       2m23s
+bench-crossplane-1784142786-712    True     False                       2m22s
+bench-crossplane-1784142786-713    True     False                       2m22s
+bench-crossplane-1784142786-714    True     False                       2m21s
+bench-crossplane-1784142786-715    True     False                       2m21s
+bench-crossplane-1784142786-716    True     False                       2m20s
+bench-crossplane-1784142786-717    True     False                       2m20s
+bench-crossplane-1784142786-718    True     False                       2m19s
+bench-crossplane-1784142786-719    True     False                       2m19s
+bench-crossplane-1784142786-72     True     True                        7m23s
+bench-crossplane-1784142786-720    True     False                       2m18s
+bench-crossplane-1784142786-721    True     False                       2m18s
+bench-crossplane-1784142786-722    True     False                       2m18s
+bench-crossplane-1784142786-723    True     False                       2m17s
+bench-crossplane-1784142786-724    True     False                       2m17s
+bench-crossplane-1784142786-725    True     False                       2m17s
+bench-crossplane-1784142786-726    True     False                       2m16s
+bench-crossplane-1784142786-727    True     False                       2m16s
+bench-crossplane-1784142786-728    True     False                       2m16s
+bench-crossplane-1784142786-729    True     False                       2m15s
+bench-crossplane-1784142786-73     True     True                        7m23s
+bench-crossplane-1784142786-730    True     False                       2m15s
+bench-crossplane-1784142786-731    True     False                       2m14s
+bench-crossplane-1784142786-732    True     False                       2m14s
+bench-crossplane-1784142786-733    True     False                       2m14s
+bench-crossplane-1784142786-734    True     False                       2m13s
+bench-crossplane-1784142786-735    True     False                       2m13s
+bench-crossplane-1784142786-736    True     False                       2m12s
+bench-crossplane-1784142786-737    True     False                       2m12s
+bench-crossplane-1784142786-738    True     False                       2m11s
+bench-crossplane-1784142786-739    True     False                       2m11s
+bench-crossplane-1784142786-74     True     True                        7m22s
+bench-crossplane-1784142786-740    True     False                       2m11s
+bench-crossplane-1784142786-741    True     False                       2m11s
+bench-crossplane-1784142786-742    True     False                       2m10s
+bench-crossplane-1784142786-743    True     False                       2m10s
+bench-crossplane-1784142786-744    True     True                        2m10s
+bench-crossplane-1784142786-745    True     False                       2m9s
+bench-crossplane-1784142786-746    True     False                       2m9s
+bench-crossplane-1784142786-747    True     False                       2m9s
+bench-crossplane-1784142786-748    True     True                        2m8s
+bench-crossplane-1784142786-749    True     False                       2m8s
+bench-crossplane-1784142786-75     True     True                        7m21s
+bench-crossplane-1784142786-750    True     False                       2m8s
+bench-crossplane-1784142786-751    True     False                       2m7s
+bench-crossplane-1784142786-752    True     False                       2m7s
+bench-crossplane-1784142786-753    True     False                       2m7s
+bench-crossplane-1784142786-754    True     False                       2m6s
+bench-crossplane-1784142786-755    True     False                       2m6s
+bench-crossplane-1784142786-756    True     False                       2m6s
+bench-crossplane-1784142786-757    True     False                       2m5s
+bench-crossplane-1784142786-758    True     False                       2m5s
+bench-crossplane-1784142786-759    True     False                       2m5s
+bench-crossplane-1784142786-76     True     True                        7m21s
+bench-crossplane-1784142786-760    True     False                       2m4s
+bench-crossplane-1784142786-761    True     False                       2m4s
+bench-crossplane-1784142786-762    True     False                       2m3s
+bench-crossplane-1784142786-763    True     False                       2m3s
+bench-crossplane-1784142786-764    True     False                       2m3s
+bench-crossplane-1784142786-765    True     False                       2m2s
+bench-crossplane-1784142786-766    True     False                       2m2s
+bench-crossplane-1784142786-767    True     False                       2m2s
+bench-crossplane-1784142786-768    True     False                       2m2s
+bench-crossplane-1784142786-769    True     False                       2m1s
+bench-crossplane-1784142786-77     True     True                        7m20s
+bench-crossplane-1784142786-770    True     False                       2m1s
+bench-crossplane-1784142786-771    True     False                       2m1s
+bench-crossplane-1784142786-772    True     False                       2m
+bench-crossplane-1784142786-773    True     False                       2m
+bench-crossplane-1784142786-774    True     False                       2m
+bench-crossplane-1784142786-775    True     False                       2m
+bench-crossplane-1784142786-776    True     False                       119s
+bench-crossplane-1784142786-777    True     False                       119s
+bench-crossplane-1784142786-778    True     False                       119s
+bench-crossplane-1784142786-779    True     False                       119s
+bench-crossplane-1784142786-78     True     True                        7m20s
+bench-crossplane-1784142786-780    True     False                       118s
+bench-crossplane-1784142786-781    True     False                       118s
+bench-crossplane-1784142786-782    True     True                        118s
+bench-crossplane-1784142786-783    True     False                       117s
+bench-crossplane-1784142786-784    True     True                        116s
+bench-crossplane-1784142786-785    True     False                       116s
+bench-crossplane-1784142786-786    True     False                       115s
+bench-crossplane-1784142786-787    True     False                       115s
+bench-crossplane-1784142786-788    True     False                       114s
+bench-crossplane-1784142786-789    True     False                       114s
+bench-crossplane-1784142786-79     True     True                        7m19s
+bench-crossplane-1784142786-790    True     True                        114s
+bench-crossplane-1784142786-791    True     False                       113s
+bench-crossplane-1784142786-792    True     True                        113s
+bench-crossplane-1784142786-793    True     True                        113s
+bench-crossplane-1784142786-794    True     False                       113s
+bench-crossplane-1784142786-795    True     False                       112s
+bench-crossplane-1784142786-796    True     False                       112s
+bench-crossplane-1784142786-797    True     False                       112s
+bench-crossplane-1784142786-798    True     True                        111s
+bench-crossplane-1784142786-799    True     True                        111s
+bench-crossplane-1784142786-8      True     True                        7m57s
+bench-crossplane-1784142786-80     True     True                        7m19s
+bench-crossplane-1784142786-800    True     False                       111s
+bench-crossplane-1784142786-801    True     True                        111s
+bench-crossplane-1784142786-802    True     False                       110s
+bench-crossplane-1784142786-803    True     False                       110s
+bench-crossplane-1784142786-804    True     False                       110s
+bench-crossplane-1784142786-805    True     False                       109s
+bench-crossplane-1784142786-806    True     False                       109s
+bench-crossplane-1784142786-807    True     False                       108s
+bench-crossplane-1784142786-808    True     False                       108s
+bench-crossplane-1784142786-809    True     False                       107s
+bench-crossplane-1784142786-81     True     True                        7m18s
+bench-crossplane-1784142786-810    True     False                       107s
+bench-crossplane-1784142786-811    True     False                       106s
+bench-crossplane-1784142786-812    True     False                       106s
+bench-crossplane-1784142786-813    True     False                       105s
+bench-crossplane-1784142786-814    True     True                        105s
+bench-crossplane-1784142786-815    True     False                       104s
+bench-crossplane-1784142786-816    True     False                       104s
+bench-crossplane-1784142786-817    True     False                       104s
+bench-crossplane-1784142786-818    True     False                       103s
+bench-crossplane-1784142786-819    True     False                       103s
+bench-crossplane-1784142786-82     True     True                        7m18s
+bench-crossplane-1784142786-820    True     False                       102s
+bench-crossplane-1784142786-821    True     False                       102s
+bench-crossplane-1784142786-822    True     False                       102s
+bench-crossplane-1784142786-823    True     False                       101s
+bench-crossplane-1784142786-824    True     False                       101s
+bench-crossplane-1784142786-825    True     False                       101s
+bench-crossplane-1784142786-826    True     False                       100s
+bench-crossplane-1784142786-827    True     False                       100s
+bench-crossplane-1784142786-828    True     False                       100s
+bench-crossplane-1784142786-829    True     False                       99s
+bench-crossplane-1784142786-83     True     True                        7m17s
+bench-crossplane-1784142786-830    True     False                       99s
+bench-crossplane-1784142786-831    True     False                       98s
+bench-crossplane-1784142786-832    True     False                       98s
+bench-crossplane-1784142786-833    True     False                       98s
+bench-crossplane-1784142786-834    True     False                       97s
+bench-crossplane-1784142786-835    True     False                       97s
+bench-crossplane-1784142786-836    True     False                       97s
+bench-crossplane-1784142786-837    True     False                       95s
+bench-crossplane-1784142786-838    True     False                       95s
+bench-crossplane-1784142786-839    True     False                       94s
+bench-crossplane-1784142786-84     True     True                        7m17s
+bench-crossplane-1784142786-840    True     False                       94s
+bench-crossplane-1784142786-841    True     False                       93s
+bench-crossplane-1784142786-842    True     False                       92s
+bench-crossplane-1784142786-843    True     False                       91s
+bench-crossplane-1784142786-844    True     False                       90s
+bench-crossplane-1784142786-845    True     False                       88s
+bench-crossplane-1784142786-846    True     False                       86s
+bench-crossplane-1784142786-847    True     False                       85s
+bench-crossplane-1784142786-848    True     False                       84s
+bench-crossplane-1784142786-849    True     False                       83s
+bench-crossplane-1784142786-85     True     True                        7m17s
+bench-crossplane-1784142786-850    True     False                       82s
+bench-crossplane-1784142786-851    True     False                       81s
+bench-crossplane-1784142786-852    True     False                       79s
+bench-crossplane-1784142786-853    True     False                       79s
+bench-crossplane-1784142786-854    True     False                       78s
+bench-crossplane-1784142786-855    True     False                       77s
+bench-crossplane-1784142786-856    True     False                       77s
+bench-crossplane-1784142786-857    True     False                       76s
+bench-crossplane-1784142786-858    True     False                       76s
+bench-crossplane-1784142786-859    True     False                       76s
+bench-crossplane-1784142786-86     True     True                        7m16s
+bench-crossplane-1784142786-860    True     False                       75s
+bench-crossplane-1784142786-861    True     False                       75s
+bench-crossplane-1784142786-862    True     False                       75s
+bench-crossplane-1784142786-863    True     False                       75s
+bench-crossplane-1784142786-864    True     False                       74s
+bench-crossplane-1784142786-865    True     False                       74s
+bench-crossplane-1784142786-866    True     False                       74s
+bench-crossplane-1784142786-867    True     False                       73s
+bench-crossplane-1784142786-868    True     False                       73s
+bench-crossplane-1784142786-869    True     False                       73s
+bench-crossplane-1784142786-87     True     True                        7m15s
+bench-crossplane-1784142786-870    True     False                       72s
+bench-crossplane-1784142786-871    True     False                       72s
+bench-crossplane-1784142786-872    True     False                       71s
+bench-crossplane-1784142786-873    True     False                       71s
+bench-crossplane-1784142786-874    True     False                       71s
+bench-crossplane-1784142786-875    True     False                       70s
+bench-crossplane-1784142786-876    True     False                       70s
+bench-crossplane-1784142786-877    True     False                       70s
+bench-crossplane-1784142786-878    True     False                       69s
+bench-crossplane-1784142786-879    True     False                       69s
+bench-crossplane-1784142786-88     True     True                        7m15s
+bench-crossplane-1784142786-880    True     False                       69s
+bench-crossplane-1784142786-881    True     False                       68s
+bench-crossplane-1784142786-882    True     False                       68s
+bench-crossplane-1784142786-883    True     False                       68s
+bench-crossplane-1784142786-884    True     False                       68s
+bench-crossplane-1784142786-885    True     False                       67s
+bench-crossplane-1784142786-886    True     False                       67s
+bench-crossplane-1784142786-887    True     False                       67s
+bench-crossplane-1784142786-888    True     False                       66s
+bench-crossplane-1784142786-889    True     False                       66s
+bench-crossplane-1784142786-89     True     True                        7m14s
+bench-crossplane-1784142786-890    True     False                       66s
+bench-crossplane-1784142786-891    True     False                       66s
+bench-crossplane-1784142786-892    True     False                       65s
+bench-crossplane-1784142786-893    True     False                       65s
+bench-crossplane-1784142786-894    True     False                       65s
+bench-crossplane-1784142786-895    True     False                       64s
+bench-crossplane-1784142786-896    True     False                       64s
+bench-crossplane-1784142786-897    True     False                       64s
+bench-crossplane-1784142786-898    True     False                       63s
+bench-crossplane-1784142786-899    True     False                       63s
+bench-crossplane-1784142786-9      True     True                        7m56s
+bench-crossplane-1784142786-90     True     True                        7m14s
+bench-crossplane-1784142786-900    True     False                       63s
+bench-crossplane-1784142786-901    True     False                       62s
+bench-crossplane-1784142786-902    True     False                       62s
+bench-crossplane-1784142786-903    True     False                       62s
+bench-crossplane-1784142786-904    True     False                       61s
+bench-crossplane-1784142786-905    True     False                       61s
+bench-crossplane-1784142786-906    True     False                       61s
+bench-crossplane-1784142786-907    True     False                       60s
+bench-crossplane-1784142786-908    True     False                       60s
+bench-crossplane-1784142786-909    True     False                       60s
+bench-crossplane-1784142786-91     True     True                        7m13s
+bench-crossplane-1784142786-910    True     False                       58s
+bench-crossplane-1784142786-911    True     False                       58s
+bench-crossplane-1784142786-912    True     False                       58s
+bench-crossplane-1784142786-913    True     False                       57s
+bench-crossplane-1784142786-914    True     False                       57s
+bench-crossplane-1784142786-915    True     False                       57s
+bench-crossplane-1784142786-916    True     False                       56s
+bench-crossplane-1784142786-917    True     False                       55s
+bench-crossplane-1784142786-918    True     False                       54s
+bench-crossplane-1784142786-919    True     False                       54s
+bench-crossplane-1784142786-92     True     True                        7m13s
+bench-crossplane-1784142786-920    True     False                       52s
+bench-crossplane-1784142786-921    True     False                       52s
+bench-crossplane-1784142786-922    True     False                       51s
+bench-crossplane-1784142786-923    True     False                       50s
+bench-crossplane-1784142786-924    True     False                       49s
+bench-crossplane-1784142786-925    True     False                       48s
+bench-crossplane-1784142786-926    True     False                       48s
+bench-crossplane-1784142786-927    True     False                       48s
+bench-crossplane-1784142786-928    True     False                       47s
+bench-crossplane-1784142786-929    True     False                       46s
+bench-crossplane-1784142786-93     True     True                        7m12s
+bench-crossplane-1784142786-930    True     False                       45s
+bench-crossplane-1784142786-931    True     False                       45s
+bench-crossplane-1784142786-932    True     False                       43s
+bench-crossplane-1784142786-933    True     False                       42s
+bench-crossplane-1784142786-934    True     False                       42s
+bench-crossplane-1784142786-935    True     False                       41s
+bench-crossplane-1784142786-936    True     False                       40s
+bench-crossplane-1784142786-937    True     False                       39s
+bench-crossplane-1784142786-938    True     False                       38s
+bench-crossplane-1784142786-939    True     False                       37s
+bench-crossplane-1784142786-94     True     True                        7m12s
+bench-crossplane-1784142786-940    True     False                       36s
+bench-crossplane-1784142786-941    True     False                       35s
+bench-crossplane-1784142786-942    True     False                       34s
+bench-crossplane-1784142786-943    True     False                       33s
+bench-crossplane-1784142786-944    True     False                       32s
+bench-crossplane-1784142786-945    True     False                       31s
+bench-crossplane-1784142786-946    True     False                       30s
+bench-crossplane-1784142786-947    True     False                       29s
+bench-crossplane-1784142786-948    True     False                       28s
+bench-crossplane-1784142786-949    True     False                       27s
+bench-crossplane-1784142786-95     True     True                        7m11s
+bench-crossplane-1784142786-950    True     False                       26s
+bench-crossplane-1784142786-951    True     False                       25s
+bench-crossplane-1784142786-952    True     False                       24s
+bench-crossplane-1784142786-953    True     False                       23s
+bench-crossplane-1784142786-954    True     False                       22s
+bench-crossplane-1784142786-955    True     False                       21s
+bench-crossplane-1784142786-956    True     False                       21s
+bench-crossplane-1784142786-957    True     False                       20s
+bench-crossplane-1784142786-958    True     False                       19s
+bench-crossplane-1784142786-959    True     False                       18s
+bench-crossplane-1784142786-96     True     True                        7m10s
+bench-crossplane-1784142786-960    True     False                       18s
+bench-crossplane-1784142786-961    True     False                       17s
+bench-crossplane-1784142786-962    True     False                       17s
+bench-crossplane-1784142786-963    True     False                       16s
+bench-crossplane-1784142786-964    True     False                       16s
+bench-crossplane-1784142786-965    True     False                       15s
+bench-crossplane-1784142786-966    True     False                       15s
+bench-crossplane-1784142786-967    True     False                       14s
+bench-crossplane-1784142786-968    True     False                       14s
+bench-crossplane-1784142786-969    True     False                       14s
+bench-crossplane-1784142786-97     True     True                        7m10s
+bench-crossplane-1784142786-970    True     False                       13s
+bench-crossplane-1784142786-971    True     False                       13s
+bench-crossplane-1784142786-972    True     False                       13s
+bench-crossplane-1784142786-973    True     False                       12s
+bench-crossplane-1784142786-974    True     False                       12s
+bench-crossplane-1784142786-975    True     False                       11s
+bench-crossplane-1784142786-976    True     False                       11s
+bench-crossplane-1784142786-977    True     False                       11s
+bench-crossplane-1784142786-978    True     False                       10s
+bench-crossplane-1784142786-979    True     False                       10s
+bench-crossplane-1784142786-98     True     True                        7m10s
+bench-crossplane-1784142786-980    True     False                       10s
+bench-crossplane-1784142786-981    True     False                       9s
+bench-crossplane-1784142786-982    True     False                       9s
+bench-crossplane-1784142786-983    True     False                       8s
+bench-crossplane-1784142786-984    True     False                       8s
+bench-crossplane-1784142786-985    True     False                       7s
+bench-crossplane-1784142786-986                                         7s
+bench-crossplane-1784142786-987                                         7s
+bench-crossplane-1784142786-988                                         6s
+bench-crossplane-1784142786-989                                         6s
+bench-crossplane-1784142786-99     True     True                        7m9s
+bench-crossplane-1784142786-990                                         5s
+bench-crossplane-1784142786-991                                         4s
+bench-crossplane-1784142786-992                                         4s
+bench-crossplane-1784142786-993                                         3s
+bench-crossplane-1784142786-994                                         3s
+bench-crossplane-1784142786-995                                         2s
+bench-crossplane-1784142786-996                                         2s
+bench-crossplane-1784142786-997                                         2s
+bench-crossplane-1784142786-998                                         2s
+bench-crossplane-1784142786-999                                         1s
+[INFO] waiting Ready 584/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=0s/300s)
+[INFO] waiting Ready 586/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=5s/300s)
+[INFO] waiting Ready 613/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=10s/300s)
+[INFO] waiting Ready 618/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=15s/300s)
+[INFO] waiting Ready 672/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=20s/300s)
+[INFO] waiting Ready 683/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=25s/300s)
+[INFO] waiting Ready 702/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=30s/300s)
+[INFO] waiting Ready 717/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=35s/300s)
+[INFO] waiting Ready 752/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=40s/300s)
+[INFO] waiting Ready 796/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=45s/300s)
+[INFO] waiting Ready 837/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=50s/300s)
+[INFO] waiting Ready 847/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=55s/300s)
+[INFO] waiting Ready 850/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=60s/300s)
+[INFO] waiting Ready /1000 for datastreams.messaging.lorenzodeluca.it (created=, waited=65s/300s)
+[INFO] waiting Ready /1000 for datastreams.messaging.lorenzodeluca.it (created=, waited=70s/300s)
+[INFO] waiting Ready /1000 for datastreams.messaging.lorenzodeluca.it (created=, waited=75s/300s)
+[INFO] waiting Ready 851/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=80s/300s)
+[INFO] waiting Ready 851/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=85s/300s)
+[INFO] waiting Ready 856/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=90s/300s)
+[INFO] waiting Ready 874/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=95s/300s)
+[INFO] waiting Ready 880/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=100s/300s)
+[INFO] waiting Ready 882/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=105s/300s)
+[INFO] waiting Ready 901/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=110s/300s)
+[INFO] waiting Ready 911/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=115s/300s)
+[INFO] waiting Ready 967/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=120s/300s)
+[INFO] waiting Ready 999/1000 for datastreams.messaging.lorenzodeluca.it (created=1000, waited=125s/300s)
+[INFO] Ready 1000/1000 for datastreams.messaging.lorenzodeluca.it (total created=1000)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=1000 for 60s (every 5s)
+[INFO] cleaning up n=1000 resources before next count
+[OK] scaling sampling complete for crossplane, appended to results/resource-usage/samples.csv
+[INFO] deleting pre-existing non-bench kubebuilder DataStreams to avoid queue interference
+[INFO] installing CRD/RBAC and starting kubebuilder controller
+[INFO] KAFKA_BROKER=localhost:9092
+[INFO] kubebuilder controller running, wrapper_pid=2253241 sampled_pid=2254034 rss=49156KB
+[INFO] === scaling test: framework=kubebuilder n=1 ===
+[DEBUG] created kubebuilder resources for n=1
+bench-kubebuilder-1784145187-1   0s
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=0s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=5s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=10s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=15s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=20s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=25s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=30s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=35s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=40s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=45s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=50s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=55s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=60s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=65s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=70s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=75s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=80s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=85s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=90s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=95s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=100s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=105s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=110s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=115s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=120s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=125s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=130s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=135s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=140s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=145s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=150s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=155s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=160s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=165s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=170s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=175s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=180s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=185s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=190s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=195s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=200s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=205s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=210s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=215s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=220s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=225s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=230s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=235s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=240s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=245s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=250s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=255s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=260s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=265s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=270s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=275s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=280s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=285s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=290s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.kb.lorenzodeluca.it (created=1, waited=295s/300s)
+[WARN] timeout waiting for 1 datastreams.messaging.kb.lorenzodeluca.it to be Ready (ready=0, created=1)
+[WARN] Recent matching resources:
+bench-kubebuilder-1784145187-1   5m28s
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=kubebuilder n=1 for 60s (every 5s)
+[INFO] cleaning up n=1 resources before next count
+[INFO] === scaling test: framework=kubebuilder n=10 ===
+[DEBUG] created kubebuilder resources for n=10
+bench-kubebuilder-1784145187-1    2s
+bench-kubebuilder-1784145187-10   0s
+bench-kubebuilder-1784145187-2    1s
+bench-kubebuilder-1784145187-3    1s
+bench-kubebuilder-1784145187-4    1s
+bench-kubebuilder-1784145187-5    1s
+bench-kubebuilder-1784145187-6    1s
+bench-kubebuilder-1784145187-7    1s
+bench-kubebuilder-1784145187-8    0s
+bench-kubebuilder-1784145187-9    0s
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=0s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=5s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=10s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=15s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=20s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=25s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=30s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=35s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=40s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=45s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=50s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=55s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=60s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=65s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=70s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=75s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=80s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=85s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=90s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=95s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=100s/300s)
+[INFO] waiting Ready 0/10 for datastreams.messaging.kb.lorenzodeluca.it (created=10, waited=105s/300s)
+[INFO] kubebuilder controller stopped

@@ -1,0 +1,410 @@
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ bash scripts/collect-resource-usage.sh at-rest 60 5
+[INFO] cleaning any leftover bench-* resources before baseline
+[INFO] installing CRD/RBAC and starting kubebuilder controller
+[INFO] KAFKA_BROKER=localhost:9092
+[INFO] kubebuilder controller running, wrapper_pid=1735982 sampled_pid=1736541 rss=52852KB
+[INFO] letting controller settle for 10s before sampling
+[INFO] sampling mode=at-rest framework=all n=0 for 60s (every 5s)
+[INFO] kubebuilder controller stopped
+[OK] at-rest sampling complete, appended to results/resource-usage/samples.csv
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ bash scripts/collect-resource-usage.sh scale crossplane 1,10,50,100 60 5
+[INFO] === scaling test: framework=crossplane n=1 ===
+[DEBUG] created crossplane resources for n=1
+bench-crossplane-1784138759-1   True     False                       0s
+[INFO] waiting Ready 0/1 for datastreams.messaging.lorenzodeluca.it (created=1, waited=0s/300s)
+[INFO] waiting Ready 0/1 for datastreams.messaging.lorenzodeluca.it (created=1, waited=5s/300s)
+[INFO] Ready 1/1 for datastreams.messaging.lorenzodeluca.it (total created=1)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=1 for 60s (every 5s)
+[INFO] cleaning up n=1 resources before next count
+[INFO] === scaling test: framework=crossplane n=10 ===
+[DEBUG] created crossplane resources for n=10
+bench-crossplane-1784138759-1    True     False                       3s
+bench-crossplane-1784138759-10                                        0s
+bench-crossplane-1784138759-2    True     False                       3s
+bench-crossplane-1784138759-3    True     False                       3s
+bench-crossplane-1784138759-4    True     False                       2s
+bench-crossplane-1784138759-5    True     False                       2s
+bench-crossplane-1784138759-6    True     False                       2s
+bench-crossplane-1784138759-7    True     False                       1s
+bench-crossplane-1784138759-8    True     False                       1s
+bench-crossplane-1784138759-9    True     False                       0s
+[INFO] waiting Ready 0/10 for datastreams.messaging.lorenzodeluca.it (created=10, waited=0s/300s)
+[INFO] waiting Ready 7/10 for datastreams.messaging.lorenzodeluca.it (created=10, waited=5s/300s)
+[INFO] Ready 10/10 for datastreams.messaging.lorenzodeluca.it (total created=10)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=10 for 60s (every 5s)
+[INFO] cleaning up n=10 resources before next count
+[INFO] === scaling test: framework=crossplane n=50 ===
+[DEBUG] created crossplane resources for n=50
+bench-crossplane-1784138759-1    True     True                        26s
+bench-crossplane-1784138759-10   True     True                        22s
+bench-crossplane-1784138759-11   True     True                        22s
+bench-crossplane-1784138759-12   True     True                        22s
+bench-crossplane-1784138759-13   True     True                        21s
+bench-crossplane-1784138759-14   True     True                        21s
+bench-crossplane-1784138759-15   True     True                        20s
+bench-crossplane-1784138759-16   True     True                        19s
+bench-crossplane-1784138759-17   True     True                        19s
+bench-crossplane-1784138759-18   True     True                        18s
+bench-crossplane-1784138759-19   True     True                        18s
+bench-crossplane-1784138759-2    True     True                        26s
+bench-crossplane-1784138759-20   True     True                        17s
+bench-crossplane-1784138759-21   True     False                       17s
+bench-crossplane-1784138759-22   True     True                        16s
+bench-crossplane-1784138759-23   True     True                        16s
+bench-crossplane-1784138759-24   True     False                       15s
+bench-crossplane-1784138759-25   True     False                       15s
+bench-crossplane-1784138759-26   True     False                       14s
+bench-crossplane-1784138759-27   True     False                       14s
+bench-crossplane-1784138759-28   True     False                       13s
+bench-crossplane-1784138759-29   True     False                       13s
+bench-crossplane-1784138759-3    True     True                        25s
+bench-crossplane-1784138759-30   True     False                       12s
+bench-crossplane-1784138759-31   True     False                       12s
+bench-crossplane-1784138759-32   True     False                       11s
+bench-crossplane-1784138759-33   True     False                       11s
+bench-crossplane-1784138759-34   True     False                       10s
+bench-crossplane-1784138759-35   True     False                       10s
+bench-crossplane-1784138759-36   True     False                       9s
+bench-crossplane-1784138759-37   True     False                       8s
+bench-crossplane-1784138759-38   True     False                       8s
+bench-crossplane-1784138759-39   True     False                       7s
+bench-crossplane-1784138759-4    True     True                        25s
+bench-crossplane-1784138759-40   True     False                       7s
+bench-crossplane-1784138759-41   True     False                       6s
+bench-crossplane-1784138759-42   True     False                       5s
+bench-crossplane-1784138759-43   True     False                       4s
+bench-crossplane-1784138759-44   True     False                       4s
+bench-crossplane-1784138759-45   True     False                       4s
+bench-crossplane-1784138759-46   True     False                       3s
+bench-crossplane-1784138759-47   True     False                       2s
+bench-crossplane-1784138759-48   True     False                       2s
+bench-crossplane-1784138759-49                                        1s
+bench-crossplane-1784138759-5    True     False                       25s
+bench-crossplane-1784138759-50                                        1s
+bench-crossplane-1784138759-6    True     True                        24s
+bench-crossplane-1784138759-7    True     True                        24s
+bench-crossplane-1784138759-8    True     True                        23s
+bench-crossplane-1784138759-9    True     True                        23s
+[INFO] waiting Ready 20/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=0s/300s)
+[INFO] waiting Ready 26/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=5s/300s)
+[INFO] waiting Ready 44/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=10s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=15s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=20s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=25s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=30s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=35s/300s)
+[INFO] waiting Ready 49/50 for datastreams.messaging.lorenzodeluca.it (created=50, waited=40s/300s)
+[INFO] Ready 50/50 for datastreams.messaging.lorenzodeluca.it (total created=50)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=50 for 60s (every 5s)
+[INFO] cleaning up n=50 resources before next count
+[INFO] === scaling test: framework=crossplane n=100 ===
+[DEBUG] created crossplane resources for n=100
+bench-crossplane-1784138759-1     True     True                        58s
+bench-crossplane-1784138759-10    True     True                        55s
+bench-crossplane-1784138759-100                                        1s
+bench-crossplane-1784138759-11    True     True                        54s
+bench-crossplane-1784138759-12    True     True                        54s
+bench-crossplane-1784138759-13    True     True                        53s
+bench-crossplane-1784138759-14    True     True                        53s
+bench-crossplane-1784138759-15    True     True                        53s
+bench-crossplane-1784138759-16    True     True                        52s
+bench-crossplane-1784138759-17    True     True                        51s
+bench-crossplane-1784138759-18    True     True                        51s
+bench-crossplane-1784138759-19    True     True                        50s
+bench-crossplane-1784138759-2     True     True                        58s
+bench-crossplane-1784138759-20    True     False                       50s
+bench-crossplane-1784138759-21    True     False                       49s
+bench-crossplane-1784138759-22    True     True                        48s
+bench-crossplane-1784138759-23    True     True                        48s
+bench-crossplane-1784138759-24    True     True                        47s
+bench-crossplane-1784138759-25    True     True                        47s
+bench-crossplane-1784138759-26    True     True                        46s
+bench-crossplane-1784138759-27    True     True                        45s
+bench-crossplane-1784138759-28    True     True                        44s
+bench-crossplane-1784138759-29    True     True                        44s
+bench-crossplane-1784138759-3     True     True                        58s
+bench-crossplane-1784138759-30    True     True                        43s
+bench-crossplane-1784138759-31    True     True                        42s
+bench-crossplane-1784138759-32    True     True                        42s
+bench-crossplane-1784138759-33    True     True                        41s
+bench-crossplane-1784138759-34    True     True                        41s
+bench-crossplane-1784138759-35    True     True                        40s
+bench-crossplane-1784138759-36    True     True                        39s
+bench-crossplane-1784138759-37    True     True                        39s
+bench-crossplane-1784138759-38    True     True                        38s
+bench-crossplane-1784138759-39    True     True                        37s
+bench-crossplane-1784138759-4     True     True                        57s
+bench-crossplane-1784138759-40    True     True                        37s
+bench-crossplane-1784138759-41    True     True                        36s
+bench-crossplane-1784138759-42    True     True                        36s
+bench-crossplane-1784138759-43    True     True                        35s
+bench-crossplane-1784138759-44    True     True                        35s
+bench-crossplane-1784138759-45    True     True                        34s
+bench-crossplane-1784138759-46    True     True                        33s
+bench-crossplane-1784138759-47    True     True                        32s
+bench-crossplane-1784138759-48    True     False                       31s
+bench-crossplane-1784138759-49    True     True                        30s
+bench-crossplane-1784138759-5     True     True                        57s
+bench-crossplane-1784138759-50    True     True                        29s
+bench-crossplane-1784138759-51    True     True                        28s
+bench-crossplane-1784138759-52    True     False                       27s
+bench-crossplane-1784138759-53    True     False                       27s
+bench-crossplane-1784138759-54    True     False                       26s
+bench-crossplane-1784138759-55    True     False                       26s
+bench-crossplane-1784138759-56    True     False                       25s
+bench-crossplane-1784138759-57    True     False                       25s
+bench-crossplane-1784138759-58    True     False                       25s
+bench-crossplane-1784138759-59    True     False                       24s
+bench-crossplane-1784138759-6     True     True                        56s
+bench-crossplane-1784138759-60    True     False                       24s
+bench-crossplane-1784138759-61    True     False                       23s
+bench-crossplane-1784138759-62    True     False                       23s
+bench-crossplane-1784138759-63    True     False                       23s
+bench-crossplane-1784138759-64    True     False                       22s
+bench-crossplane-1784138759-65    True     False                       21s
+bench-crossplane-1784138759-66    True     False                       21s
+bench-crossplane-1784138759-67    True     False                       21s
+bench-crossplane-1784138759-68    True     False                       20s
+bench-crossplane-1784138759-69    True     False                       20s
+bench-crossplane-1784138759-7     True     True                        56s
+bench-crossplane-1784138759-70    True     False                       19s
+bench-crossplane-1784138759-71    True     False                       18s
+bench-crossplane-1784138759-72    True     False                       18s
+bench-crossplane-1784138759-73    True     False                       18s
+bench-crossplane-1784138759-74    True     False                       17s
+bench-crossplane-1784138759-75    True     False                       16s
+bench-crossplane-1784138759-76    True     False                       16s
+bench-crossplane-1784138759-77    True     False                       16s
+bench-crossplane-1784138759-78    True     False                       15s
+bench-crossplane-1784138759-79    True     False                       15s
+bench-crossplane-1784138759-8     True     True                        55s
+bench-crossplane-1784138759-80    True     False                       14s
+bench-crossplane-1784138759-81    True     False                       14s
+bench-crossplane-1784138759-82    True     False                       13s
+bench-crossplane-1784138759-83    True     False                       12s
+bench-crossplane-1784138759-84    True     False                       12s
+bench-crossplane-1784138759-85    True     False                       11s
+bench-crossplane-1784138759-86    True     False                       10s
+bench-crossplane-1784138759-87    True     False                       8s
+bench-crossplane-1784138759-88    True     False                       8s
+bench-crossplane-1784138759-89    True     False                       7s
+bench-crossplane-1784138759-9     True     True                        55s
+bench-crossplane-1784138759-90    True     False                       6s
+bench-crossplane-1784138759-91    True     False                       5s
+bench-crossplane-1784138759-92    True     False                       5s
+bench-crossplane-1784138759-93                                         4s
+bench-crossplane-1784138759-94                                         4s
+bench-crossplane-1784138759-95                                         3s
+bench-crossplane-1784138759-96                                         3s
+bench-crossplane-1784138759-97                                         2s
+bench-crossplane-1784138759-98                                         2s
+bench-crossplane-1784138759-99                                         1s
+[INFO] waiting Ready 49/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=0s/300s)
+[INFO] waiting Ready 54/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=5s/300s)
+[INFO] waiting Ready 68/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=10s/300s)
+[INFO] waiting Ready 74/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=15s/300s)
+[INFO] waiting Ready 84/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=20s/300s)
+[INFO] waiting Ready 87/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=25s/300s)
+[INFO] waiting Ready 97/100 for datastreams.messaging.lorenzodeluca.it (created=100, waited=30s/300s)
+[INFO] Ready 100/100 for datastreams.messaging.lorenzodeluca.it (total created=100)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=crossplane n=100 for 60s (every 5s)
+[INFO] cleaning up n=100 resources before next count
+[OK] scaling sampling complete for crossplane, appended to results/resource-usage/samples.csv
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ nano results/resource-usage/console.log
+lorenzo@deluca:/opt/iccbd/kafka-operator-clash$ bash scripts/collect-resource-usage.sh scale kubebuilder 1,10,50,100 60 5
+[INFO] deleting pre-existing non-bench kubebuilder DataStreams to avoid queue interference
+[INFO] installing CRD/RBAC and starting kubebuilder controller
+[INFO] KAFKA_BROKER=localhost:9092
+[INFO] kubebuilder controller running, wrapper_pid=1841599 sampled_pid=1841950 rss=50632KB
+[INFO] === scaling test: framework=kubebuilder n=1 ===
+[DEBUG] created kubebuilder resources for n=1
+bench-kubebuilder-1784139482-1   0s
+[INFO] Ready 1/1 for datastreams.messaging.kb.lorenzodeluca.it (total created=1)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=kubebuilder n=1 for 60s (every 5s)
+[INFO] cleaning up n=1 resources before next count
+[INFO] === scaling test: framework=kubebuilder n=10 ===
+[DEBUG] created kubebuilder resources for n=10
+bench-kubebuilder-1784139482-1    3s
+bench-kubebuilder-1784139482-10   0s
+bench-kubebuilder-1784139482-2    3s
+bench-kubebuilder-1784139482-3    2s
+bench-kubebuilder-1784139482-4    2s
+bench-kubebuilder-1784139482-5    2s
+bench-kubebuilder-1784139482-6    2s
+bench-kubebuilder-1784139482-7    1s
+bench-kubebuilder-1784139482-8    1s
+bench-kubebuilder-1784139482-9    1s
+[INFO] Ready 10/10 for datastreams.messaging.kb.lorenzodeluca.it (total created=10)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=kubebuilder n=10 for 60s (every 5s)
+[INFO] cleaning up n=10 resources before next count
+[INFO] === scaling test: framework=kubebuilder n=50 ===
+[DEBUG] created kubebuilder resources for n=50
+bench-kubebuilder-1784139482-1    13s
+bench-kubebuilder-1784139482-10   11s
+bench-kubebuilder-1784139482-11   11s
+bench-kubebuilder-1784139482-12   11s
+bench-kubebuilder-1784139482-13   10s
+bench-kubebuilder-1784139482-14   10s
+bench-kubebuilder-1784139482-15   10s
+bench-kubebuilder-1784139482-16   9s
+bench-kubebuilder-1784139482-17   9s
+bench-kubebuilder-1784139482-18   9s
+bench-kubebuilder-1784139482-19   9s
+bench-kubebuilder-1784139482-2    13s
+bench-kubebuilder-1784139482-20   8s
+bench-kubebuilder-1784139482-21   8s
+bench-kubebuilder-1784139482-22   8s
+bench-kubebuilder-1784139482-23   7s
+bench-kubebuilder-1784139482-24   7s
+bench-kubebuilder-1784139482-25   7s
+bench-kubebuilder-1784139482-26   7s
+bench-kubebuilder-1784139482-27   6s
+bench-kubebuilder-1784139482-28   6s
+bench-kubebuilder-1784139482-29   6s
+bench-kubebuilder-1784139482-3    13s
+bench-kubebuilder-1784139482-30   5s
+bench-kubebuilder-1784139482-31   5s
+bench-kubebuilder-1784139482-32   5s
+bench-kubebuilder-1784139482-33   5s
+bench-kubebuilder-1784139482-34   4s
+bench-kubebuilder-1784139482-35   4s
+bench-kubebuilder-1784139482-36   4s
+bench-kubebuilder-1784139482-37   4s
+bench-kubebuilder-1784139482-38   3s
+bench-kubebuilder-1784139482-39   3s
+bench-kubebuilder-1784139482-4    13s
+bench-kubebuilder-1784139482-40   3s
+bench-kubebuilder-1784139482-41   2s
+bench-kubebuilder-1784139482-42   2s
+bench-kubebuilder-1784139482-43   2s
+bench-kubebuilder-1784139482-44   2s
+bench-kubebuilder-1784139482-45   1s
+bench-kubebuilder-1784139482-46   1s
+bench-kubebuilder-1784139482-47   1s
+bench-kubebuilder-1784139482-48   0s
+bench-kubebuilder-1784139482-49   0s
+bench-kubebuilder-1784139482-5    13s
+bench-kubebuilder-1784139482-50   0s
+bench-kubebuilder-1784139482-6    12s
+bench-kubebuilder-1784139482-7    12s
+bench-kubebuilder-1784139482-8    12s
+bench-kubebuilder-1784139482-9    11s
+[INFO] Ready 50/50 for datastreams.messaging.kb.lorenzodeluca.it (total created=50)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=kubebuilder n=50 for 60s (every 5s)
+[INFO] cleaning up n=50 resources before next count
+[INFO] === scaling test: framework=kubebuilder n=100 ===
+[DEBUG] created kubebuilder resources for n=100
+bench-kubebuilder-1784139482-1     31s
+bench-kubebuilder-1784139482-10    28s
+bench-kubebuilder-1784139482-100   1s
+bench-kubebuilder-1784139482-11    28s
+bench-kubebuilder-1784139482-12    28s
+bench-kubebuilder-1784139482-13    28s
+bench-kubebuilder-1784139482-14    27s
+bench-kubebuilder-1784139482-15    27s
+bench-kubebuilder-1784139482-16    27s
+bench-kubebuilder-1784139482-17    26s
+bench-kubebuilder-1784139482-18    26s
+bench-kubebuilder-1784139482-19    26s
+bench-kubebuilder-1784139482-2     31s
+bench-kubebuilder-1784139482-20    26s
+bench-kubebuilder-1784139482-21    25s
+bench-kubebuilder-1784139482-22    25s
+bench-kubebuilder-1784139482-23    25s
+bench-kubebuilder-1784139482-24    24s
+bench-kubebuilder-1784139482-25    24s
+bench-kubebuilder-1784139482-26    24s
+bench-kubebuilder-1784139482-27    23s
+bench-kubebuilder-1784139482-28    23s
+bench-kubebuilder-1784139482-29    23s
+bench-kubebuilder-1784139482-3     31s
+bench-kubebuilder-1784139482-30    22s
+bench-kubebuilder-1784139482-31    22s
+bench-kubebuilder-1784139482-32    22s
+bench-kubebuilder-1784139482-33    21s
+bench-kubebuilder-1784139482-34    21s
+bench-kubebuilder-1784139482-35    21s
+bench-kubebuilder-1784139482-36    20s
+bench-kubebuilder-1784139482-37    20s
+bench-kubebuilder-1784139482-38    20s
+bench-kubebuilder-1784139482-39    20s
+bench-kubebuilder-1784139482-4     30s
+bench-kubebuilder-1784139482-40    19s
+bench-kubebuilder-1784139482-41    19s
+bench-kubebuilder-1784139482-42    18s
+bench-kubebuilder-1784139482-43    18s
+bench-kubebuilder-1784139482-44    18s
+bench-kubebuilder-1784139482-45    17s
+bench-kubebuilder-1784139482-46    17s
+bench-kubebuilder-1784139482-47    17s
+bench-kubebuilder-1784139482-48    16s
+bench-kubebuilder-1784139482-49    16s
+bench-kubebuilder-1784139482-5     30s
+bench-kubebuilder-1784139482-50    16s
+bench-kubebuilder-1784139482-51    15s
+bench-kubebuilder-1784139482-52    15s
+bench-kubebuilder-1784139482-53    15s
+bench-kubebuilder-1784139482-54    15s
+bench-kubebuilder-1784139482-55    14s
+bench-kubebuilder-1784139482-56    14s
+bench-kubebuilder-1784139482-57    14s
+bench-kubebuilder-1784139482-58    13s
+bench-kubebuilder-1784139482-59    13s
+bench-kubebuilder-1784139482-6     30s
+bench-kubebuilder-1784139482-60    12s
+bench-kubebuilder-1784139482-61    12s
+bench-kubebuilder-1784139482-62    12s
+bench-kubebuilder-1784139482-63    12s
+bench-kubebuilder-1784139482-64    11s
+bench-kubebuilder-1784139482-65    11s
+bench-kubebuilder-1784139482-66    11s
+bench-kubebuilder-1784139482-67    10s
+bench-kubebuilder-1784139482-68    10s
+bench-kubebuilder-1784139482-69    10s
+bench-kubebuilder-1784139482-7     29s
+bench-kubebuilder-1784139482-70    10s
+bench-kubebuilder-1784139482-71    9s
+bench-kubebuilder-1784139482-72    9s
+bench-kubebuilder-1784139482-73    9s
+bench-kubebuilder-1784139482-74    8s
+bench-kubebuilder-1784139482-75    8s
+bench-kubebuilder-1784139482-76    8s
+bench-kubebuilder-1784139482-77    8s
+bench-kubebuilder-1784139482-78    7s
+bench-kubebuilder-1784139482-79    7s
+bench-kubebuilder-1784139482-8     29s
+bench-kubebuilder-1784139482-80    7s
+bench-kubebuilder-1784139482-81    6s
+bench-kubebuilder-1784139482-82    6s
+bench-kubebuilder-1784139482-83    6s
+bench-kubebuilder-1784139482-84    6s
+bench-kubebuilder-1784139482-85    5s
+bench-kubebuilder-1784139482-86    5s
+bench-kubebuilder-1784139482-87    5s
+bench-kubebuilder-1784139482-88    4s
+bench-kubebuilder-1784139482-89    4s
+bench-kubebuilder-1784139482-9     29s
+bench-kubebuilder-1784139482-90    4s
+bench-kubebuilder-1784139482-91    3s
+bench-kubebuilder-1784139482-92    3s
+bench-kubebuilder-1784139482-93    3s
+bench-kubebuilder-1784139482-94    2s
+bench-kubebuilder-1784139482-95    2s
+bench-kubebuilder-1784139482-96    2s
+bench-kubebuilder-1784139482-97    2s
+bench-kubebuilder-1784139482-98    1s
+bench-kubebuilder-1784139482-99    1s
+[INFO] waiting Ready 97/100 for datastreams.messaging.kb.lorenzodeluca.it (created=100, waited=0s/300s)
+[INFO] Ready 100/100 for datastreams.messaging.kb.lorenzodeluca.it (total created=100)
+[INFO] letting steady state settle for 10s
+[INFO] sampling mode=scale framework=kubebuilder n=100 for 60s (every 5s)
+[INFO] cleaning up n=100 resources before next count
+[INFO] kubebuilder controller stopped
+[OK] scaling sampling complete for kubebuilder, appended to results/resource-usage/samples.csv

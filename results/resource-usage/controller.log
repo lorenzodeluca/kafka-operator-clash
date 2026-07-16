@@ -3,21 +3,21 @@
 go fmt ./...
 go vet ./...
 go run ./cmd/main.go
-2026-07-16T02:48:04Z	INFO	setup	Starting manager
-2026-07-16T02:48:04Z	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
-2026-07-16T02:48:04Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.Deployment"}
-2026-07-16T02:48:04Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1alpha1.DataStream"}
-2026-07-16T02:48:04Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.ConfigMap"}
-2026-07-16T02:48:04Z	INFO	Starting Controller	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
-2026-07-16T02:48:04Z	INFO	Starting workers	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "worker count": 1}
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for non leader election runnables
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for warmup runnables
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for leader election runnables
-2026-07-16T02:49:46Z	INFO	Shutdown signal received, waiting for all workers to finish	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
-2026-07-16T02:49:46Z	INFO	All workers finished	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for caches
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for webhooks
-2026-07-16T02:49:46Z	INFO	Stopping and waiting for HTTP servers
-2026-07-16T02:49:46Z	INFO	shutting down server	{"name": "health probe", "addr": "[::]:8081"}
-2026-07-16T02:49:46Z	INFO	Wait completed, proceeding to shutdown the manager
+2026-07-16T02:53:09Z	INFO	setup	Starting manager
+2026-07-16T02:53:09Z	INFO	starting server	{"name": "health probe", "addr": "[::]:8081"}
+2026-07-16T02:53:09Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.Deployment"}
+2026-07-16T02:53:09Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1.ConfigMap"}
+2026-07-16T02:53:09Z	INFO	Starting EventSource	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "source": "kind source: *v1alpha1.DataStream"}
+2026-07-16T02:53:10Z	INFO	Starting Controller	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
+2026-07-16T02:53:10Z	INFO	Starting workers	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream", "worker count": 1}
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for non leader election runnables
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for leader election runnables
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for warmup runnables
+2026-07-16T02:54:52Z	INFO	Shutdown signal received, waiting for all workers to finish	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
+2026-07-16T02:54:52Z	INFO	All workers finished	{"controller": "datastream", "controllerGroup": "messaging.kb.lorenzodeluca.it", "controllerKind": "DataStream"}
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for caches
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for webhooks
+2026-07-16T02:54:52Z	INFO	Stopping and waiting for HTTP servers
+2026-07-16T02:54:52Z	INFO	shutting down server	{"name": "health probe", "addr": "[::]:8081"}
+2026-07-16T02:54:52Z	INFO	Wait completed, proceeding to shutdown the manager
 make: *** [Makefile:117: run] Terminated
